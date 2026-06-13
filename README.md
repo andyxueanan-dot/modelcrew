@@ -1,0 +1,33 @@
+# ModelCrew 🧮🤖
+
+> A **reusable** multi-agent crew that solves math-modeling-contest problems —
+> reads any problem, **summons the right specialists**, and lets a skeptic agent **interrogate every conclusion.**
+
+一支**可复用**的数学建模 AI 团队：`Router` 读懂任意赛题 → 自动召唤对应专家
+（审题 / 数据 / 建模 / 求解）→ 由 ⭐`Critic` 反幻觉评审对抗式把关 → `Writer` 出报告。
+以后打国赛/美赛，**换个题目直接复用**，团队定义不用改。
+
+为 **QoderWork CN 大赛 · 赛道八「多 Agent 编排挑战」** 而作，
+并以 **2024 MCM Problem C（网球动量）** 为样例验证端到端跑通。
+
+## 目录结构
+
+```
+qoder/
+├── PLAN.md                  # 主计划（框架 / 样例 / 时间线 / 提交清单）
+├── agents/                  # ★ 7 角色团队源稿（0_router … 6_writer，题目无关）
+├── skills/                  # 7 个 modelcrew-* 技能（Qoder SKILL.md 备份）
+│   └── modelcrew-{router,analyst,scout,modeler,solver,critic,writer}/SKILL.md
+├── references/              # 6 份借鉴资产（model_catalog/anti_patterns/rubrics/
+│                            #   feedback_layers/writing_templates/related_work）
+├── cases/
+│   └── 2024_mcm_c_tennis/   # demo 样例：网球动量（data/ + artifacts/ + screenshots/）
+└── submission/              # 实践文档.md + forum_post.md（天池作品 + 论坛帖）
+```
+
+## 核心思想
+
+- **可复用**：智能体按"建模流程"而非"某道题"定义；换题只需新建一个 `cases/<题>/`。
+- **自动召唤**：`Router` 按题型(连续/离散/数据/运筹/环境/政策)决定召唤哪些专家、什么顺序。
+- ⭐**反幻觉闸门**：任何结论必须过 `Critic` 的对抗式审计（随机性 / 因果 / 过拟合 / 外推）才放行，
+  被证伪则回退重做——这是把"作业"变成"真实 AI 工程"的那一步。

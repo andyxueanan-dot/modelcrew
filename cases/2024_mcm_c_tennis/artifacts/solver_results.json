@@ -1,0 +1,54 @@
+{
+  "server_win_rate": 0.673,
+  "runs_test": {
+    "n_matches": 31,
+    "raw_significant_0.05": 5,
+    "raw_significant_bonferroni": 1,
+    "adj_significant_0.05": 5,
+    "mean_z_raw": -0.986,
+    "mean_z_adj": -0.986
+  },
+  "permutation_test": {
+    "2023-wimbledon-1301": {
+      "total": 36,
+      "5plus": 4,
+      "max": 8,
+      "p_perm_5plus": 0.9909
+    },
+    "2023-wimbledon-1302": {
+      "total": 28,
+      "5plus": 6,
+      "max": 6,
+      "p_perm_5plus": 0.5892
+    },
+    "2023-wimbledon-1303": {
+      "total": 20,
+      "5plus": 8,
+      "max": 6,
+      "p_perm_5plus": 0.0733
+    },
+    "2023-wimbledon-1304": {
+      "total": 45,
+      "5plus": 13,
+      "max": 8,
+      "p_perm_5plus": 0.2124
+    },
+    "2023-wimbledon-1305": {
+      "total": 30,
+      "5plus": 9,
+      "max": 8,
+      "p_perm_5plus": 0.3297
+    }
+  },
+  "swing_prediction": {
+    "auc_roc": 0.529,
+    "n_train": 4765,
+    "n_test": 1899
+  },
+  "reproducibility": {
+    "random_seed": 42,
+    "python_packages": "pandas, numpy, scipy, scikit-learn, matplotlib",
+    "alpha_ewma": 0.1,
+    "n_permutations": 10000
+  }
+}

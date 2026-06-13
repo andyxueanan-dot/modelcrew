@@ -1,0 +1,39 @@
+{
+  "server_win_rate": 0.673,
+  "noop_bug_confirmed": true,
+  "noop_bug_note": "original 'server-adjusted' runs test binarized to the raw y sequence; it did NOT control for serving",
+  "server_aware_permutation": {
+    "method": "conditional permutation: shuffle point outcomes within server / returner groups, preserving server sequence and per-role win rate; B=5000, all matches",
+    "n_matches": 31,
+    "significant_0.05": 0,
+    "min_p": 0.156,
+    "median_p": 0.899
+  },
+  "post_streak_winrate_split": {
+    "k3": {
+      "serving_winrate": 0.681,
+      "n_serving": 1017,
+      "returning_winrate": 0.33,
+      "n_returning": 999
+    },
+    "k4": {
+      "serving_winrate": 0.676,
+      "n_serving": 503,
+      "returning_winrate": 0.339,
+      "n_returning": 495
+    },
+    "k5": {
+      "serving_winrate": 0.683,
+      "n_serving": 205,
+      "returning_winrate": 0.29,
+      "n_returning": 221
+    },
+    "k6": {
+      "serving_winrate": 0.727,
+      "n_serving": 88,
+      "returning_winrate": 0.255,
+      "n_returning": 94
+    }
+  },
+  "conclusion": "After a GENUINE server-aware null, streaks are still indistinguishable from random (0 significant matches). Post-streak win rates match base rates when split by serve/return. The hot-hand-fallacy conclusion holds and is strengthened."
+}
