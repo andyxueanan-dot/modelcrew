@@ -16,6 +16,7 @@
 - ⭐**反幻觉 Critic**：对每条结论做对抗式审计 + 三方辩论裁决——在网球 demo 中把"动量真实存在"判为 ❌（实为统计学经典的*热手谬误*）。
 - **真验证 + 可复现**：348 行 Python、真实统计检验（Wald-Wolfowitz runs test / 条件置换 / 逻辑回归），`seed=42` 一键复现。
 - **两轮交叉验证**：独立 AI + Codex 复审，发现并修正一处统计学漏洞（"server-adjusted" 空操作），用真正控制发球权的检验确认——结论不变且更稳。
+- 🏦 **可复用性已实证（金融案例）**：同一支团队**零改动**换到**信用卡违约预测**（UCI 3 万条信用风险数据）——XGBoost AUC 0.782 / KS 0.422，Critic 以"银行模型上线评审"否决直接部署（公平合规风险），并发现**移除性别/年龄等敏感属性后 AUC 仅降 0.003**（合规成本≈0）。详见 `cases/credit_default_fintech/`。
 
 ## 目录结构
 
@@ -28,7 +29,8 @@ qoder/
 ├── references/              # 6 份借鉴资产（model_catalog/anti_patterns/rubrics/
 │                            #   feedback_layers/writing_templates/related_work）
 ├── cases/
-│   └── 2024_mcm_c_tennis/   # demo 样例：网球动量（data/ + artifacts/ + screenshots/）
+│   ├── 2024_mcm_c_tennis/      # demo①：网球动量（数学建模 / 体育）
+│   └── credit_default_fintech/ # demo②：信用卡违约预测（金融风控，证明可复用）
 └── submission/              # 实践文档.md + forum_post.md（天池作品 + 论坛帖）
 ```
 

@@ -1,0 +1,229 @@
+{
+  "data": {
+    "n_samples": 30000,
+    "n_features": 31,
+    "default_rate": 0.2212,
+    "train_size": 21000,
+    "test_size": 9000,
+    "naive_baseline_accuracy": 0.7788
+  },
+  "models": {
+    "logistic_regression": {
+      "accuracy": 0.6942,
+      "auc_roc": 0.7169,
+      "ks": 0.3677,
+      "pr_auc": 0.4953,
+      "precision": 0.3814,
+      "recall": 0.6148,
+      "f1": 0.4708,
+      "confusion_matrix": [
+        [
+          5024,
+          1985
+        ],
+        [
+          767,
+          1224
+        ]
+      ]
+    },
+    "xgboost": {
+      "accuracy": 0.7603,
+      "auc_roc": 0.7815,
+      "ks": 0.4223,
+      "pr_auc": 0.554,
+      "precision": 0.4683,
+      "recall": 0.6163,
+      "f1": 0.5322,
+      "confusion_matrix": [
+        [
+          5616,
+          1393
+        ],
+        [
+          764,
+          1227
+        ]
+      ],
+      "best_iteration": 43
+    },
+    "random_forest": {
+      "accuracy": 0.7824,
+      "auc_roc": 0.7792,
+      "ks": 0.4257,
+      "pr_auc": 0.5519,
+      "precision": 0.5072,
+      "recall": 0.5841,
+      "f1": 0.543,
+      "confusion_matrix": [
+        [
+          5879,
+          1130
+        ],
+        [
+          828,
+          1163
+        ]
+      ]
+    }
+  },
+  "feature_importance_top10": [
+    {
+      "feature": "PAY_0",
+      "importance": 0.3709337115287781
+    },
+    {
+      "feature": "avg_pay_delay",
+      "importance": 0.12996888160705566
+    },
+    {
+      "feature": "PAY_2",
+      "importance": 0.034177016466856
+    },
+    {
+      "feature": "PAY_AMT2",
+      "importance": 0.0320272333920002
+    },
+    {
+      "feature": "PAY_3",
+      "importance": 0.03046431392431259
+    },
+    {
+      "feature": "PAY_AMT3",
+      "importance": 0.026182061061263084
+    },
+    {
+      "feature": "BILL_AMT1",
+      "importance": 0.021641181781888008
+    },
+    {
+      "feature": "utilization_2",
+      "importance": 0.02141253650188446
+    },
+    {
+      "feature": "LIMIT_BAL",
+      "importance": 0.020934559404850006
+    },
+    {
+      "feature": "PAY_AMT1",
+      "importance": 0.02047349140048027
+    }
+  ],
+  "lr_coefficients_top10": [
+    {
+      "feature": "PAY_0",
+      "coef": 0.3692308259331745
+    },
+    {
+      "feature": "utilization_1",
+      "coef": -0.24097591040339625
+    },
+    {
+      "feature": "PAY_AMT2",
+      "coef": -0.22473567570910724
+    },
+    {
+      "feature": "pay_delay_trend",
+      "coef": 0.1966229497177025
+    },
+    {
+      "feature": "LIMIT_BAL",
+      "coef": -0.18506917652295563
+    },
+    {
+      "feature": "utilization_6",
+      "coef": 0.17865398636481764
+    },
+    {
+      "feature": "PAY_6",
+      "coef": 0.162741127170607
+    },
+    {
+      "feature": "BILL_AMT6",
+      "coef": -0.14803255995983447
+    },
+    {
+      "feature": "PAY_AMT1",
+      "coef": -0.14250339642656998
+    },
+    {
+      "feature": "avg_pay_delay",
+      "coef": 0.1345167202136043
+    }
+  ],
+  "sensitive_attribute_audit": {
+    "SEX": {
+      "1": {
+        "n": 11888,
+        "default_rate": 0.2417
+      },
+      "2": {
+        "n": 18112,
+        "default_rate": 0.2078
+      }
+    },
+    "EDUCATION": {
+      "1": {
+        "n": 10585,
+        "default_rate": 0.1923
+      },
+      "2": {
+        "n": 14030,
+        "default_rate": 0.2373
+      },
+      "3": {
+        "n": 4917,
+        "default_rate": 0.2516
+      },
+      "4": {
+        "n": 468,
+        "default_rate": 0.0705
+      }
+    },
+    "MARRIAGE": {
+      "1": {
+        "n": 13659,
+        "default_rate": 0.2347
+      },
+      "2": {
+        "n": 15964,
+        "default_rate": 0.2093
+      },
+      "3": {
+        "n": 377,
+        "default_rate": 0.2361
+      }
+    },
+    "AGE_21-30": {
+      "n": 11013,
+      "default_rate": 0.2244
+    },
+    "AGE_31-40": {
+      "n": 10713,
+      "default_rate": 0.2043
+    },
+    "AGE_41-50": {
+      "n": 6005,
+      "default_rate": 0.233
+    },
+    "AGE_51-60": {
+      "n": 1997,
+      "default_rate": 0.2524
+    },
+    "AGE_61-79": {
+      "n": 272,
+      "default_rate": 0.2684
+    }
+  },
+  "fairness_test": {
+    "auc_with_sensitive": 0.7815,
+    "auc_without_sensitive": 0.7789,
+    "delta_auc": 0.0027,
+    "ks_without_sensitive": 0.4234
+  },
+  "reproducibility": {
+    "random_seed": 42,
+    "python_packages": "pandas, numpy, scikit-learn, xgboost, matplotlib",
+    "train_test_split": "70/30 stratified"
+  }
+}
