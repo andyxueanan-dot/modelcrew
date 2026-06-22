@@ -40,6 +40,11 @@ framework stays untouched when the problem changes:
 > **Why it's reusable**: the 7 roles abstract the *generic* modeling actions — read the problem,
 > profile the data, pick a model, solve, interrogate, write — decoupled from any specific contest.
 > Problem-agnostic ⟹ plug-and-play.
+>
+> ⚠️ **Honest note**: the diagram is the *full* 7-role roster, but the Router **tailors the actual
+> dispatch by problem type** — not every problem summons all 7. Both demos here are **data-type (C)**,
+> whose path is Analyst→Scout→Modeler→Solver→Critic→Writer; continuous/optimization problems take a
+> different chain (see the dispatch strategy in `agents/0_router.md`).
 
 ### ✅ Reusability proven across two different domains
 
@@ -60,6 +65,20 @@ framework stays untouched when the problem changes:
 - **Real validation + reproducible**: 348 lines of Python, genuine statistical tests (Wald-Wolfowitz runs test / conditional permutation / logistic regression), one-command repro with `seed=42`.
 - **Two rounds of cross-validation**: an independent AI + Codex review caught and fixed a statistical flaw (a no-op "server-adjusted" test); confirmed with a test that *truly* controls for serve — conclusion unchanged and stronger.
 - 🏦 **Finance case (reusability proven)**: the same crew, **zero changes**, on **credit-card default prediction** (30k UCI credit-risk rows) — XGBoost AUC 0.782 / KS 0.422; the Critic, acting as a "bank model go-live review", vetoed direct deployment (fairness/compliance risk) and found that **removing sensitive attributes (sex/age) costs only ΔAUC 0.003** (compliance cost ≈ 0). See `cases/credit_default_fintech/`.
+
+## ⚡ Reproduce in seconds (the demo numbers are real)
+
+```bash
+git clone https://github.com/andyxueanan-dot/modelcrew.git && cd modelcrew
+pip install -r requirements.txt
+# Finance case (credit-card default): writes AUC/KS to artifacts/results.json
+cd cases/credit_default_fintech && python artifacts/solve.py && cd ../..
+# Tennis case (momentum / hot-hand): writes runs test / permutation → solver_results.json
+cd cases/2024_mcm_c_tennis   && python artifacts/solve.py
+```
+
+Both scripts fix `seed=42`; the printed numbers should match the JSON and the paper prose under each
+`artifacts/` to the digit — the hard check behind this project's "anti-hallucination / reproducible" claim.
 
 ## 🛠 What software does it run on? (environment & portability)
 
