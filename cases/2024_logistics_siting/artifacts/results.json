@@ -1,0 +1,61 @@
+{
+  "problem": "continuous weighted p-median, K=4 emergency service centers",
+  "n_communities": 64,
+  "total_population": 346573,
+  "K": 4,
+  "n_starts_multistart": 300,
+  "naive_single_start": {
+    "cost": 8130711.5,
+    "feasible_in_city_box": true,
+    "claim": "a single random-start local search returns this as 'the optimal layout'",
+    "init": "np.random.default_rng(1), one random start"
+  },
+  "multistart_best": {
+    "cost": 4554431.2,
+    "feasible_in_city_box": true,
+    "centers": [
+      [
+        80.95,
+        18.75
+      ],
+      [
+        9.99,
+        78.98
+      ],
+      [
+        57.91,
+        56.34
+      ],
+      [
+        9.89,
+        15.19
+      ]
+    ],
+    "assigned_counts": [
+      14,
+      13,
+      27,
+      10
+    ]
+  },
+  "local_optimum_trap": {
+    "naive_example_gap_pct": 78.52,
+    "median_single_start_gap_pct": 82.15,
+    "worst_single_start_gap_pct": 276.58,
+    "fraction_starts_within_1pct_of_best": 0.0,
+    "verdict_hint": "a single random start is unreliable; it is typically suboptimal (see median gap)"
+  },
+  "sensitivity_cost_vs_K": {
+    "2": 9798411.0,
+    "3": 7152032.9,
+    "4": 4554431.2,
+    "5": 2351205.7,
+    "6": 2157798.5,
+    "7": 2024881.9
+  },
+  "reproducibility": {
+    "random_seed": 42,
+    "python_packages": "numpy, pandas, matplotlib",
+    "algorithm": "alternating p-median local search: nearest-assignment + Weiszfeld (weighted Weber point) center update; multi-start"
+  }
+}

@@ -42,19 +42,21 @@ framework stays untouched when the problem changes:
 > Problem-agnostic ⟹ plug-and-play.
 >
 > ⚠️ **Honest note**: the diagram is the *full* 7-role roster, but the Router **tailors the actual
-> dispatch by problem type** — not every problem summons all 7. Both demos here are **data-type (C)**,
-> whose path is Analyst→Scout→Modeler→Solver→Critic→Writer; continuous/optimization problems take a
-> different chain (see the dispatch strategy in `agents/0_router.md`).
+> dispatch by problem type** — not every problem summons all 7. Data-type (C) runs
+> Analyst→Scout→Modeler→Solver→Critic→Writer; **optimization-type (B) auto-switches** to
+> Analyst→Modeler→Solver→Critic→Writer (no heavy Scout). This "swap the chain by problem type" is
+> already exercised on **both** a data-type and an optimization-type problem below (see `agents/0_router.md`).
 
-### ✅ Reusability proven across two different domains
+### ✅ Reusability proven across three cases and two problem types
 
-| Case | Domain | Data | Crew changes | Highlight |
+| Case | Type / Domain | Data | Crew changes | Highlight |
 |---|---|---|---|---|
-| `cases/2024_mcm_c_tennis/` | Sports / stats | 7,284 Wimbledon points | — | Critic ruled "momentum is real" ❌ (*hot-hand fallacy*) |
-| `cases/credit_default_fintech/` | **Finance / risk** | 30k UCI credit-card rows | **0 lines** | Critic, as a "go-live review", vetoed deployment (fairness/compliance) |
+| `cases/2024_mcm_c_tennis/` | Data · sports/stats | 7,284 Wimbledon points | — | Critic ruled "momentum is real" ❌ (*hot-hand fallacy*) |
+| `cases/credit_default_fintech/` | Data · **finance/risk** | 30k UCI credit-card rows | **0 lines** | Critic, as a "go-live review", vetoed deployment (fairness/compliance) |
+| `cases/2024_logistics_siting/` | **Optimization** · OR/siting | 64-community depot siting | **0 lines** | Critic ruled "one search run = optimal" ❌ (local-optimum trap) |
 
-> Same crew, from **tennis** to **bank credit risk**, **not one line of the definition changed** —
-> that's the hard evidence behind "reusable".
+> Same crew, from **tennis** → **bank credit risk** → **emergency-depot optimization**,
+> **across data-type and optimization-type, not one line of the definition changed** — that's the hard evidence behind "reusable".
 
 ---
 
@@ -113,9 +115,12 @@ qoder/
 ├── references/              # 6 reference assets (model_catalog/anti_patterns/rubrics/
 │                            #   feedback_layers/writing_templates/related_work)
 ├── cases/
-│   ├── 2024_mcm_c_tennis/      # demo 1: tennis momentum (math modeling / sports)
-│   └── credit_default_fintech/ # demo 2: credit-card default (finance, proves reuse)
-└── submission/              # 实践文档.md + forum_post.md (Tianchi entry + forum post)
+│   ├── 2024_mcm_c_tennis/      # demo 1: tennis momentum (data-type / sports)
+│   ├── credit_default_fintech/ # demo 2: credit-card default (data-type / finance)
+│   └── 2024_logistics_siting/  # demo 3: emergency depot siting (optimization-type / OR)
+├── tools/check_frozen.py    # number-traceability check (paper numbers ↔ script output, 24/24)
+├── .claude/agents/          # 7 roles ported to Claude Code subagents (end-to-end verified)
+└── submission/              # 实践文档.md + forum_post.md + 演示视频脚本.md
 ```
 
 ## Core ideas

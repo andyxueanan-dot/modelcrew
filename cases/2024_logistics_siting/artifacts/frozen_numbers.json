@@ -1,0 +1,18 @@
+{
+  "case": "2024_logistics_siting",
+  "note": "论文/审计/文档引用的关键数字的唯一真相源。回溯到 solve.py 产出的 results.json；用 tools/check_frozen.py 校验。",
+  "inputs": [
+    "artifacts/solve.py",
+    "data/communities.csv",
+    "data/generate_data.py"
+  ],
+  "numbers": [
+    {"id": "n_communities", "label": "社区数", "value": 64, "tol": 0, "source": "artifacts/results.json", "path": "n_communities", "cited_in": "README.md, 4_results.md"},
+    {"id": "best_cost", "label": "K=4 最优总成本", "value": 4554431.2, "tol": 1.0, "source": "artifacts/results.json", "path": "multistart_best.cost", "cited_in": "4_results.md, 5_audit.md, 6_paper.md"},
+    {"id": "sens_K4", "label": "敏感性 K=4 成本(应=headline)", "value": 4554431.2, "tol": 1.0, "source": "artifacts/results.json", "path": "sensitivity_cost_vs_K.4", "cited_in": "4_results.md, 5_audit.md（自洽性）"},
+    {"id": "sens_K5", "label": "敏感性 K=5 成本", "value": 2351205.7, "tol": 1.0, "source": "artifacts/results.json", "path": "sensitivity_cost_vs_K.5", "cited_in": "4_results.md（拐点）"},
+    {"id": "naive_gap", "label": "naive 单起点(seed=1) 差距%", "value": 78.52, "tol": 0.05, "source": "artifacts/results.json", "path": "local_optimum_trap.naive_example_gap_pct", "cited_in": "4_results.md, 5_audit.md"},
+    {"id": "median_gap", "label": "单次随机起点中位差距%", "value": 82.15, "tol": 0.05, "source": "artifacts/results.json", "path": "local_optimum_trap.median_single_start_gap_pct", "cited_in": "4_results.md, 5_audit.md"},
+    {"id": "frac_within_1pct", "label": "随机起点落在最优1%内的比例", "value": 0.0, "tol": 0.001, "source": "artifacts/results.json", "path": "local_optimum_trap.fraction_starts_within_1pct_of_best", "cited_in": "4_results.md, 5_audit.md"}
+  ]
+}

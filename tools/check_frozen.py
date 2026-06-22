@@ -17,6 +17,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CASES = [
     "cases/2024_mcm_c_tennis",
     "cases/credit_default_fintech",
+    "cases/2024_logistics_siting",
 ]
 
 
