@@ -61,6 +61,20 @@ framework stays untouched when the problem changes:
 - **Two rounds of cross-validation**: an independent AI + Codex review caught and fixed a statistical flaw (a no-op "server-adjusted" test); confirmed with a test that *truly* controls for serve — conclusion unchanged and stronger.
 - 🏦 **Finance case (reusability proven)**: the same crew, **zero changes**, on **credit-card default prediction** (30k UCI credit-risk rows) — XGBoost AUC 0.782 / KS 0.422; the Critic, acting as a "bank model go-live review", vetoed direct deployment (fairness/compliance risk) and found that **removing sensitive attributes (sex/age) costs only ΔAUC 0.003** (compliance cost ≈ 0). See `cases/credit_default_fintech/`.
 
+## 🛠 What software does it run on? (environment & portability)
+
+**This entry was built and submitted on Qoder** (Track 8's requirement). But ModelCrew's "core" is **plain-Markdown role definitions + reference assets** (`agents/` + `references/`), **decoupled from any specific tool** — so it ports to other agentic tools; it is not Qoder-only.
+
+| Tool | Works? | How |
+|---|---|---|
+| **Qoder** (native, tested) | ✅ easiest | 7 `SKILL.md` files = 7 skills → bundled into an expert suite; call skills with `/`, summon the crew with `@` |
+| **Claude Code** | ✅ portable | add frontmatter to `agents/0_router…6_writer.md` and drop them into `.claude/agents/` as subagents; reuse `references/` as-is |
+| **Codex CLI** | ⚠️ possible, more manual | no "named-subagent suite" mechanism; put the roles in `AGENTS.md` and drive Router→…→Writer step by step via prompts |
+| **Any LLM chat** | ⚠️ most bare-bones | use each `agents/*.md` as a system prompt and relay role by role manually |
+
+> In short: **the submitted version is the Qoder one**; but since the core is just "roles + workflow + Critic gate" in Markdown, **it can be replicated in Claude Code too**. Qoder's value is packaging "skills / suites / subagents" into a one-click-install product you summon with a single `@`.
+> (The Qoder version is the tested one; Claude Code is a portability path.)
+
 ## Directory layout
 
 ```
