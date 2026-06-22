@@ -68,12 +68,11 @@ framework stays untouched when the problem changes:
 | Tool | Works? | How |
 |---|---|---|
 | **Qoder** (native, tested) | ✅ easiest | 7 `SKILL.md` files = 7 skills → bundled into an expert suite; call skills with `/`, summon the crew with `@` |
-| **Claude Code** | ✅ portable | add frontmatter to `agents/0_router…6_writer.md` and drop them into `.claude/agents/` as subagents; reuse `references/` as-is |
+| **Claude Code** (ported + verified) | ✅ verified | 7 subagents in [`.claude/agents/`](.claude/agents/), end-to-end smoke test passed ([log](.claude/agents/VERIFICATION.md)) |
 | **Codex CLI** | ⚠️ possible, more manual | no "named-subagent suite" mechanism; put the roles in `AGENTS.md` and drive Router→…→Writer step by step via prompts |
 | **Any LLM chat** | ⚠️ most bare-bones | use each `agents/*.md` as a system prompt and relay role by role manually |
 
-> In short: **the submitted version is the Qoder one**; but since the core is just "roles + workflow + Critic gate" in Markdown, **it can be replicated in Claude Code too**. Qoder's value is packaging "skills / suites / subagents" into a one-click-install product you summon with a single `@`.
-> (The Qoder version is the tested one; Claude Code is a portability path.)
+> In short: **the submitted version is the Qoder one**; but since the core is just "roles + workflow + Critic gate" in Markdown, **it has been replicated and verified in Claude Code** (see [`.claude/agents/`](.claude/agents/): 7 subagents + format check + an end-to-end smoke test where the Critic correctly ruled "hot-hand exists" as ❌ on a mini problem). Qoder's value is packaging "skills / suites / subagents" into a one-click-install product you summon with a single `@`.
 
 ## Directory layout
 
