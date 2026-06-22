@@ -73,6 +73,12 @@ cd cases/2024_mcm_c_tennis   && python artifacts/solve.py
 
 两个脚本都设了 `seed=42`，跑出的数字应与各 `artifacts/` 下的 JSON 和论文散文逐位一致——这正是本作品"反幻觉 / 可复现"主张的硬验证。
 
+```bash
+# 数字可追溯校验：论文引用的每个数字都回溯到脚本输出，源比结果新会报 STALE
+python tools/check_frozen.py        # 当前 17/17 一致
+```
+> 每个案例 `artifacts/frozen_numbers.json` 是论文数字的**唯一真相源**；`check_frozen.py` 自动核对"冻结值 == 脚本输出"，并在 `solve.py`/数据被改动后提示重跑——把"反幻觉"从人工 Critic 延伸成可自动跑的门禁（借鉴 `math-modeling-skills`）。
+
 ## 🛠 用什么软件跑？（环境 & 可移植性）
 
 **本作品在 Qoder 上构建并提交**（赛道八要求）。但 ModelCrew 的"内核"是**纯 Markdown 的角色定义 + 参考资产**（`agents/` + `references/`），**与具体工具解耦**——所以它能移植到别的 agentic 工具，不是只能在 Qoder 上跑。

@@ -80,6 +80,15 @@ cd cases/2024_mcm_c_tennis   && python artifacts/solve.py
 Both scripts fix `seed=42`; the printed numbers should match the JSON and the paper prose under each
 `artifacts/` to the digit — the hard check behind this project's "anti-hallucination / reproducible" claim.
 
+```bash
+# Number traceability: every number cited in the papers traces back to a script output;
+# flags STALE if a source script/data is newer than the results.
+python tools/check_frozen.py        # currently 17/17 consistent
+```
+> Each case's `artifacts/frozen_numbers.json` is the **single source of truth** for the paper's numbers;
+> `check_frozen.py` auto-verifies "frozen == script output" and warns when `solve.py`/data changed —
+> turning "anti-hallucination" from a manual Critic into an automatable gate (inspired by `math-modeling-skills`).
+
 ## 🛠 What software does it run on? (environment & portability)
 
 **This entry was built and submitted on Qoder** (Track 8's requirement). But ModelCrew's "core" is **plain-Markdown role definitions + reference assets** (`agents/` + `references/`), **decoupled from any specific tool** — so it ports to other agentic tools; it is not Qoder-only.

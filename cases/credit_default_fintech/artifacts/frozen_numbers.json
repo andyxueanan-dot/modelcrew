@@ -1,0 +1,20 @@
+{
+  "case": "credit_default_fintech",
+  "note": "论文/审计/文档引用的关键数字的唯一真相源（single source of truth）。每个数字回溯到 solve.py 产出的 results.json；用 tools/check_frozen.py 校验冻结值是否仍与脚本输出一致，并在源脚本/数据比结果更新时报 stale。",
+  "inputs": [
+    "artifacts/solve.py",
+    "data/UCI_Credit_Card.csv"
+  ],
+  "numbers": [
+    {"id": "default_rate", "label": "违约率", "value": 0.2212, "tol": 0.0005, "source": "artifacts/results.json", "path": "data.default_rate", "cited_in": "README.md, 5_audit.md, 6_paper.md, 实践文档.md"},
+    {"id": "naive_baseline", "label": "全预测不违约的准确率(陷阱基线)", "value": 0.7788, "tol": 0.0005, "source": "artifacts/results.json", "path": "data.naive_baseline_accuracy", "cited_in": "5_audit.md, 实践文档.md"},
+    {"id": "lr_auc", "label": "逻辑回归 AUC", "value": 0.7169, "tol": 0.0005, "source": "artifacts/results.json", "path": "models.logistic_regression.auc_roc", "cited_in": "6_paper.md"},
+    {"id": "lr_ks", "label": "逻辑回归 KS", "value": 0.3677, "tol": 0.0005, "source": "artifacts/results.json", "path": "models.logistic_regression.ks", "cited_in": "6_paper.md"},
+    {"id": "xgb_auc", "label": "XGBoost AUC", "value": 0.7815, "tol": 0.0005, "source": "artifacts/results.json", "path": "models.xgboost.auc_roc", "cited_in": "README.md, 5_audit.md, 6_paper.md, 实践文档.md"},
+    {"id": "xgb_ks", "label": "XGBoost KS", "value": 0.4223, "tol": 0.0005, "source": "artifacts/results.json", "path": "models.xgboost.ks", "cited_in": "README.md, 6_paper.md, 实践文档.md"},
+    {"id": "rf_auc", "label": "随机森林 AUC", "value": 0.7792, "tol": 0.0005, "source": "artifacts/results.json", "path": "models.random_forest.auc_roc", "cited_in": "5_audit.md, 6_paper.md"},
+    {"id": "rf_ks", "label": "随机森林 KS", "value": 0.4257, "tol": 0.0005, "source": "artifacts/results.json", "path": "models.random_forest.ks", "cited_in": "6_paper.md"},
+    {"id": "fairness_delta_auc", "label": "移除敏感属性后的 ΔAUC", "value": 0.0027, "tol": 0.0005, "source": "artifacts/results.json", "path": "fairness_test.delta_auc", "cited_in": "README.md, 5_audit.md, 6_paper.md, 实践文档.md"},
+    {"id": "pay0_importance", "label": "PAY_0 占 XGBoost 重要性", "value": 0.3709, "tol": 0.001, "source": "artifacts/results.json", "path": "feature_importance_top10.0.importance", "cited_in": "5_audit.md（泄漏嫌疑）"}
+  ]
+}

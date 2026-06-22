@@ -1,0 +1,18 @@
+{
+  "case": "2024_mcm_c_tennis",
+  "note": "论文/文档引用的关键数字的唯一真相源（single source of truth）。每个数字回溯到脚本产出的 JSON；用 tools/check_frozen.py 校验冻结值是否仍与脚本输出一致，并在源脚本/数据比结果更新时报 stale。",
+  "inputs": [
+    "artifacts/solve.py",
+    "artifacts/solve_v2_serveaware.py",
+    "data/Wimbledon_featured_matches.csv"
+  ],
+  "numbers": [
+    {"id": "server_win_rate", "label": "服务方胜率", "value": 0.673, "tol": 0.0005, "source": "artifacts/solver_results.json", "path": "server_win_rate", "cited_in": "6_paper.md, 实践文档.md"},
+    {"id": "runs_mean_z_raw", "label": "31场 runs test 平均 Z", "value": -0.986, "tol": 0.0005, "source": "artifacts/solver_results.json", "path": "runs_test.mean_z_raw", "cited_in": "5_audit.md, 6_paper.md, 实践文档.md"},
+    {"id": "runs_bonferroni_sig", "label": "Bonferroni 校正后显著场数", "value": 1, "tol": 0, "source": "artifacts/solver_results.json", "path": "runs_test.raw_significant_bonferroni", "cited_in": "5_audit.md, 6_paper.md"},
+    {"id": "n_matches", "label": "比赛场数", "value": 31, "tol": 0, "source": "artifacts/solver_results.json", "path": "runs_test.n_matches", "cited_in": "全文"},
+    {"id": "swing_auc", "label": "Swing 预测 AUC", "value": 0.529, "tol": 0.0005, "source": "artifacts/solver_results.json", "path": "swing_prediction.auc_roc", "cited_in": "5_audit.md, 6_paper.md, 实践文档.md"},
+    {"id": "serveaware_sig", "label": "真·控发球条件置换 显著场数", "value": 0, "tol": 0, "source": "artifacts/serveaware_results.json", "path": ["server_aware_permutation", "significant_0.05"], "cited_in": "CORRECTION_serveaware.md, 6_paper.md, 实践文档.md §6.5"},
+    {"id": "serveaware_min_p", "label": "真·控发球 最小 p 值", "value": 0.156, "tol": 0.001, "source": "artifacts/serveaware_results.json", "path": "server_aware_permutation.min_p", "cited_in": "CORRECTION_serveaware.md, 6_paper.md, 实践文档.md §6.5"}
+  ]
+}
