@@ -11,51 +11,56 @@
     "init": "np.random.default_rng(1), one random start"
   },
   "multistart_best": {
-    "cost": 4554431.2,
+    "cost": 4418714.9,
     "feasible_in_city_box": true,
     "centers": [
       [
-        80.95,
-        18.75
+        11.93,
+        79.36
       ],
       [
-        9.99,
-        78.98
+        79.28,
+        14.31
       ],
       [
-        57.91,
-        56.34
+        44.27,
+        42.98
       ],
       [
-        9.89,
-        15.19
+        79.65,
+        79.58
       ]
     ],
     "assigned_counts": [
-      14,
       13,
-      27,
-      10
+      14,
+      23,
+      14
     ]
   },
   "local_optimum_trap": {
-    "naive_example_gap_pct": 78.52,
-    "median_single_start_gap_pct": 82.15,
-    "worst_single_start_gap_pct": 276.58,
+    "naive_example_gap_pct": 84.01,
+    "median_single_start_gap_pct": 84.55,
+    "worst_single_start_gap_pct": 273.76,
     "fraction_starts_within_1pct_of_best": 0.0,
     "verdict_hint": "a single random start is unreliable; it is typically suboptimal (see median gap)"
   },
   "sensitivity_cost_vs_K": {
-    "2": 9798411.0,
-    "3": 7152032.9,
-    "4": 4554431.2,
-    "5": 2351205.7,
-    "6": 2157798.5,
-    "7": 2024881.9
+    "2": 9766285.4,
+    "3": 7049006.1,
+    "4": 4418714.9,
+    "5": 2191021.9,
+    "6": 2005504.8,
+    "7": 1820890.1
+  },
+  "global_optimum_check": {
+    "headline_matches_best_known": true,
+    "evidence": "data-driven structured seeds (subsets of weighted k-means centroids) + thousands of random/k-means++ restarts all agree on 4418714.9; an independent Critic search reproduced the same value",
+    "caveat": "no formal optimality certificate (continuous p-median is NP-hard); this is a strongly-supported empirical global"
   },
   "reproducibility": {
     "random_seed": 42,
     "python_packages": "numpy, pandas, matplotlib",
-    "algorithm": "alternating p-median local search: nearest-assignment + Weiszfeld (weighted Weber point) center update; multi-start"
+    "algorithm": "alternating p-median local search (nearest-assignment + Weiszfeld Weber-point center update); multi-start = data-driven structured seeds (subsets of weighted k-means centroids) + k-means++ + random restarts"
   }
 }
