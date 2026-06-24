@@ -1,0 +1,117 @@
+{
+  "case": "practice_02_epidemic_timing",
+  "note": "论文数字唯一真值源；由 solve.py 生成 results.json 后冻结。SIR-ODE + 阶跃干预，确定性可复现。",
+  "inputs": [
+    "artifacts/solve.py"
+  ],
+  "numbers": [
+    {
+      "id": "Q1_Rrepro",
+      "label": "基本再生数 R0",
+      "value": 3.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q1.Rrepro",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q1_beta0",
+      "label": "传播率 β0 (/天)",
+      "value": 0.5,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q1.beta0",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q1_Imax",
+      "label": "无干预峰值在治 I_max (人)",
+      "value": 300466.0,
+      "tol": 50.0,
+      "source": "artifacts/results.json",
+      "path": "Q1.Imax",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q1_Imax_frac",
+      "label": "无干预峰值占 N 比例",
+      "value": 0.3005,
+      "tol": 0.001,
+      "source": "artifacts/results.json",
+      "path": "Q1.Imax_frac",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q1_t_peak",
+      "label": "无干预峰值出现日 (天)",
+      "value": 36.85,
+      "tol": 0.05,
+      "source": "artifacts/results.json",
+      "path": "Q1.t_peak_days",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q1_final_size_z",
+      "label": "无干预最终累计感染比例 z",
+      "value": 0.9405,
+      "tol": 0.001,
+      "source": "artifacts/results.json",
+      "path": "Q1.final_size_z_numeric",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q2_c_star",
+      "label": "力度阈值 c* = 1-1/R0",
+      "value": 0.6667,
+      "tol": 0.001,
+      "source": "artifacts/results.json",
+      "path": "Q2.c_star_threshold",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q2_tau_star_c06",
+      "label": "最迟可行干预日 τ*(c=0.6) (天)",
+      "value": 27.52,
+      "tol": 0.1,
+      "source": "artifacts/results.json",
+      "path": "Q2.tau_star_baseline_c0.6",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q2_tau_star_c06_margin",
+      "label": "τ*(c=0.6, 20%余量) (天)",
+      "value": 26.6,
+      "tol": 0.1,
+      "source": "artifacts/results.json",
+      "path": "Q2.tau_star_baseline_c0.6_20pct_margin",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q3_tau_robust",
+      "label": "稳健最迟干预日 τ*_robust(c=0.6) (天)",
+      "value": -1,
+      "tol": 0.1,
+      "source": "artifacts/results.json",
+      "path": "Q3.tau_star_robust_c0.6",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q3_lead_time",
+      "label": "安全提前量 Δτ (天)",
+      "value": -1,
+      "tol": 0.15,
+      "source": "artifacts/results.json",
+      "path": "Q3.safety_lead_time_days",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "Q3_elasticity_Rrepro",
+      "label": "τ* 对 R0 的弹性",
+      "value": -1.612,
+      "tol": 0.05,
+      "source": "artifacts/results.json",
+      "path": "Q3.elasticity_tau_star.Rrepro",
+      "cited_in": "6_paper.md"
+    }
+  ]
+}

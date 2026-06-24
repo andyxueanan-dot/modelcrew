@@ -1,0 +1,429 @@
+{
+  "meta": {
+    "case": "practice_02_epidemic_timing",
+    "model": "deterministic SIR-ODE + step intervention (3_model.md)",
+    "solver": {
+      "method": "LSODA",
+      "rtol": 1e-09,
+      "atol": 1e-09,
+      "max_step": 0.5,
+      "t_end": 600.0,
+      "tau_breakpoint_split": true,
+      "peak_locate": "fine grid 240001 + parabolic refine",
+      "final_size": "long integration vs brentq final-size eqn",
+      "tau_star": "brentq root of g(tau,c)=0 (monotone in tau)"
+    },
+    "params": {
+      "N": 1000000.0,
+      "I0": 10.0,
+      "gamma": 0.16666666666666666,
+      "Rrepro": 3.0,
+      "beta0": 0.5,
+      "h_frac": 0.08,
+      "h_abs": 80000.0
+    },
+    "randomness": "none (fully deterministic)",
+    "versions": {
+      "python": "3.11.15",
+      "numpy": "2.4.6",
+      "scipy": "1.17.1",
+      "matplotlib": "3.11.0",
+      "platform": "Linux-6.18.5-x86_64-with-glibc2.39"
+    }
+  },
+  "Q1": {
+    "Rrepro": 3.0,
+    "Rrepro_check_beta_over_gamma": 3.0,
+    "beta0": 0.5,
+    "gamma": 0.16666666666666666,
+    "linear_growth_rate_per_day": 0.33333333333333337,
+    "Imax": 300465.90332252113,
+    "Imax_frac": 0.30046590332252116,
+    "Imax_analytic_frac": 0.30046257044396346,
+    "Imax_analytic": 300462.57044396346,
+    "t_peak_days": 36.848177285564105,
+    "S_at_peak": 333333.3324387094,
+    "S_anchor_N_over_Rrepro": 333333.3333333333,
+    "S_at_peak_rel_err": 2.6838717749342324e-09,
+    "final_size_z_numeric": 0.9404805152816469,
+    "final_size_z_equation": 0.9404797907073595,
+    "final_size_abs_diff": 7.245742873474015e-07,
+    "I_at_t_end": 2.0766761327850654e-28,
+    "conservation_max_abs_err": 1.5133991837501526e-09,
+    "h_capacity_abs": 80000.0,
+    "Imax_over_h": 3.755823791531514
+  },
+  "Q2": {
+    "c_star_threshold": 0.6666666666666667,
+    "c_baseline": 0.6,
+    "h_capacity_abs": 80000.0,
+    "R_e_after_intervention": {
+      "0.40": 1.7999999999999998,
+      "0.50": 1.5,
+      "0.60": 1.2000000000000002,
+      "0.70": 0.9000000000000001
+    },
+    "tau_star_by_c": {
+      "0.40": {
+        "tau_star": null,
+        "status": "infeasible_at_0",
+        "R_e": 1.7999999999999998
+      },
+      "0.50": {
+        "tau_star": 24.505772821619285,
+        "status": "feasible_interval",
+        "R_e": 1.5
+      },
+      "0.60": {
+        "tau_star": 27.515705313344178,
+        "status": "feasible_interval",
+        "R_e": 1.2000000000000002
+      },
+      "0.70": {
+        "tau_star": 27.568562240342192,
+        "status": "feasible_interval",
+        "R_e": 0.9000000000000001
+      }
+    },
+    "tau_star_baseline_c0.6": 27.515705313344178,
+    "tau_star_baseline_c0.6_20pct_margin": 26.596443096601632,
+    "tau_star_baseline_margin_status": "feasible_interval",
+    "monotonicity_P_vs_tau_c0.6": {
+      "min_diff": -9.022187441587448e-08,
+      "is_monotone_nondecreasing": true,
+      "P_at_tau0": 14740.369380038146,
+      "P_at_tau60": 300465.90332249657
+    },
+    "infeasible_at_day0_examples": [
+      {
+        "c": 0.1,
+        "P0_minus_h": 181762.30633046918,
+        "P0": 261762.30633046918
+      },
+      {
+        "c": 0.2,
+        "P0_minus_h": 138558.85958664116,
+        "P0": 218558.85958664116
+      },
+      {
+        "c": 0.3,
+        "P0_minus_h": 90510.7882711642,
+        "P0": 170510.7882711642
+      },
+      {
+        "c": 0.35,
+        "P0_minus_h": 64708.01408022872,
+        "P0": 144708.01408022872
+      },
+      {
+        "c": 0.4,
+        "P0_minus_h": 37901.85285852791,
+        "P0": 117901.85285852791
+      }
+    ]
+  },
+  "Q3": {
+    "tau_star_nominal_c0.6": 27.515705313344178,
+    "tau_star_vs_Rrepro_c0.6": {
+      "2.50": {
+        "tau_star": 36.985618561310936,
+        "status": "feasible_interval"
+      },
+      "2.75": {
+        "tau_star": 31.585832621897566,
+        "status": "feasible_interval"
+      },
+      "3.00": {
+        "tau_star": 27.515705313344178,
+        "status": "feasible_interval"
+      },
+      "3.25": {
+        "tau_star": 24.066607775850073,
+        "status": "feasible_interval"
+      },
+      "3.50": {
+        "tau_star": 20.922764947790373,
+        "status": "feasible_interval"
+      }
+    },
+    "tau_star_vs_infectious_period_c0.6": {
+      "period_5d": {
+        "gamma": 0.2,
+        "tau_star": 22.929748342085055,
+        "status": "feasible_interval"
+      },
+      "period_5.5d": {
+        "gamma": 0.18181818181818182,
+        "tau_star": 25.22275096589371,
+        "status": "feasible_interval"
+      },
+      "period_6d": {
+        "gamma": 0.16666666666666666,
+        "tau_star": 27.515705313344178,
+        "status": "feasible_interval"
+      },
+      "period_6.5d": {
+        "gamma": 0.15384615384615385,
+        "tau_star": 29.808693524276393,
+        "status": "feasible_interval"
+      },
+      "period_7d": {
+        "gamma": 0.14285714285714285,
+        "tau_star": 32.1016682999195,
+        "status": "feasible_interval"
+      }
+    },
+    "tau_star_vs_h_c0.6": {
+      "0.06": {
+        "h_abs": 60000.0,
+        "tau_star": 26.32368467823217,
+        "status": "feasible_interval"
+      },
+      "0.07": {
+        "h_abs": 70000.0,
+        "tau_star": 26.969423696666148,
+        "status": "feasible_interval"
+      },
+      "0.08": {
+        "h_abs": 80000.0,
+        "tau_star": 27.515705313344178,
+        "status": "feasible_interval"
+      },
+      "0.09": {
+        "h_abs": 90000.0,
+        "tau_star": 27.991129039899075,
+        "status": "feasible_interval"
+      },
+      "0.10": {
+        "h_abs": 100000.0,
+        "tau_star": 28.413566840349294,
+        "status": "feasible_interval"
+      }
+    },
+    "tau_star_vs_c": {
+      "0.40": {
+        "tau_star": null,
+        "status": "infeasible_at_0"
+      },
+      "0.45": {
+        "tau_star": null,
+        "status": "infeasible_at_0"
+      },
+      "0.50": {
+        "tau_star": 24.505772821619285,
+        "status": "feasible_interval"
+      },
+      "0.55": {
+        "tau_star": 26.822080591945692,
+        "status": "feasible_interval"
+      },
+      "0.60": {
+        "tau_star": 27.515705313344178,
+        "status": "feasible_interval"
+      },
+      "0.65": {
+        "tau_star": 27.568405033111404,
+        "status": "feasible_interval"
+      },
+      "0.70": {
+        "tau_star": 27.568562240342192,
+        "status": "feasible_interval"
+      }
+    },
+    "elasticity_tau_star": {
+      "Rrepro": -1.6120758877042303,
+      "c": 0.12006038704738328,
+      "h": 0.14747663241275746,
+      "gamma": -1.0004136159907846
+    },
+    "robust_corners": [
+      {
+        "Rrepro": 2.5,
+        "gamma": 0.14285714285714285,
+        "c_eff": 0.42,
+        "tau_star": 40.43165514674056,
+        "status": "feasible_interval"
+      },
+      {
+        "Rrepro": 2.5,
+        "gamma": 0.14285714285714285,
+        "c_eff": 0.6,
+        "tau_star": 43.149517269956064,
+        "status": "feasible_interval"
+      },
+      {
+        "Rrepro": 2.5,
+        "gamma": 0.2,
+        "c_eff": 0.42,
+        "tau_star": 28.87973512679092,
+        "status": "feasible_interval"
+      },
+      {
+        "Rrepro": 2.5,
+        "gamma": 0.2,
+        "c_eff": 0.6,
+        "tau_star": 30.82124155711966,
+        "status": "feasible_interval"
+      },
+      {
+        "Rrepro": 3.5,
+        "gamma": 0.14285714285714285,
+        "c_eff": 0.42,
+        "tau_star": null,
+        "status": "infeasible_at_0"
+      },
+      {
+        "Rrepro": 3.5,
+        "gamma": 0.14285714285714285,
+        "c_eff": 0.6,
+        "tau_star": 24.409882595187078,
+        "status": "feasible_interval"
+      },
+      {
+        "Rrepro": 3.5,
+        "gamma": 0.2,
+        "c_eff": 0.42,
+        "tau_star": null,
+        "status": "infeasible_at_0"
+      },
+      {
+        "Rrepro": 3.5,
+        "gamma": 0.2,
+        "c_eff": 0.6,
+        "tau_star": 17.43563716137648,
+        "status": "feasible_interval"
+      }
+    ],
+    "tau_star_robust_c0.6": null,
+    "robust_status": "infeasible_corner_exists",
+    "safety_lead_time_days": null
+  },
+  "Q2_curves": {
+    "taus": [
+      0.0,
+      1.0,
+      2.0,
+      3.0,
+      4.0,
+      5.0,
+      6.0,
+      7.0,
+      8.0,
+      9.0,
+      10.0,
+      11.0,
+      12.0,
+      13.0,
+      14.0,
+      15.0,
+      16.0,
+      17.0,
+      18.0,
+      19.0,
+      20.0,
+      21.0,
+      22.0,
+      23.0,
+      24.0,
+      25.0,
+      26.0,
+      27.0,
+      28.0,
+      29.0,
+      30.0,
+      31.0,
+      32.0,
+      33.0,
+      34.0,
+      35.0,
+      36.0,
+      37.0,
+      38.0,
+      39.0,
+      40.0,
+      41.0,
+      42.0,
+      43.0,
+      44.0,
+      45.0,
+      46.0,
+      47.0,
+      48.0,
+      49.0,
+      50.0,
+      51.0,
+      52.0,
+      53.0,
+      54.0,
+      55.0,
+      56.0,
+      57.0,
+      58.0,
+      59.0,
+      60.0
+    ],
+    "peak_I": [
+      14740.369380038146,
+      14743.33646393985,
+      14747.477329306335,
+      14753.25630090492,
+      14761.32135816278,
+      14772.576754223297,
+      14788.284328771491,
+      14810.204832480764,
+      14840.795026653792,
+      14883.482495876491,
+      14943.048669557802,
+      15026.162377599598,
+      15142.122553703422,
+      15303.891001007369,
+      15529.526422093917,
+      15844.171598422761,
+      16282.799223831826,
+      16893.99088198877,
+      17745.108531881386,
+      18929.315002127038,
+      20574.995806468894,
+      22858.195439244784,
+      26018.637059258268,
+      30379.61130611206,
+      36371.2710408735,
+      44555.314382899516,
+      55646.27780825775,
+      70520.47476989124,
+      90198.54371028015,
+      115630.4261781986,
+      145430.60080533204,
+      177899.8637521984,
+      210911.86795251138,
+      241776.70421490638,
+      267777.877929241,
+      286781.8745949745,
+      297662.6762883649,
+      300465.90332251386,
+      300465.90332242363,
+      300465.90332257305,
+      300465.9033224906,
+      300465.9033225232,
+      300465.903322552,
+      300465.90332247893,
+      300465.9033225603,
+      300465.9033225368,
+      300465.9033225619,
+      300465.90332247305,
+      300465.9033224263,
+      300465.9033224799,
+      300465.9033225686,
+      300465.9033225115,
+      300465.9033224463,
+      300465.90332251455,
+      300465.90332245437,
+      300465.90332253336,
+      300465.9033224696,
+      300465.9033224788,
+      300465.9033225204,
+      300465.9033225596,
+      300465.90332249657
+    ]
+  }
+}
