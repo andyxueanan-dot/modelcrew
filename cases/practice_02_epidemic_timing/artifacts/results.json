@@ -1,0 +1,45 @@
+{
+  "meta": {
+    "case": "practice_02_epidemic_timing",
+    "N": 1000000,
+    "I0": 10.0,
+    "gamma": 0.166667,
+    "R0": 3.0,
+    "beta": 0.5,
+    "capacity_frac": 0.08,
+    "intervention_c": 0.6,
+    "drift": 0.2,
+    "T_days": 300.0,
+    "python": "3.11.15",
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "method": "solve_ivp/RK45 two-phase"
+  },
+  "q1": {
+    "R0": 3.0,
+    "baseline_peak": 300457.1,
+    "baseline_peak_frac": 0.3005,
+    "baseline_peak_day": 36.8,
+    "susceptible_frac_at_peak": 0.3333,
+    "final_size_frac": 0.9405
+  },
+  "q2": {
+    "capacity": 80000.0,
+    "capacity_frac": 0.08,
+    "tau_max_days": 27,
+    "peak_at_tau_max": 70520.4,
+    "tau_max_drift20_days": 19,
+    "robustness_radius_days": 8,
+    "tau_safe_recommended": 19,
+    "peak_at_tau_safe": 18929.3
+  },
+  "q3_sensitivity": {
+    "tau_max_c30": null,
+    "tau_max_c40": null,
+    "tau_max_c60": 27,
+    "tau_max_H5": 25,
+    "tau_max_H10": 28,
+    "iwrr_drift10": 4,
+    "iwrr_drift30": 13
+  }
+}

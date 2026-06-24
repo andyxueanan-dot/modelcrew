@@ -1,0 +1,72 @@
+{
+  "case": "practice_02_epidemic_timing",
+  "note": "论文数字唯一真相源",
+  "inputs": [
+    "artifacts/solve.py"
+  ],
+  "numbers": [
+    {
+      "id": "R0",
+      "label": "基本再生数 R₀",
+      "value": 3.0,
+      "tol": 0.005,
+      "source": "artifacts/results.json",
+      "path": "q1.R0",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "baseline_peak_frac",
+      "label": "无干预峰值同时感染占比",
+      "value": 0.3005,
+      "tol": 0.005,
+      "source": "artifacts/results.json",
+      "path": "q1.baseline_peak_frac",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "baseline_peak_day",
+      "label": "无干预峰值时点(天)",
+      "value": 36.8,
+      "tol": 0.5,
+      "source": "artifacts/results.json",
+      "path": "q1.baseline_peak_day",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "final_size_frac",
+      "label": "最终累计感染比例",
+      "value": 0.9405,
+      "tol": 0.005,
+      "source": "artifacts/results.json",
+      "path": "q1.final_size_frac",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "tau_max_days",
+      "label": "名义最晚安全干预日(天)",
+      "value": 27.0,
+      "tol": 0.5,
+      "source": "artifacts/results.json",
+      "path": "q2.tau_max_days",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "tau_safe",
+      "label": "稳健建议干预起始日(天)",
+      "value": 19.0,
+      "tol": 0.5,
+      "source": "artifacts/results.json",
+      "path": "q2.tau_safe_recommended",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "iwrr_days",
+      "label": "干预窗口稳健半径 IWRR(天)",
+      "value": 8.0,
+      "tol": 0.5,
+      "source": "artifacts/results.json",
+      "path": "q2.robustness_radius_days",
+      "cited_in": "6_paper.md"
+    }
+  ]
+}
