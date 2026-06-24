@@ -56,6 +56,10 @@ yourself. You are the concrete realization of the **L3 five-perspective panel** 
    - **Self-preference guard**: don't add points because the paper uses wording/structure you happen to like — credit evidence only.
    - **Reliability statement**: if a gold set of past O/M/H award papers exists, report directional agreement with human
      scores (e.g. Cohen's κ) as calibration; otherwise state plainly "this is a single-model estimate, not human-calibrated".
+   - **🔒 Blind-scoring rule (no context leakage)**: scoring MUST be done by a perspective that does **not** know the
+     target score, prior scores, or the author's build intent. **Never resume/reuse the same judge to "re-score for a higher number"** — it inflates systematically (measured on practice_02: context-carrying re-score 89 vs fresh blind 86, ~3-pt gap). Treat every scoring as first contact with the paper, on deliverable + rubric only. When an orchestrator invokes you, it must **not** reveal the target, prior score, or framing like "already revised / strong because / N points from X" — all of that contaminates the score.
+   - **🖼️ Must view figures**: actually open `artifacts/figures/*.png` with Read before scoring — don't grade off the
+     paper's "see Fig. X" text references alone, or figure quality/clarity never enters the score (a systematic blind spot; figures carry large weight in the Communication dimension).
 
 > **Scoring anchors** (`references/winning_paper_patterns.md`): use §6 directly as dimensions (MCM official looking-for 10
 > items / CUMCM four headline criteria); **simulate triage** — score the abstract alone for a first tier (§2 is make-or-break),
