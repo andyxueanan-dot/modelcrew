@@ -255,18 +255,18 @@ def solve_Q2():
     out["tau_star_by_c"] = tau_star_by_c
 
     # baseline headline: tau*(0.6)
-    out["tau_star_baseline_c0.6"] = tau_star_by_c["0.60"]["tau_star"]
+    out["tau_star_baseline_c06"] = tau_star_by_c["0.60"]["tau_star"]
 
     # 20% margin operational version (P <= 0.8h)
     ts_margin, st_margin = find_tau_star(c_baseline, threshold=0.8 * H)
-    out["tau_star_baseline_c0.6_20pct_margin"] = ts_margin
+    out["tau_star_baseline_c06_20pct_margin"] = ts_margin
     out["tau_star_baseline_margin_status"] = st_margin
 
     # C7: monotonicity check of P(tau, c=0.6) over a tau grid
     taus = np.linspace(0.0, 60.0, 61)
     Ps = np.array([peak_I(BETA0, GAMMA, N, I0, t, c_baseline)[0] for t in taus])
     diffs = np.diff(Ps)
-    out["monotonicity_P_vs_tau_c0.6"] = {
+    out["monotonicity_P_vs_tau_c06"] = {
         "min_diff": float(diffs.min()),
         "is_monotone_nondecreasing": bool((diffs >= -1.0).all()),  # 1-person tol
         "P_at_tau0": float(Ps[0]),
@@ -312,7 +312,7 @@ def solve_Q3(taus_grid, Ps_grid):
 
     # nominal tau*
     tau_nom, _ = find_tau_star_param(c_baseline, RREPRO, GAMMA)
-    out["tau_star_nominal_c0.6"] = tau_nom
+    out["tau_star_nominal_c06"] = tau_nom
 
     # ---- single-parameter sweeps ----
     # Rrepro sweep
@@ -321,7 +321,7 @@ def solve_Q3(taus_grid, Ps_grid):
     for Rr in Rsweep:
         ts_, st = find_tau_star_param(c_baseline, Rr, GAMMA)
         tau_vs_R[f"{Rr:.2f}"] = {"tau_star": ts_, "status": st}
-    out["tau_star_vs_Rrepro_c0.6"] = tau_vs_R
+    out["tau_star_vs_Rrepro_c06"] = tau_vs_R
 
     # gamma sweep (infectious period 5-7 days)
     periods = [5, 5.5, 6, 6.5, 7]
@@ -331,7 +331,7 @@ def solve_Q3(taus_grid, Ps_grid):
         ts_, st = find_tau_star_param(c_baseline, RREPRO, g_)
         tau_vs_gamma[f"period_{d}d"] = {"gamma": float(g_), "tau_star": ts_,
                                          "status": st}
-    out["tau_star_vs_infectious_period_c0.6"] = tau_vs_gamma
+    out["tau_star_vs_infectious_period_c06"] = tau_vs_gamma
 
     # h sweep (6%-10% N)
     h_vs = {}
@@ -340,7 +340,7 @@ def solve_Q3(taus_grid, Ps_grid):
                                       threshold=hf * N)
         h_vs[f"{hf:.2f}"] = {"h_abs": float(hf * N), "tau_star": ts_,
                              "status": st}
-    out["tau_star_vs_h_c0.6"] = h_vs
+    out["tau_star_vs_h_c06"] = h_vs
 
     # c sweep already partly in Q2; add elasticity-relevant fine points
     tau_vs_c = {}
@@ -425,7 +425,7 @@ def solve_Q3(taus_grid, Ps_grid):
 
     # Headline robust numbers from Tier A (defined Δτ for the Writer);
     # Tier B's infeasibility is reported as an explicit caveat.
-    out["tau_star_robust_c0.6"] = tierA["tau_star_robust"]
+    out["tau_star_robust_c06"] = tierA["tau_star_robust"]
     out["robust_status"] = tierA["status"]
     out["safety_lead_time_days"] = tierA["lead_time_days"]
     out["robust_caveat_adherence"] = (
@@ -513,7 +513,7 @@ def fig_phase_diagram():
 def fig_sensitivity(q3):
     fig, axes = plt.subplots(1, 3, figsize=(14, 4.2))
     # Rrepro
-    d = q3["tau_star_vs_Rrepro_c0.6"]
+    d = q3["tau_star_vs_Rrepro_c06"]
     xs = [float(k) for k in d]
     ys = [d[k]["tau_star"] for k in d]
     axes[0].plot(xs, ys, "o-", color="tab:red")
@@ -534,7 +534,7 @@ def fig_sensitivity(q3):
     axes[1].legend(fontsize=8)
     axes[1].grid(alpha=0.3)
     # h
-    d = q3["tau_star_vs_h_c0.6"]
+    d = q3["tau_star_vs_h_c06"]
     xs = [float(k) * 100 for k in d]
     ys = [d[k]["tau_star"] for k in d]
     axes[2].plot(xs, ys, "o-", color="tab:green")
@@ -562,16 +562,16 @@ def main():
 
     print("Solving Q2 (intervention timing)...")
     q2, taus_grid, Ps_grid = solve_Q2()
-    print(f"  tau*(c=0.6)={q2['tau_star_baseline_c0.6']}  "
+    print(f"  tau*(c=0.6)={q2['tau_star_baseline_c06']}  "
           f"c*={q2['c_star_threshold']:.4f}")
-    print(f"  monotone P(tau): {q2['monotonicity_P_vs_tau_c0.6']['is_monotone_nondecreasing']}")
+    print(f"  monotone P(tau): {q2['monotonicity_P_vs_tau_c06']['is_monotone_nondecreasing']}")
     print(f"  infeasible-at-0 c examples: "
           f"{[d['c'] for d in q2['infeasible_at_day0_examples']]}")
 
     print("Solving Q3 (sensitivity + robustness)...")
     q3 = solve_Q3(taus_grid, Ps_grid)
-    print(f"  tau*_nominal={q3['tau_star_nominal_c0.6']}  "
-          f"tau*_robust={q3['tau_star_robust_c0.6']}  "
+    print(f"  tau*_nominal={q3['tau_star_nominal_c06']}  "
+          f"tau*_robust={q3['tau_star_robust_c06']}  "
           f"lead-time Δτ={q3['safety_lead_time_days']}")
     print(f"  elasticities: {q3['elasticity_tau_star']}")
 
@@ -652,20 +652,20 @@ def write_frozen(q1, q2, q3):
          "source": "artifacts/results.json", "path": "Q2.c_star_threshold",
          "cited_in": "6_paper.md"},
         {"id": "Q2_tau_star_c06", "label": "最迟可行干预日 τ*(c=0.6) (天)",
-         "value": round(q2["tau_star_baseline_c0.6"], 2), "tol": 0.1,
-         "source": "artifacts/results.json", "path": "Q2.tau_star_baseline_c0.6",
+         "value": round(q2["tau_star_baseline_c06"], 2), "tol": 0.1,
+         "source": "artifacts/results.json", "path": "Q2.tau_star_baseline_c06",
          "cited_in": "6_paper.md"},
         {"id": "Q2_tau_star_c06_margin",
          "label": "τ*(c=0.6, 20%余量) (天)",
-         "value": round(q2["tau_star_baseline_c0.6_20pct_margin"], 2),
+         "value": round(q2["tau_star_baseline_c06_20pct_margin"], 2),
          "tol": 0.1, "source": "artifacts/results.json",
-         "path": "Q2.tau_star_baseline_c0.6_20pct_margin",
+         "path": "Q2.tau_star_baseline_c06_20pct_margin",
          "cited_in": "6_paper.md"},
         {"id": "Q3_tau_robust", "label": "稳健最迟干预日 τ*_robust(c=0.6) (天)",
-         "value": round(q3["tau_star_robust_c0.6"], 2)
-         if q3["tau_star_robust_c0.6"] is not None else -1,
+         "value": round(q3["tau_star_robust_c06"], 2)
+         if q3["tau_star_robust_c06"] is not None else -1,
          "tol": 0.1, "source": "artifacts/results.json",
-         "path": "Q3.tau_star_robust_c0.6", "cited_in": "6_paper.md"},
+         "path": "Q3.tau_star_robust_c06", "cited_in": "6_paper.md"},
         {"id": "Q3_lead_time", "label": "安全提前量 Δτ (天)",
          "value": round(q3["safety_lead_time_days"], 2)
          if q3["safety_lead_time_days"] is not None else -1,

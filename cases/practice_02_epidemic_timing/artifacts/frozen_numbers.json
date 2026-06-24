@@ -74,7 +74,7 @@
       "value": 27.52,
       "tol": 0.1,
       "source": "artifacts/results.json",
-      "path": "Q2.tau_star_baseline_c0.6",
+      "path": "Q2.tau_star_baseline_c06",
       "cited_in": "6_paper.md"
     },
     {
@@ -83,22 +83,22 @@
       "value": 26.6,
       "tol": 0.1,
       "source": "artifacts/results.json",
-      "path": "Q2.tau_star_baseline_c0.6_20pct_margin",
+      "path": "Q2.tau_star_baseline_c06_20pct_margin",
       "cited_in": "6_paper.md"
     },
     {
       "id": "Q3_tau_robust",
       "label": "稳健最迟干预日 τ*_robust(c=0.6) (天)",
-      "value": -1,
+      "value": 17.44,
       "tol": 0.1,
       "source": "artifacts/results.json",
-      "path": "Q3.tau_star_robust_c0.6",
+      "path": "Q3.tau_star_robust_c06",
       "cited_in": "6_paper.md"
     },
     {
       "id": "Q3_lead_time",
       "label": "安全提前量 Δτ (天)",
-      "value": -1,
+      "value": 10.08,
       "tol": 0.15,
       "source": "artifacts/results.json",
       "path": "Q3.safety_lead_time_days",
