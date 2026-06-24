@@ -11,15 +11,12 @@
 
 借鉴 math-modeling-skills 的 frozen_numbers 思路，独立重写。
 """
-import json, os, sys
+import json, os, sys, glob
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-CASES = [
-    "cases/2024_mcm_c_tennis",
-    "cases/credit_default_fintech",
-    "cases/2024_logistics_siting",
-    "cases/demo_dispatch_simpson",
-]
+# 自动发现所有带 frozen_numbers.json 的案例（含 /loop 自练新案例），无需手维护列表
+CASES = sorted(os.path.relpath(os.path.dirname(os.path.dirname(p)), ROOT)
+               for p in glob.glob(os.path.join(ROOT, "cases", "*", "artifacts", "frozen_numbers.json")))
 
 
 def dig(obj, path):

@@ -1,0 +1,45 @@
+{
+  "case": "practice_01_sales_forecast",
+  "note": "论文数字唯一真相源",
+  "inputs": [
+    "artifacts/solve.py"
+  ],
+  "numbers": [
+    {
+      "id": "best_model_val_mape",
+      "label": "选用模型留出 MAPE(%)",
+      "value": 3.16,
+      "tol": 0.05,
+      "source": "artifacts/results.json",
+      "path": "best_val_mape",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "baseline_val_mape",
+      "label": "季节朴素基线留出 MAPE(%)",
+      "value": 10.8,
+      "tol": 0.05,
+      "source": "artifacts/results.json",
+      "path": "baseline_val_mape",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "improvement_pp",
+      "label": "较基线降低 MAPE(百分点)",
+      "value": 7.64,
+      "tol": 0.05,
+      "source": "artifacts/results.json",
+      "path": "improvement_vs_baseline_pp",
+      "cited_in": "6_paper.md"
+    },
+    {
+      "id": "ljungbox_p",
+      "label": "残差 Ljung-Box p 值",
+      "value": 0.161,
+      "tol": 0.005,
+      "source": "artifacts/results.json",
+      "path": "residual_ljungbox_p",
+      "cited_in": "6_paper.md"
+    }
+  ]
+}

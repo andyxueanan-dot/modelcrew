@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "case": "practice_01_sales_forecast",
+    "data_md5": "c10e028ff49fa209cb74bd676fdb1cf9",
+    "seed": 42,
+    "n_months": 48,
+    "horizon": 12,
+    "test_window": 12,
+    "season_period": 12,
+    "python": "3.11.15",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "statsmodels": "0.14.6"
+  },
+  "validation": {
+    "seasonal_naive": {
+      "mape": 10.799564336442197,
+      "rmse": 19.429552233646557
+    },
+    "ols_trend_season": {
+      "mape": 3.160028089713237,
+      "rmse": 6.891045249425444
+    },
+    "holt_winters": {
+      "mape": 3.1600251715434915,
+      "rmse": 6.891045198259351
+    },
+    "holt_winters_damped": {
+      "mape": 3.2023210610889246,
+      "rmse": 6.556140248362041
+    }
+  },
+  "best_model": "holt_winters",
+  "best_val_mape": 3.1600251715434915,
+  "baseline_val_mape": 10.799564336442197,
+  "improvement_vs_baseline_pp": 7.639539164898705,
+  "forecast": {
+    "months": [
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60
+    ],
+    "point": [
+      186.6,
+      194.7,
+      203.8,
+      204.7,
+      197.7,
+      188.6,
+      186.8,
+      175.1,
+      172.6,
+      172.6,
+      190.1,
+      198.0
+    ],
+    "lower95": [
+      177.6,
+      182.0,
+      188.3,
+      186.7,
+      177.6,
+      166.6,
+      163.1,
+      149.7,
+      145.6,
+      144.1,
+      160.3,
+      166.9
+    ],
+    "upper95": [
+      195.6,
+      207.4,
+      219.4,
+      222.7,
+      217.8,
+      210.6,
+      210.6,
+      200.5,
+      199.5,
+      201.0,
+      219.9,
+      229.2
+    ]
+  },
+  "residual_ljungbox_p": 0.16072169314552548,
+  "residual_white": true,
+  "sensitivity": {
+    "wrong_period_m6_val_mape": 7.4170020387266735
+  }
+}
