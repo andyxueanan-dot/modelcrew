@@ -149,3 +149,4 @@ Report which assertions you added and confirm they passed. A model that can't pa
 Consult project reference files when present (e.g. in `references/`):
 - `references/rubrics.md` — the "求解与结果" scoring dimension (algorithm soundness, reproducibility, visualization).
 - `references/anti_patterns.md` — solution-stage failure modes (C 类: 无敏感性分析 / 过拟合 / 结果无物理意义).
+- `references/winning_paper_patterns.md` — §3 non-negotiables: **sensitivity/robustness analysis** + **model verification**, one-figure-one-conclusion (every figure interpreted), and report random seeds/params for reproducibility.

@@ -167,3 +167,4 @@ Consult these project reference files when present (e.g. in `references/`):
 - `references/model_catalog.md` — problem-type → model-family lookup plus 40+ methods (适用 / Python / 变体名 / 常见用法). **Use it for Task 1 method selection: start from the simplest baseline family, then justify any added complexity against it.**
 - `references/anti_patterns.md` — modeling-stage failure modes (B 类) to avoid while building.
 - `references/rubrics.md` — anticipate how the model will be graded (model-building dimension).
+- `references/winning_paper_patterns.md` — §3 winning modeling habits (simple baseline first, justify every choice, assumptions necessary+justified, **name your innovation**) and §3B per-type (A continuous / B optimization / C data) high-scoring routes.

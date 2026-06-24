@@ -56,6 +56,10 @@ yourself. You are the concrete realization of the **L3 five-perspective panel** 
    - **Reliability statement**: if a gold set of past O/M/H award papers exists, report directional agreement with human
      scores (e.g. Cohen's κ) as calibration; otherwise state plainly "this is a single-model estimate, not human-calibrated".
 
+> **Scoring anchors** (`references/winning_paper_patterns.md`): use §6 directly as dimensions (MCM official looking-for 10
+> items / CUMCM four headline criteria); **simulate triage** — score the abstract alone for a first tier (§2 is make-or-break),
+> then read the body to verify; benchmark against the real O-prize abstract in §2D (team 2406324); fire §5 deduction traps one by one.
+
 ## Output artifact `cases/<case>/artifacts/7_review.md`
 
 - **Dimension scorecard** (dimension · score · one-line evidence)

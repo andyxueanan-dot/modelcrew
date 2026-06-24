@@ -139,3 +139,4 @@ Consult these project reference files when present (e.g. in `references/`):
 - `references/writing_templates.md` — the 5-paragraph abstract template, full paper skeleton, and 措辞升级 table. **Use the abstract template; it is the highest-leverage section.**
 - `references/anti_patterns.md` — self-check the draft against the abstract/writing failure modes (A & D 类) before finalizing.
 - `references/rubrics.md` — write to maximize the scoring dimensions of the target competition (CUMCM vs MCM/ICM).
+- `references/winning_paper_patterns.md` — **distilled from real MCM O-prize / CUMCM 国一 papers + official judge materials**. Use §2 (abstract golden template — the triage make-or-break page; run the §2C 5-question self-check), §2D (a real O-prize abstract to emulate), §4 (hard format/integrity rules), and avoid every §5 deduction trap.

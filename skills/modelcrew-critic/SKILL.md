@@ -233,6 +233,7 @@ Consult these project reference files when present (e.g. in `references/`):
 - `references/anti_patterns.md` — concrete failure modes distilled from real modeling papers. **Check every conclusion and the final draft against this list; a hit is a finding.**
 - `references/rubrics.md` — score each stage's output on the 5-dim card (1–10 + evidence + verdict) and emit the JSON verdict defined there.
 - `references/feedback_layers.md` — your role spans L1 (per-stage gate) through L3 (final panel); see how the Router invokes you across layers.
+- `references/winning_paper_patterns.md` — §6 **COMAP four questions** (from official looking-for): before any conclusion ships, it must answer — sensitivity done? model verified? recommendations derived from results? assumptions necessary AND justified? Can't answer ⇒ ⚠️/❌. Also enforce §4 CUMCM integrity red lines (similarity ≥25% can't be submitted / >30% no certificate / >40% misconduct, incl. code duplication) + anonymity/format rules.
 
 ## Example: Good vs Bad Audit
 
