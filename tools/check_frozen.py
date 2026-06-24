@@ -18,6 +18,7 @@ CASES = [
     "cases/2024_mcm_c_tennis",
     "cases/credit_default_fintech",
     "cases/2024_logistics_siting",
+    "cases/demo_dispatch_simpson",
 ]
 
 

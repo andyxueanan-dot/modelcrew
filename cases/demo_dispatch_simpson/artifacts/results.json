@@ -1,0 +1,238 @@
+{
+  "meta": {
+    "case": "demo_dispatch_simpson",
+    "data_path": "data/dispatch.csv",
+    "data_md5": "496fd5aafdbbcc3f11edba376d5f2331",
+    "scout_md5_expected": "496fd5aafdbbcc3f11edba376d5f2331",
+    "seed": 42,
+    "n_bootstrap": 10000,
+    "python": "3.14.3",
+    "numpy": "2.4.2",
+    "pandas": "3.0.2",
+    "scipy": "1.17.1",
+    "statsmodels": "0.14.6"
+  },
+  "poc_smoke": {
+    "passed": true,
+    "note": "Modeler 3_model.md §5 PoC: 合并 A=0.8286 B=0.5200; 标准化率差=-0.0450; MH-OR=0.7527; 打印 PASS 反转确认"
+  },
+  "cells_2x2x2": {
+    "Low": {
+      "yA": 270,
+      "nA": 300,
+      "yB": 47,
+      "nB": 50
+    },
+    "High": {
+      "yA": 20,
+      "nA": 50,
+      "yB": 135,
+      "nB": 300
+    }
+  },
+  "Q1_pooled": {
+    "A": {
+      "on_time": 290,
+      "n": 350,
+      "rate": 0.8285714285714286,
+      "ci95": [
+        0.7855735880211591,
+        0.8644350366509158
+      ]
+    },
+    "B": {
+      "on_time": 182,
+      "n": 350,
+      "rate": 0.52,
+      "ci95": [
+        0.4677269901755747,
+        0.5718387521957692
+      ]
+    },
+    "diff_A_minus_B": {
+      "value": 0.3085714285714286,
+      "ci95": [
+        0.24300854559591312,
+        0.3741343115469441
+      ],
+      "z": 8.710324858673285,
+      "p_value": 0.0
+    },
+    "direction": "A_higher"
+  },
+  "Q2_stratified": {
+    "strata": {
+      "Low": {
+        "n_A": 300,
+        "rate_A": 0.9,
+        "ci95_A": [
+          0.8608335376153785,
+          0.9290520854049847
+        ],
+        "n_B": 50,
+        "rate_B": 0.94,
+        "ci95_B": [
+          0.8378290831116182,
+          0.979385029651026
+        ],
+        "diff_A_minus_B": {
+          "value": -0.039999999999999925,
+          "ci95": [
+            -0.11406485803639405,
+            0.0340648580363942
+          ],
+          "z": -0.8960929117298803,
+          "p_value": 0.37020314248901265
+        },
+        "direction": "B_higher"
+      },
+      "High": {
+        "n_A": 50,
+        "rate_A": 0.4,
+        "ci95_A": [
+          0.27608389730256544,
+          0.5381856225241064
+        ],
+        "n_B": 300,
+        "rate_B": 0.45,
+        "ci95_B": [
+          0.394689901646408,
+          0.5065743954760465
+        ],
+        "diff_A_minus_B": {
+          "value": -0.04999999999999999,
+          "ci95": [
+            -0.19699729884050404,
+            0.09699729884050406
+          ],
+          "z": -0.6589713014833498,
+          "p_value": 0.5099141976143824
+        },
+        "direction": "B_higher"
+      }
+    },
+    "pooled_direction": "A_higher",
+    "simpson_reversal": true,
+    "reversal_note": "合并方向(A高)与两层方向(均B高)都相反 -> 反转成立"
+  },
+  "Q3": {
+    "a_standardized_rate_diff": {
+      "population_0.5_0.5": {
+        "wL": 0.5,
+        "wH": 0.5,
+        "std_rate_A": 0.65,
+        "std_rate_B": 0.695,
+        "diff_A_minus_B": -0.04499999999999993,
+        "ci95_boot": [
+          -0.1266666666666667,
+          0.03833333333333333
+        ],
+        "se_boot": 0.04234076074444942,
+        "direction": "B_higher"
+      },
+      "A_population": {
+        "wL": 0.8571428571428571,
+        "wH": 0.14285714285714285,
+        "std_rate_A": 0.8285714285714285,
+        "std_rate_B": 0.8699999999999999,
+        "diff_A_minus_B": -0.04142857142857137,
+        "ci95_boot": [
+          -0.10285714285714287,
+          0.030476190476190435
+        ],
+        "se_boot": 0.03380043335359681,
+        "direction": "B_higher"
+      },
+      "B_population": {
+        "wL": 0.14285714285714285,
+        "wH": 0.8571428571428571,
+        "std_rate_A": 0.4714285714285714,
+        "std_rate_B": 0.5199999999999999,
+        "diff_A_minus_B": -0.04857142857142849,
+        "ci95_boot": [
+          -0.17761904761904757,
+          0.08001190476190466
+        ],
+        "se_boot": 0.06513567195293028,
+        "direction": "B_higher"
+      },
+      "_primary": "population_0.5_0.5"
+    },
+    "b_mantel_haenszel": {
+      "or_mh": 0.7527472527472528,
+      "ci95": [
+        0.43783971612732464,
+        1.294145792735166
+      ],
+      "se_log": 0.27647274313213827,
+      "breslow_day": {
+        "chi2": 0.25245654117225513,
+        "dof": 1,
+        "p_value": 0.6153506382971264,
+        "homogeneous": true
+      },
+      "logit_or_BA": 1.3230360412071906,
+      "logit_or_BA_ci": [
+        0.772800123748122,
+        2.265041519201036
+      ]
+    },
+    "c_logistic": {
+      "main": {
+        "formula": "on_time ~ policy_B + sev_H  (A,Low 为参照)",
+        "beta_policyB": 0.27992912679289556,
+        "beta_policyB_ci95": [
+          -0.2577348359542841,
+          0.8175930895400751
+        ],
+        "p_value": 0.30752230671458247,
+        "OR_policyB": 1.3230360412071906,
+        "OR_policyB_ci95": [
+          0.772800123748122,
+          2.265041519201036
+        ],
+        "beta_sevH": -2.6963503677985874,
+        "OR_sevH": 0.06745123627066346,
+        "n": 700,
+        "llf": -349.0971070534259,
+        "aic": 704.1942141068517
+      },
+      "interaction": {
+        "formula": "on_time ~ policy_B * sev_H",
+        "beta_interaction": -0.34951632305971214,
+        "interaction_p_value": 0.6170036109839874,
+        "aic": 705.9309912140081,
+        "note": "交互项 p>0.05 -> 无显著效应异质性, 支持 MH 合并/同质假设"
+      }
+    },
+    "consistency": {
+      "std_rate_diff_says_B_better": true,
+      "mh_or_says_B_better": true,
+      "logistic_says_B_better": true,
+      "all_three_agree_B_better": true,
+      "pooled_says_A_better": true,
+      "summary": "三法方向一致(校正后均 B 优); 合并口径却 A 高 -> Simpson 反转确认"
+    }
+  },
+  "sensitivity": {
+    "severity_marginal": {
+      "rate_Low": 0.9057142857142857,
+      "rate_High": 0.44285714285714284,
+      "diff_Low_minus_High": 0.46285714285714286
+    },
+    "std_weight_range": {
+      "note": "标准化率差(A-B)随权重方案漂移区间",
+      "population": -0.04499999999999993,
+      "A_population": -0.04142857142857137,
+      "B_population": -0.04857142857142849
+    },
+    "min_cell_n": 50,
+    "interaction_homogeneity": {
+      "formula": "on_time ~ policy_B * sev_H",
+      "beta_interaction": -0.34951632305971214,
+      "interaction_p_value": 0.6170036109839874,
+      "aic": 705.9309912140081,
+      "note": "交互项 p>0.05 -> 无显著效应异质性, 支持 MH 合并/同质假设"
+    }
+  }
+}

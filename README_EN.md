@@ -75,6 +75,8 @@ ModelCrew now covers the whole pipeline — **get the problem → ramp up → mo
 > **Judge ≠ Critic**: the Critic owns *is it correct* (✅/⚠️/❌ gate during the run); the Judge owns *how many points / what award* (terminal scoring).
 > The checkpoints embody the positioning — ModelCrew is a **copilot**: the reusable workflow runs itself, the **key judgments stay with the human**.
 
+> 🧪 **End-to-end self-run**: `cases/demo_dispatch_simpson/` (dispatch-policy eval with a planted Simpson's-paradox confounder) was run **start to finish by the upgraded 8 subagents themselves** — Router→Analyst→Scout→Modeler→Solver→Critic→Writer→Judge, for real: the Solver ran the **PoC smoke gate** (PASS) before solving three ways; ⭐the **Critic independently recomputed from the raw CSV, caught 3 stale numbers in the prose and triggered a fix** (`CORRECTION_audit.md`) while enforcing the "direction ≠ significance" wording; the CUMCM `6_paper.tex` **compiled to a 13-page PDF via xelatex**; the Judge scored **83/100** (est. upper 国二, unofficial). The hardest "it runs and self-corrects" test of every upgrade.
+
 ---
 
 ## ✨ Highlights
@@ -102,7 +104,7 @@ Both scripts fix `seed=42`; the printed numbers should match the JSON and the pa
 ```bash
 # Number traceability: every number cited in the papers traces back to a script output;
 # flags STALE if a source script/data is newer than the results.
-python tools/check_frozen.py        # currently 24/24 consistent
+python tools/check_frozen.py        # currently 33/33 consistent
 ```
 > Each case's `artifacts/frozen_numbers.json` is the **single source of truth** for the paper's numbers;
 > `check_frozen.py` auto-verifies "frozen == script output" and warns when `solve.py`/data changed —
@@ -135,8 +137,9 @@ qoder/
 ├── cases/
 │   ├── 2024_mcm_c_tennis/      # demo 1: tennis momentum (data-type / sports) ★incl. 6_paper.tex/.pdf + 7_review.md
 │   ├── credit_default_fintech/ # demo 2: credit-card default (data-type / finance)
-│   └── 2024_logistics_siting/  # demo 3: emergency depot siting (optimization-type / OR)
-├── tools/check_frozen.py    # number-traceability check (paper numbers ↔ script output, 24/24)
+│   ├── 2024_logistics_siting/  # demo 3: emergency depot siting (optimization-type / OR)
+│   └── demo_dispatch_simpson/  # demo 4: dispatch-policy eval (data-type / Simpson confounding) — 8 agents self-run + self-correct, CUMCM .tex compiled to 13pp
+├── tools/check_frozen.py    # number-traceability check (paper numbers ↔ script output, 33/33)
 ├── .claude/agents/          # 8 roles ported to Claude Code subagents (end-to-end verified)
 └── submission/              # 实践文档.md + forum_post.md + 演示视频脚本.md
 ```
