@@ -71,11 +71,16 @@ ModelCrew now covers the whole pipeline — **get the problem → ramp up → mo
 | 📝 **LaTeX submission** | Writer gains a LaTeX mode: `6_paper.md` (content truth) → fill template → `6_paper.tex`; MCM + CUMCM templates | tennis `6_paper.tex` **really compiled to a 6-page PDF via MiKTeX** (`cases/2024_mcm_c_tennis/artifacts/6_paper.pdf`) |
 | ⚖️ **Judge (8th role)** | simulates a time-pressured referee, scores the whole paper against `rubrics.md` + estimated award (unofficial) + single highest-ROI fix; realizes the previously-dormant L3 panel | tennis `7_review.md`: total ≈75/100, est. H–M, weakest dim = innovation |
 | 🛑 **4 human checkpoints** | pause after problem-reading / model-choice / a Critic ❌ / the judge score, to confirm or add judgment (can switch to `/grill-me`-style interrogation) | protocol `references/human_checkpoints.md`; sample `cases/.../checkpoints_log.md` |
+| 🧰 **Weak-effect playbook** | when the main CI straddles the null, don't stop at "inconclusive": power/sample-size back-calc + TOST equivalence + E-value + decision-oriented closure turn "not significant" into decision value (**never overclaimed as significant**) | `references/inconclusive_playbook.md`; on the dispatch case it lifted the Judge **83→87** (below) |
+| 🔢 **Auto prose-number check** | sinks "Critic hand-rolls a script to catch stale prose numbers" into a resident tool: verifies every cited number in the paper body against `frozen_numbers.json`'s `cited_in`, rounding-aware, zero false positives | `tools/check_paper_numbers.py`, **68/68** repo-wide; already caught + fixed a traceability gap in the siting case |
+| 💡 **Innovation-boost list** | after the baseline, the Modeler must pass through "can it climb one tier?" (variant / combination / problem-operationalization + citable naming); the Judge scores innovation against it | `references/innovation_boost.md`; dispatch innovation dim 7→8.3 |
 
 > **Judge ≠ Critic**: the Critic owns *is it correct* (✅/⚠️/❌ gate during the run); the Judge owns *how many points / what award* (terminal scoring).
 > The checkpoints embody the positioning — ModelCrew is a **copilot**: the reusable workflow runs itself, the **key judgments stay with the human**.
 
-> 🧪 **End-to-end self-run**: `cases/demo_dispatch_simpson/` (dispatch-policy eval with a planted Simpson's-paradox confounder) was run **start to finish by the upgraded 8 subagents themselves** — Router→Analyst→Scout→Modeler→Solver→Critic→Writer→Judge, for real: the Solver ran the **PoC smoke gate** (PASS) before solving three ways; ⭐the **Critic independently recomputed from the raw CSV, caught 3 stale numbers in the prose and triggered a fix** (`CORRECTION_audit.md`) while enforcing the "direction ≠ significance" wording; the CUMCM `6_paper.tex` **compiled to a 13-page PDF via xelatex**; the Judge scored **83/100** (est. upper 国二, unofficial). The hardest "it runs and self-corrects" test of every upgrade.
+> 🧪 **End-to-end self-run**: `cases/demo_dispatch_simpson/` (dispatch-policy eval with a planted Simpson's-paradox confounder) was run **start to finish by the upgraded 8 subagents themselves** — Router→Analyst→Scout→Modeler→Solver→Critic→Writer→Judge, for real: the Solver ran the **PoC smoke gate** (PASS) before solving three ways; ⭐the **Critic independently recomputed from the raw CSV, caught 3 stale numbers in the prose and triggered a fix** (`CORRECTION_audit.md`) while enforcing the "direction ≠ significance" wording; the CUMCM `6_paper.tex` **compiled to a PDF via xelatex**; the Judge scored **83/100** (est. upper 国二, unofficial).
+>
+> 🔁 **Then reused as the regression for a framework upgrade**: targeting the Judge's weakest points ("not significant → low decisiveness" + weak innovation), the gaps were sunk into framework capabilities (weak-effect playbook / prose-number checker / innovation-boost list), then re-run on this case — the Solver added **power back-calc (N=3412 needed for 80% power, vs 700) + TOST + E-value (1.566)**, the Writer added a **three-tier decision closure** in §8 (never crossing the "not significant" red line, confirmed by independent recompute in `5_audit.md §0.2`), the PDF recompiled to **14 pages**, and the Judge re-scored **83 → 87** (low 国一 / strong upper 国二, unofficial). `check_frozen` 35/35 + `check_paper_numbers` 68/68 all green. This proves both "the upgrade really raises the score" and "it runs, self-corrects, and self-improves."
 
 ---
 
@@ -104,7 +109,8 @@ Both scripts fix `seed=42`; the printed numbers should match the JSON and the pa
 ```bash
 # Number traceability: every number cited in the papers traces back to a script output;
 # flags STALE if a source script/data is newer than the results.
-python tools/check_frozen.py        # currently 33/33 consistent
+python tools/check_frozen.py        # frozen == script output, currently 35/35 consistent
+python tools/check_paper_numbers.py # every prose citation == frozen value, currently 68/68 consistent
 ```
 > Each case's `artifacts/frozen_numbers.json` is the **single source of truth** for the paper's numbers;
 > `check_frozen.py` auto-verifies "frozen == script output" and warns when `solve.py`/data changed —
@@ -133,13 +139,15 @@ qoder/
 │   └── modelcrew-{router,analyst,scout,modeler,solver,critic,writer,judge}/SKILL.md
 ├── templates/               # ★ LaTeX paper templates (MCM mcm_ / CUMCM cumcm_ + placeholder spec)
 ├── references/              # reference assets (model_catalog/anti_patterns/rubrics/feedback_layers/
-│                            #   writing_templates/related_work/human_checkpoints)
+│                            #   writing_templates/related_work/human_checkpoints/
+│                            #   inconclusive_playbook ★weak-effect/innovation_boost ★innovation)
 ├── cases/
 │   ├── 2024_mcm_c_tennis/      # demo 1: tennis momentum (data-type / sports) ★incl. 6_paper.tex/.pdf + 7_review.md
 │   ├── credit_default_fintech/ # demo 2: credit-card default (data-type / finance)
 │   ├── 2024_logistics_siting/  # demo 3: emergency depot siting (optimization-type / OR)
-│   └── demo_dispatch_simpson/  # demo 4: dispatch-policy eval (data-type / Simpson confounding) — 8 agents self-run + self-correct, CUMCM .tex compiled to 13pp
-├── tools/check_frozen.py    # number-traceability check (paper numbers ↔ script output, 33/33)
+│   └── demo_dispatch_simpson/  # demo 4: dispatch-policy eval (data-type / Simpson) — 8 agents self-run + self-correct; weak-effect regression lifted Judge 83→87, .tex compiled to 14pp
+├── tools/check_frozen.py        # number-traceability check (frozen ↔ script output, 35/35)
+├── tools/check_paper_numbers.py # prose-number check (paper citations ↔ frozen, 68/68)
 ├── .claude/agents/          # 8 roles ported to Claude Code subagents (end-to-end verified)
 └── submission/              # 实践文档.md + forum_post.md + 演示视频脚本.md
 ```

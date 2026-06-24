@@ -2,13 +2,13 @@
   "meta": {
     "case": "demo_dispatch_simpson",
     "data_path": "data/dispatch.csv",
-    "data_md5": "496fd5aafdbbcc3f11edba376d5f2331",
+    "data_md5": "b6af0dfece795a73c8b1dbf2181a2cbe",
     "scout_md5_expected": "496fd5aafdbbcc3f11edba376d5f2331",
     "seed": 42,
     "n_bootstrap": 10000,
-    "python": "3.14.3",
-    "numpy": "2.4.2",
-    "pandas": "3.0.2",
+    "python": "3.11.15",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
     "scipy": "1.17.1",
     "statsmodels": "0.14.6"
   },
@@ -199,8 +199,8 @@
       },
       "interaction": {
         "formula": "on_time ~ policy_B * sev_H",
-        "beta_interaction": -0.34951632305971214,
-        "interaction_p_value": 0.6170036109839874,
+        "beta_interaction": -0.34951632305971414,
+        "interaction_p_value": 0.6170036109839854,
         "aic": 705.9309912140081,
         "note": "交互项 p>0.05 -> 无显著效应异质性, 支持 MH 合并/同质假设"
       }
@@ -213,6 +213,39 @@
       "pooled_says_A_better": true,
       "summary": "三法方向一致(校正后均 B 优); 合并口径却 A 高 -> Simpson 反转确认"
     }
+  },
+  "inconclusive_toolkit": {
+    "power": {
+      "basis": "两标准化率 pA_std=0.6500, pB_std=0.6950 (主权重) 的 Cohen's h",
+      "cohens_h": 0.09593893868597392,
+      "required_n_per_group": 1706,
+      "required_n_total": 3412,
+      "current_n_total": 700,
+      "note": "达 80% 功效(alpha=0.05 双侧)检出当前观测到的 ~4.5pp 标准化率差所需样本量"
+    },
+    "tost": {
+      "_note": "TOST 两单侧检验; equivalent=True 表示在该等效边界下可判'实质等效'; se 取标准化率差 bootstrap SE",
+      "margin_0.05": {
+        "delta": 0.05,
+        "p_tost": 0.45299836464360743,
+        "equivalent": false
+      },
+      "margin_0.10": {
+        "delta": 0.1,
+        "p_tost": 0.09697459155624832,
+        "equivalent": false
+      }
+    },
+    "e_value": {
+      "outcome_common_note": "按时结局常见(~67%), 用 RR≈sqrt(OR) 近似 (VanderWeele 常见结局建议)",
+      "or_point": 1.3230360412071906,
+      "rr_approx": 1.150233037782862,
+      "e_value_point": 1.566,
+      "ci_crosses_null": true,
+      "e_value_ci": 1.0,
+      "note": "需 RR≥此值的未观测混杂才能解释掉该方向; CI 跨零→CI 的 E-value=1(对混杂不稳健)"
+    },
+    "interpretation": "效应弱且未达显著; 既不能证明差异也(在±5pp)不能证明等效→真·样本不足。决策价值在 power 所需 N 与 E-value 因果稳健性, 非'B 显著更优'。"
   },
   "sensitivity": {
     "severity_marginal": {
@@ -229,8 +262,8 @@
     "min_cell_n": 50,
     "interaction_homogeneity": {
       "formula": "on_time ~ policy_B * sev_H",
-      "beta_interaction": -0.34951632305971214,
-      "interaction_p_value": 0.6170036109839874,
+      "beta_interaction": -0.34951632305971414,
+      "interaction_p_value": 0.6170036109839854,
       "aic": 705.9309912140081,
       "note": "交互项 p>0.05 -> 无显著效应异质性, 支持 MH 合并/同质假设"
     }

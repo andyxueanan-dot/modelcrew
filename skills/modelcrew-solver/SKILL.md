@@ -63,6 +63,18 @@ Methods to use (pick based on model complexity):
 
 Always produce a sensitivity visualization (tornado plot or spider chart).
 
+### 2.5 Weak-Effect / Inconclusive Self-Check (inconclusive ≠ done)
+
+If the main conclusion's confidence interval **straddles the null** (rate diff contains 0 / OR contains 1 / p > 0.05), do **not** stop at "we can't conclude." Per `references/inconclusive_playbook.md`, run at minimum **Move 1 (power / required-sample-size back-calculation)**, and add as the problem warrants **Move 2 (TOST equivalence test)** / **Move 3 (E-value)**:
+
+| Move | Answers | Python |
+|------|---------|--------|
+| Power / sample-size back-calc | "how large an N to detect this effect at 80% power?" | `statsmodels.stats.power`, `proportion_effectsize` |
+| TOST equivalence | "is it *equivalent* vs just underpowered?" (margin ±δ set a priori) | two one-sided tests |
+| E-value | "how strong an unmeasured confounder would null this out?" | `RR + sqrt(RR*(RR-1))` |
+
+This converts "not significant" into a *quantified* result (required sample, equivalence verdict, robustness to confounding). **Never write "not significant" as "significant."**
+
 ### 3. Visualization
 
 Every key result gets a figure. Every figure must have:
@@ -150,3 +162,4 @@ Consult project reference files when present (e.g. in `references/`):
 - `references/rubrics.md` — the "求解与结果" scoring dimension (algorithm soundness, reproducibility, visualization).
 - `references/anti_patterns.md` — solution-stage failure modes (C 类: 无敏感性分析 / 过拟合 / 结果无物理意义).
 - `references/winning_paper_patterns.md` — §3 non-negotiables: **sensitivity/robustness analysis** + **model verification**, one-figure-one-conclusion (every figure interpreted), and report random seeds/params for reproducibility.
+- `references/inconclusive_playbook.md` — **when the main result is not statistically significant**: the 5 moves (power back-calc / TOST / E-value / decision closure / honest multi-evidence) that turn "inconclusive" into quantified decision value without overclaiming.

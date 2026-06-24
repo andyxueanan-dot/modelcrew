@@ -16,6 +16,7 @@
 5. **可行性 / 最优性**（优化型）：解满足所有约束吗？真是最优还是局部解？
 6. **样本与外推**：结论能推广到题目要求的其他场景吗？
 7. **假设回溯**：Analyst 的哪条假设若不成立，会让结论崩掉？
+8. **散文数字一致性**：论文/文档正文手写的数字，是否仍等于权威 `results.json`/`frozen_numbers.json`？**别再手写临时脚本**——跑常驻工具 `python tools/check_frozen.py`（冻结值 vs 脚本输出）+ `python tools/check_paper_numbers.py`（散文引用 vs 冻结值）。把论文依赖的关键量都登记进 `frozen_numbers.json`，工具即可零误报地抓出"散文残留旧值/正确值缺失"。任一 FAIL 视同⚠️"不可复现"风险，打回同步。
 
 ## 防"廉价过闸"（anti–master-key）
 警惕用**无实质内容的措辞**骗过你：'综上所述分析步骤严谨'、'Let's think step by step'、单个标点、空行、被截断的输出，

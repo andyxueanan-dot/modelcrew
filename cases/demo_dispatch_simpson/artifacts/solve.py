@@ -14,11 +14,14 @@ import pandas as pd
 from scipy import stats
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
+from statsmodels.stats.power import NormalIndPower
+from statsmodels.stats.proportion import proportion_effectsize
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
-# 中文字体 (Windows 自带 Microsoft YaHei), 负号正常显示
-matplotlib.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei", "DejaVu Sans"]
+# 中文字体: Windows 用 Microsoft YaHei/SimHei, Linux 回退 Noto/文泉驿, 负号正常显示
+matplotlib.rcParams["font.sans-serif"] = ["Microsoft YaHei", "SimHei",
+    "Noto Sans CJK SC", "WenQuanYi Zen Hei", "DejaVu Sans"]
 matplotlib.rcParams["axes.unicode_minus"] = False
 
 SEED = 42
@@ -54,6 +57,15 @@ def wilson_ci(k, n, z=Z):
     center = (p + z**2 / (2 * n)) / denom
     half = (z * np.sqrt(p * (1 - p) / n + z**2 / (4 * n**2))) / denom
     return (center - half, center + half)
+
+
+def dig(obj, path):
+    """按 path 取值（点分字符串或段列表，数字段当下标）。镜像 tools/check_frozen.py。"""
+    segs = path if isinstance(path, list) else path.split(".")
+    cur = obj
+    for seg in segs:
+        cur = cur[int(seg)] if isinstance(cur, list) else cur[seg]
+    return cur
 
 
 def two_prop_diff_ci(k1, n1, k2, n2, z=Z):
@@ -309,6 +321,60 @@ def consistency(q1r, q3ar, mh_or, logit_or_BA):
 
 
 # ---------------------------------------------------------------------------
+# 弱效应招式箱 (references/inconclusive_playbook.md): power / TOST / E-value
+# 主结论 CI 跨零时, 把"未达显著"量化成决策价值, 绝不夸大为显著。
+# ---------------------------------------------------------------------------
+def inconclusive_toolkit(q3ar, q3cr):
+    prim = q3ar["population_0.5_0.5"]
+    pA_std, pB_std = prim["std_rate_A"], prim["std_rate_B"]   # 0.6500, 0.6950
+    diff, se = prim["diff_A_minus_B"], prim["se_boot"]
+
+    # --- 招1: power / 达 80% 功效所需样本量 (两标准化率的 Cohen's h) ---
+    h = abs(proportion_effectsize(pB_std, pA_std))
+    n_per = NormalIndPower().solve_power(effect_size=h, alpha=0.05, power=0.8,
+                                         ratio=1.0, alternative="two-sided")
+    power = dict(
+        basis=f"两标准化率 pA_std={pA_std:.4f}, pB_std={pB_std:.4f} (主权重) 的 Cohen's h",
+        cohens_h=float(h),
+        required_n_per_group=int(np.ceil(n_per)),
+        required_n_total=int(np.ceil(n_per) * 2),
+        current_n_total=700,
+        note=f"达 80% 功效(alpha=0.05 双侧)检出当前观测到的 ~{abs(pB_std-pA_std)*100:.1f}pp 标准化率差所需样本量",
+    )
+
+    # --- 招2: TOST 等效检验 (对标准化率差, 等效边界 ±delta, 先验设定) ---
+    tost = {"_note": "TOST 两单侧检验; equivalent=True 表示在该等效边界下可判'实质等效'; "
+                     "se 取标准化率差 bootstrap SE"}
+    for delta in (0.05, 0.10):
+        p_u = float(stats.norm.cdf((diff - delta) / se))       # H0: diff>=+delta
+        p_l = float(1 - stats.norm.cdf((diff + delta) / se))   # H0: diff<=-delta
+        p_tost = max(p_u, p_l)
+        tost[f"margin_{delta:.2f}"] = dict(delta=delta, p_tost=p_tost,
+                                           equivalent=bool(p_tost < 0.05))
+
+    # --- 招3: E-value (logistic OR(B/A); 结局常见, RR≈sqrt(OR) VanderWeele 近似) ---
+    def evalue_from_rr(rr):
+        rr = rr if rr >= 1 else 1.0 / rr
+        return rr + np.sqrt(rr * (rr - 1))
+    or_pt = q3cr["main"]["OR_policyB"]
+    ci = q3cr["main"]["OR_policyB_ci95"]
+    rr_pt = np.sqrt(or_pt)
+    ci_crosses = ci[0] <= 1.0 <= ci[1]
+    e_value = dict(
+        outcome_common_note="按时结局常见(~67%), 用 RR≈sqrt(OR) 近似 (VanderWeele 常见结局建议)",
+        or_point=float(or_pt), rr_approx=float(rr_pt),
+        e_value_point=round(float(evalue_from_rr(rr_pt)), 3),
+        ci_crosses_null=bool(ci_crosses),
+        e_value_ci=1.0 if ci_crosses else round(float(evalue_from_rr(np.sqrt(min(ci, key=lambda x: abs(np.log(x)))))), 3),
+        note="需 RR≥此值的未观测混杂才能解释掉该方向; CI 跨零→CI 的 E-value=1(对混杂不稳健)",
+    )
+
+    return dict(power=power, tost=tost, e_value=e_value,
+                interpretation="效应弱且未达显著; 既不能证明差异也(在±5pp)不能证明等效→真·样本不足。"
+                               "决策价值在 power 所需 N 与 E-value 因果稳健性, 非'B 显著更优'。")
+
+
+# ---------------------------------------------------------------------------
 # 可视化
 # ---------------------------------------------------------------------------
 def make_figures(q1r, q2r, q3ar, mh):
@@ -418,6 +484,9 @@ def main():
 
     cons = consistency(q1r, q3ar, or_mh, logit_or_BA)
 
+    # 弱效应招式箱: 三法 CI 均跨零 → 把"未达显著"量化成决策价值
+    incon = inconclusive_toolkit(q3ar, q3cr)
+
     # 敏感性: severity 边际效应 (合并 + 各策略内)
     p_low = df[df.severity == "Low"].on_time.mean()
     p_high = df[df.severity == "High"].on_time.mean()
@@ -445,6 +514,7 @@ def main():
             c_logistic=q3cr,
             consistency=cons,
         ),
+        inconclusive_toolkit=incon,
         sensitivity=dict(
             severity_marginal=dict(rate_Low=float(p_low), rate_High=float(p_high),
                                    diff_Low_minus_High=float(p_low - p_high)),
@@ -468,43 +538,44 @@ def main():
     for f in figs:
         print("FIG", f)
 
-    # ---- frozen_numbers.json ----
-    rel = "cases/demo_dispatch_simpson/artifacts/results.json"
-    frozen = [
-        dict(id="q1_pooled_rate_A", label="合并按时率 A", value=round(q1r["A"]["rate"], 4),
-             source="Q1_pooled.A.rate", path=rel),
-        dict(id="q1_pooled_rate_B", label="合并按时率 B", value=round(q1r["B"]["rate"], 4),
-             source="Q1_pooled.B.rate", path=rel),
-        dict(id="q2_rate_Low_A", label="Low层 A 按时率", value=round(q2r["strata"]["Low"]["rate_A"], 4),
-             source="Q2_stratified.strata.Low.rate_A", path=rel),
-        dict(id="q2_rate_Low_B", label="Low层 B 按时率", value=round(q2r["strata"]["Low"]["rate_B"], 4),
-             source="Q2_stratified.strata.Low.rate_B", path=rel),
-        dict(id="q2_rate_High_A", label="High层 A 按时率", value=round(q2r["strata"]["High"]["rate_A"], 4),
-             source="Q2_stratified.strata.High.rate_A", path=rel),
-        dict(id="q2_rate_High_B", label="High层 B 按时率", value=round(q2r["strata"]["High"]["rate_B"], 4),
-             source="Q2_stratified.strata.High.rate_B", path=rel),
-        dict(id="q2_simpson_reversal", label="Simpson 反转是否成立", value=q2r["simpson_reversal"],
-             source="Q2_stratified.simpson_reversal", path=rel),
-        dict(id="q3a_std_rate_diff_pop", label="标准化率差 B-A (主权重, 百分点)",
-             value=round(-q3ar["population_0.5_0.5"]["diff_A_minus_B"] * 100, 2),
-             source="-Q3.a_standardized_rate_diff.population_0.5_0.5.diff_A_minus_B*100", path=rel),
-        dict(id="q3b_mh_or_AB", label="Mantel-Haenszel 合并 OR (A/B)", value=round(or_mh, 4),
-             source="Q3.b_mantel_haenszel.or_mh", path=rel),
-        dict(id="q3b_mh_or_ci", label="MH-OR 95% CI", value=[round(mh_lo, 4), round(mh_hi, 4)],
-             source="Q3.b_mantel_haenszel.ci95", path=rel),
-        dict(id="q3c_logistic_OR_BA", label="logistic policy OR (B/A, 校正 severity)",
-             value=round(logit_or_BA, 4), source="Q3.c_logistic.main.OR_policyB", path=rel),
-        dict(id="q3c_logistic_OR_BA_ci", label="logistic policy OR 95% CI",
-             value=[round(logit_or_BA_ci[0], 4), round(logit_or_BA_ci[1], 4)],
-             source="Q3.c_logistic.main.OR_policyB_ci95", path=rel),
-        dict(id="q3_three_methods_agree", label="三法方向是否一致(均 B 优)",
-             value=cons["all_three_agree_B_better"],
-             source="Q3.consistency.all_three_agree_B_better", path=rel),
+    # ---- frozen_numbers.json (check_frozen 策展 schema: source=文件 / path=jsonpath / tol / cited_in;
+    #      值从 results 里 dig 出, 永不编数字、永远与 results.json 同步) ----
+    # spec: (id, label, jsonpath, tol, cited_in, 小数位 nd | None=原样)
+    spec = [
+        ("q1_rate_A", "合并按时率 A", "Q1_pooled.A.rate", 0.0005, "6_paper.md, 4_results.md", 4),
+        ("q1_rate_B", "合并按时率 B", "Q1_pooled.B.rate", 0.0005, "6_paper.md, 4_results.md", 4),
+        ("q2_rate_Low_A", "Low层 A 按时率", "Q2_stratified.strata.Low.rate_A", 0.0005, "4_results.md", 4),
+        ("q2_rate_Low_B", "Low层 B 按时率", "Q2_stratified.strata.Low.rate_B", 0.0005, "4_results.md", 4),
+        ("q2_rate_High_A", "High层 A 按时率", "Q2_stratified.strata.High.rate_A", 0.0005, "4_results.md", 4),
+        ("q2_rate_High_B", "High层 B 按时率", "Q2_stratified.strata.High.rate_B", 0.0005, "4_results.md", 4),
+        ("q3a_std_rate_diff", "标准化率差 A-B (主权重0.5/0.5)",
+         ["Q3", "a_standardized_rate_diff", "population_0.5_0.5", "diff_A_minus_B"], 0.0005,
+         "6_paper.md, 4_results.md", 4),
+        ("q3b_mh_or_AB", "Mantel-Haenszel 合并 OR(A/B)", "Q3.b_mantel_haenszel.or_mh", 0.0005,
+         "6_paper.md, 4_results.md, 5_audit.md", 4),
+        ("q3c_logistic_OR_BA", "logistic policy OR(B/A, 控 severity)", "Q3.c_logistic.main.OR_policyB",
+         0.0005, "6_paper.md, 4_results.md, 5_audit.md", 4),
+        # —— 弱效应招式箱新增 (references/inconclusive_playbook.md) ——
+        ("power_required_n_per_group", "达80%功效检出~4.5pp 每组所需样本量",
+         "inconclusive_toolkit.power.required_n_per_group", 0, "6_paper.md, 4_results.md", None),
+        ("evalue_point", "logistic OR(B/A) 点估计 E-value",
+         "inconclusive_toolkit.e_value.e_value_point", 0.005, "6_paper.md, 4_results.md", 3),
     ]
+    frozen = []
+    for fid, label, jp, tol, cited, nd in spec:
+        val = dig(results, jp)
+        if nd is not None and isinstance(val, (int, float)) and not isinstance(val, bool):
+            val = round(float(val), nd)
+        frozen.append(dict(id=fid, label=label, value=val, tol=tol,
+                           source="artifacts/results.json", path=jp, cited_in=cited))
     out_frozen = os.path.join(HERE, "frozen_numbers.json")
     with open(out_frozen, "w", encoding="utf-8") as f:
-        json.dump(dict(case="demo_dispatch_simpson", seed=SEED,
-                       source_results=rel, numbers=frozen), f, ensure_ascii=False, indent=2)
+        json.dump(dict(
+            case="demo_dispatch_simpson",
+            note="论文/文档引用关键数字的唯一真相源。每个数字回溯到 solve.py 产出的 results.json；"
+                 "用 tools/check_frozen.py 校验冻结值与脚本输出一致，tools/check_paper_numbers.py 校验散文引用。",
+            inputs=["artifacts/solve.py", "data/dispatch.csv"],
+            numbers=frozen), f, ensure_ascii=False, indent=2)
     print("WROTE", out_frozen)
 
     # 控制台摘要
@@ -527,6 +598,12 @@ def main():
     print(f"Q3c logistic OR(B/A)={logit_or_BA:.4f} "
           f"CI[{logit_or_BA_ci[0]:.4f},{logit_or_BA_ci[1]:.4f}] p={q3cr['main']['p_value']:.4f}")
     print(f"三法方向一致(均B优): {cons['all_three_agree_B_better']}")
+    pw = incon["power"]; ev = incon["e_value"]
+    print(f"招1 power: 达80%功效每组需 N={pw['required_n_per_group']} (共{pw['required_n_total']}, 现有700), Cohen's h={pw['cohens_h']:.4f}")
+    for k in ("margin_0.05", "margin_0.10"):
+        t = incon["tost"][k]
+        print(f"招2 TOST ±{t['delta']:.0%}: p={t['p_tost']:.4f} 等效={t['equivalent']}")
+    print(f"招3 E-value(点)={ev['e_value_point']} (RR≈{ev['rr_approx']:.3f}); CI跨零={ev['ci_crosses_null']} E-value(CI)={ev['e_value_ci']}")
 
 
 if __name__ == "__main__":

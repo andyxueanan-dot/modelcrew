@@ -36,7 +36,7 @@
 
 \textbf{针对问题二（结论是否可靠、有无混杂误判）}，本文建立\textbf{分层比较模型}并提出可证伪的 \textbf{Simpson 反转判定准则}（合并方向与每个层内方向均相反即成立），按 \texttt{severity} 分层求解。结果：合并口径 A 高，但\textbf{轻案层 B 0.94 $>$ A 0.90、重案层 B 0.45 $>$ A 0.40，两层方向一致地 B 高}，反转判定为真。混杂机制清楚：A 仅 14.3\% 接重案、B 高达 85.7\% 接重案（失衡 6.0 倍），合并率把``案件难度差''误算成``策略效果差''。这是教科书级 Simpson 悖论在本数据上的真实发生。
 
-\textbf{针对问题三（公平比较的正确做法与落地建议）}，本文以\textbf{直接标准化率差}为主、\textbf{Mantel--Haenszel 合并 OR} 与 \textbf{logistic 回归}为印证，三法交叉校正 \texttt{severity}。求解得：标准化率差（总体权）B 较 A 优 $+4.5$ pp（95\% bootstrap CI $[-3.83,+12.67]$ pp）、MH-OR(A/B)$=0.7527$（95\% CI $[0.4378,1.2941]$）、logistic 校正 OR(B/A)$=1.323$（95\% CI $[0.7728,2.265]$，$p=0.31$）。\textbf{三法点估计方向一致地指向 B 略优}。但须如实指出：\textbf{三法的 95\% 区间均跨过各自零值（率差含 0、OR 含 1、$p>0.05$），效应未达统计显著}。故本案最强且唯一可防守的结论是：\textbf{在给定可观测严重度下，校正后 B 不劣于 A、点估计略优约 4--5 pp，但在 $n=700$、最小格 $n=50$ 下尚不足以判定``B 显著更优''；而``用合并率推荐 A''几乎确定是错误方向}。
+\textbf{针对问题三（公平比较的正确做法与落地建议）}，本文以\textbf{直接标准化率差}为主、\textbf{Mantel--Haenszel 合并 OR} 与 \textbf{logistic 回归}为印证，三法交叉校正 \texttt{severity}。求解得：标准化率差（总体权）B 较 A 优 $+4.5$ pp（95\% bootstrap CI $[-3.83,+12.67]$ pp）、MH-OR(A/B)$=0.7527$（95\% CI $[0.4378,1.2941]$）、logistic 校正 OR(B/A)$=1.323$（95\% CI $[0.7728,2.265]$，$p=0.31$）。\textbf{三法点估计方向一致地指向 B 略优}。但须如实指出：\textbf{三法的 95\% 区间均跨过各自零值（率差含 0、OR 含 1、$p>0.05$），效应未达统计显著}。故本案最强且唯一可防守的结论是：\textbf{在给定可观测严重度下，校正后 B 不劣于 A、点估计略优约 4--5 pp，但在 $n=700$、最小格 $n=50$ 下尚不足以判定``B 显著更优''；而``用合并率推荐 A''几乎确定是错误方向}。本文进一步\textbf{把``未达显著''量化为决策语言}：功效反算给出达可判定所需样本量（总量约 $N=3412$）、E-value（$1.566$）量化结论对未观测混杂的脆弱性、TOST 区分``无效应 vs 样本不足''，并据此给市政过渡期可执行的行动规则。
 
 \textbf{灵敏度方面}，标准化率差在总体权 / A 人群权 / B 人群权三套权重下恒为负（B 优），漂移仅约 0.7 pp，方向对权重稳健；Breslow--Day（$p=0.615$）与 logistic 交互项（$p=0.617$）均不显著，层间效应同质，支持合并 OR；bootstrap 重跑数值逐位可复现。
 
@@ -216,6 +216,21 @@ OR(B/A)$=1.323>1$（B 几率更高），与 MH 互印证（$1/0.7527=1.329\appro
 \end{center}
 \textbf{三法点估计方向一致地指向 B 略优。但三法的 95\% 区间均跨过各自零值（率差含 0、OR 含 1、logistic $p=0.31$），无一达 $\alpha=0.05$。} 故唯一可防守的结论是：\textbf{校正 severity 后，B 不劣于 A、点估计略优约 4--5 pp，但在 $n=700$、最小格 $n=50$ 下未达统计显著；据此不足以让市政在 A/B 间做出有把握的优选，但足以证明``用合并率推荐 A''是错误方向}。三法是同一批数据的三种换算，并非三份独立证据，不能用``方向一致''反推``统计显著''。
 
+\subsection{Q3+ · 弱效应招式箱：把``未达显著''量化成决策价值}
+三法 95\% 区间均跨零、属``方向稳健但未达显著''。本文不停在``做不出结论''，以三招把不确定性量化（绝不夸大为显著）：
+\begin{center}
+\begin{tabular}{p{3cm}p{6cm}p{4.5cm}}
+\toprule
+招 & 量 & 结果 \\
+\midrule
+功效/样本量反算 & 达 80\% 功效（$\alpha=0.05$ 双侧）检出当前约 4.5 pp 标准化率差所需样本量 & 每组 $N=1706$（合计 $3412$），现有 700；Cohen's $h=0.096$ \\
+TOST 等效检验 & 实质等效边界 $\pm5$ pp / $\pm10$ pp（先验设定） & $\pm5$ pp：$p=0.45$ 不等效；$\pm10$ pp：$p=0.10$ 不等效 \\
+E-value（因果稳健性） & 推翻 logistic OR(B/A)$=1.323$ 方向所需未观测混杂强度（结局常见，RR$\approx\sqrt{\text{OR}}$） & 点估计 E-value$=1.566$；区间含零 $\to$ E-value(CI)$=1.0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+三招一致表明``B 略优''是\textbf{方向稳健、强度证据不足}：既非``无效应''（招 1/2 显示是样本不足），方向又\textbf{对未观测混杂不稳健}（招 3：一个 RR$\approx$1.57 的未观测混杂即可解释掉它）。这把``未达显著''转译为\textbf{做出结论所需的样本量与结论的脆弱程度}，决策收口见第 7 节。
+
 \section{灵敏度分析}
 \begin{center}
 \begin{tabular}{p{2.6cm}p{2.6cm}p{4.5cm}p{3cm}}
@@ -234,14 +249,14 @@ bootstrap 复现 & seed=42 重跑 & 数值逐位一致 & 可复现 \\
 
 \section{模型的评价}
 \subsection{优点}
-(1) 叙事链完整且可证伪：Q1（陷阱）$\to$ Q2（反转判定准则，0/1 可判定）$\to$ Q3（三法校正），每步配``为什么选它''与代价。(2) 三法交叉印证 + 数值互验：MH-OR 倒数 $1/0.7527=1.329$ 与 logistic OR 1.323 互验，编码方向对齐正确。(3) 敏感性扎实：三套权重、双查同质、最小格标注、bootstrap 1 万次，全部可复现。(4) 创新落点可被引用：``难度配平比较法''把``公平=同等难度下比''讲成市政能懂的一句话。
+(1) 叙事链完整且可证伪：Q1（陷阱）$\to$ Q2（反转判定准则，0/1 可判定）$\to$ Q3（三法校正），每步配``为什么选它''与代价。(2) 三法交叉印证 + 数值互验：MH-OR 倒数 $1/0.7527=1.329$ 与 logistic OR 1.323 互验，编码方向对齐正确。(3) 敏感性扎实：三套权重、双查同质、最小格标注、bootstrap 1 万次，全部可复现。(4) 创新落点可被引用、有方法增量：``难度配平比较法''把``公平=同等难度下比''讲成市政能懂的一句话，并进一步把``未达显著''操作化为决策量——功效反算给出达可判定所需样本量（$N\approx3412$）、E-value（$1.566$）量化结论对未观测混杂的脆弱性、TOST 区分``无效应 vs 样本不足''，相对``仅做三法校正''是实打实的方法增量。
 
 \subsection{局限性（如实写入 Critic 审计裁决）}
 本文严守独立审计（Critic）红线，不藏短板：
 \begin{enumerate}
 \item \textbf{效应未达统计显著（最重要的诚实）}：三法 95\% 区间均跨零（率差含 0、MH-OR 含 1、logistic $p=0.31$），两层内差也都不显著（Low $p=0.290$、High $p=0.505$）。故\textbf{``B 显著优于 A / 推荐市政采用 B / B 胜出''在本数据下不成立}；本文只主张``校正后 B 不劣于、点估计略优、未达显著''。
 \item \textbf{不可声称因果}：数据仅 3 字段，时段/路况/警力等未观测混杂无法排除（A1），\texttt{severity} 判定是否独立于 \texttt{policy} 数据内无法验证（A5）。所有结论仅在``给定可观测 severity 下、关联层面''成立，\textbf{不得写``B 导致更高按时率''}。
-\item \textbf{样本量与功效}：效应量小（约 4--5 pp / OR$\approx$1.32），最小格 $n=50$，功效不足；``五个角度点估计同号''在效应方向一致而强度微弱时本就常见，不等于显著。
+\item \textbf{样本量与功效}：效应量小（约 4--5 pp / OR$\approx$1.32，Cohen's $h=0.096$），最小格 $n=50$，功效不足——\textbf{功效反算显示达 80\% 功效需总样本约 $N=3412$（现有 700）}，TOST 在 $\pm5$ pp 下亦不能判等效，故属``样本不足''而非``无效应''；``五个角度点估计同号''在效应方向一致而强度微弱时本就常见，不等于显著。
 \item \textbf{外推受限}：样本为试点期记录，无时间/区域字段，选择偏差无法验证（A4）。
 \item \textbf{口径未核实项}：\texttt{on\_time} 跨策略时限一致性（A3）、\texttt{severity} 判定独立性（A5）数据内均无法证伪，仅能标注待核实。
 \end{enumerate}
@@ -255,12 +270,14 @@ bootstrap 复现 & seed=42 重跑 & 数值逐位一致 & 可复现 \\
 \section{结论}
 (1) \textbf{Q1 的合并率是陷阱，不可据此推荐 A}：合并按时率 A$=0.8286$ 远高于 B$=0.5200$，但这是 A 专挑轻案、B 专挑重案（失衡 6.0 倍）造成的混杂假象。(2) \textbf{Q2 混杂确实导致误判，Simpson 反转真实发生}：分层后两层内均 B 高于 A，与合并方向相反；但单层``B 高''未达统计显著。(3) \textbf{Q3 公平比较应控制 severity}：三法点估计一致指向 B 略优（约 4--5 pp / OR$\approx$1.32），方向对权重稳健，\textbf{但效应未达统计显著}。
 
-\textbf{给市政的可落地建议}（仅由结果支持的两条）：
+\textbf{给市政的决策导向收口}（不确定性下仍可执行的三段式行动规则，仅由结果支持）：
 
-\begin{itemize}
-\item \textbf{不要用合并按时率在 A、B 间做优选}——它会因案件难度构成不同而系统性误导，几乎确定推荐错策略。
-\item \textbf{公平比较必须在同等案件难度（severity）下进行}（``难度配平比较法''）：用标准化率 / 合并 OR / 回归调整校正后再比。在此口径下现有证据\textbf{不足以判定 B 显著优于 A}，故暂不宜替市政在 A/B 间下定论；若要做出有把握的优选，建议采集更多协变量、扩大样本，或直接对呼叫随机化派遣后重评。
-\end{itemize}
+\begin{enumerate}
+\item \textbf{立即停用合并按时率做 A/B 考核}——它因案件难度构成不同而系统性误导（6 倍失衡），几乎确定推荐错策略。\textbf{此条结论是显著的、可硬下定论}。
+\item \textbf{过渡期默认}：若必须二选一，可暂用``难度配平口径下点估计占优、且对权重稳健（漂移仅 0.7 pp）''的 \textbf{B 作为暂定默认}——但须明示\textbf{暂定、非定论}：B 仅点估计略优约 4--5 pp，三法区间均跨零、未达显著，且方向对未观测混杂不稳健（\textbf{E-value 仅 1.566}）。
+\item \textbf{启动可判定的下一步}：对呼叫\textbf{随机化派遣}以根除混杂、支持因果结论；据功效反算，达 80\% 功效检出当前约 4.5 pp 效应\textbf{需总样本约 $N=3412$}（现有 700），即约需扩样本 5 倍或采集一个完整随机化周期。
+\end{enumerate}
+即：本案唯一能向市政硬下的定论是``别用合并率推荐 A''；``选 B''只能作带 caveat 的过渡期默认，不替市政把``B 显著更优''写成定论。
 
 \begin{thebibliography}{9}
 \bibitem{simpson1951} Simpson, E. H. The Interpretation of Interaction in Contingency Tables. \textit{Journal of the Royal Statistical Society, Series B}, 1951, 13(2): 238--241.
@@ -271,7 +288,7 @@ bootstrap 复现 & seed=42 重跑 & 数值逐位一致 & 可复现 \\
 
 \appendix
 \section{附录}
-\textbf{复现信息}：代码 \texttt{solve.py}（\texttt{python solve.py}，绝对路径定位数据）；数据 \texttt{data/dispatch.csv}，MD5$=$\texttt{496fd5aafdbbcc3f11edba376d5f2331}（运行时实时校验）；随机种子 \texttt{seed=42}，bootstrap \texttt{N\_BOOT=10000}（\texttt{numpy.random.default\_rng(42)}，分层 4 格各自有放回重采样）。CI 方法：单比例 Wilson；两比例差 Wald；标准化率差 bootstrap 百分位；MH-OR Robins--Breslow--Greenland 方差；logistic Wald CI。图：\texttt{figures/fig1\_simpson\_reversal.png}、\texttt{fig2\_confounding\_imbalance.png}、\texttt{fig3\_three\_methods\_forest.png}。数字唯一真值源：\texttt{frozen\_numbers.json} / \texttt{results.json}。
+\textbf{复现信息}：代码 \texttt{solve.py}（\texttt{python solve.py}，绝对路径定位数据）；数据 \texttt{data/dispatch.csv}，MD5$=$\texttt{496fd5aafdbbcc3f11edba376d5f2331}（运行时实时校验）；随机种子 \texttt{seed=42}，bootstrap \texttt{N\_BOOT=10000}（\texttt{numpy.random.default\_rng(42)}，分层 4 格各自有放回重采样）。CI 方法：单比例 Wilson；两比例差 Wald；标准化率差 bootstrap 百分位；MH-OR Robins--Breslow--Greenland 方差；logistic Wald CI。弱效应招式箱：功效/样本量反算（\texttt{statsmodels.stats.power}，Cohen's $h$，每组 $N=1706$、合计 3412）；TOST 两单侧检验（边界 $\pm5$/$\pm10$ pp）；E-value（结局常见用 RR$\approx\sqrt{\text{OR}}$，$E=1.566$，区间含零故 E-value(CI)$=1$）。图：\texttt{figures/fig1\_simpson\_reversal.png}、\texttt{fig2\_confounding\_imbalance.png}、\texttt{fig3\_three\_methods\_forest.png}。数字唯一真值源：\texttt{frozen\_numbers.json} / \texttt{results.json}。
 
 \noindent\textbf{产出说明}：本文由 ModelCrew 子代理端到端真跑产出（Router 定题 $\to$ Analyst 审题 $\to$ Scout 数据体检 $\to$ Modeler 选模型 $\to$ Solver 真跑求解 $\to$ Critic 独立复算审计 $\to$ Writer 成稿）。所有数字与 \texttt{frozen\_numbers.json} / \texttt{results.json} 同源，未另造。本 \texttt{.tex} 已用 \textbf{MiKTeX xelatex 编译通过}（\texttt{6\_paper.pdf}，13 页，无未定义引用）；复现：\texttt{xelatex 6\_paper.tex}（跑两遍）。
 

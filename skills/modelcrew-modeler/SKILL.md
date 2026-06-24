@@ -168,3 +168,5 @@ Consult these project reference files when present (e.g. in `references/`):
 - `references/anti_patterns.md` — modeling-stage failure modes (B 类) to avoid while building.
 - `references/rubrics.md` — anticipate how the model will be graded (model-building dimension).
 - `references/winning_paper_patterns.md` — §3 winning modeling habits (simple baseline first, justify every choice, assumptions necessary+justified, **name your innovation**) and §3B per-type (A continuous / B optimization / C data) high-scoring routes.
+- `references/innovation_boost.md` — **after picking the baseline, mandatorily pass through this**: per-type "one tier up" upgrades (variant / combination / cross-disciplinary) plus citable naming patterns, to lift the innovation dimension without sacrificing interpretability.
+- `references/inconclusive_playbook.md` — **if the data hints at a weak effect / small groups** (likely "direction but not significant"), pre-attach the moves (power back-calc / TOST margin / E-value) into the model design so the Solver computes them up front, instead of discovering at finalization that "no significant result" leaves you with no play.

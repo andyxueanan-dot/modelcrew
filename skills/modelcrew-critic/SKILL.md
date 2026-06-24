@@ -99,6 +99,14 @@ Which upstream assumption, if wrong, would collapse this conclusion?
 - Flag **silent assumptions**: claims that depend on unstated premises (e.g., "demand is stationary", "agents are rational")
 - Check for **internal contradictions**: do two conclusions depend on mutually exclusive assumptions?
 
+### 8. Prose-Number Consistency
+
+Do the numbers hand-written in the paper/doc prose still equal the authoritative `results.json` / `frozen_numbers.json`?
+
+- **Don't hand-roll a throwaway script** — run the resident tools: `python tools/check_frozen.py` (frozen values vs script output) + `python tools/check_paper_numbers.py` (prose citations vs frozen values).
+- Register every number the paper leans on into `frozen_numbers.json` (with `cited_in`); the tool then catches "stale value left in prose / correct value missing" with zero false positives.
+- Any FAIL = a ⚠️ "non-reproducible" risk → send back to sync before shipping.
+
 ## Verdict System
 
 For each audited conclusion, assign exactly one verdict:

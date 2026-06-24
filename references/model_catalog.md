@@ -83,6 +83,16 @@
 | 相关分析（Pearson/Spearman） | 量化关联（注意≠因果） |
 | 主成分分析 PCA | 降维、去相关 |
 
+### 7.1 进阶统计（效应弱/不显著/混杂时的高分招，详见 `references/inconclusive_playbook.md`）
+| 方法 | 适用 | Python | 变体名/要点 |
+|---|---|---|---|
+| Power / 样本量反算 | 结论不显著时算「需多大 N」 | `statsmodels.stats.power`, `proportion_effectsize` | 事前功效设计；Cohen's h/d 效应量 |
+| 等效性检验 TOST | 区分「无效应」vs「功效不足」 | `statsmodels.stats`（两单侧检验） | 非劣效设计；等效边界 ±δ 须先验设定 |
+| E-value | 量化结论对未观测混杂的稳健性 | 手写 `RR+sqrt(RR*(RR-1))` | VanderWeele 2017；观测性/因果题必备 |
+| 倾向得分匹配 PSM | 观测数据近似随机化、平衡混杂 | `statsmodels`/手写 logit + 匹配 | IPTW 加权、卡尺匹配 |
+| 贝叶斯估计 | 小样本、要后验/可信区间 | `pymc`, `scipy.stats` | 共轭先验、后验概率直接答「B 优的概率」 |
+| 直接标准化 / Mantel–Haenszel | 分层混杂校正、Simpson | 手写 | 人口标准化类比、合并 OR + Breslow–Day 同质 |
+
 ## 8. 动力系统类 Dynamical Systems
 | 方法 | 适用 | Python |
 |---|---|---|

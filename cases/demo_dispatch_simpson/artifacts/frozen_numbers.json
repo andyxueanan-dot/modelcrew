@@ -1,19 +1,114 @@
 {
   "case": "demo_dispatch_simpson",
-  "note": "论文/文档引用关键数字的唯一真相源。每个数字回溯到 solve.py 产出的 results.json；用 tools/check_frozen.py 校验冻结值与脚本输出一致，并在 solve.py/数据比结果更新时报 STALE。",
+  "note": "论文/文档引用关键数字的唯一真相源。每个数字回溯到 solve.py 产出的 results.json；用 tools/check_frozen.py 校验冻结值与脚本输出一致，tools/check_paper_numbers.py 校验散文引用。",
   "inputs": [
     "artifacts/solve.py",
     "data/dispatch.csv"
   ],
   "numbers": [
-    {"id": "q1_rate_A", "label": "合并按时率 A", "value": 0.8286, "tol": 0.0005, "source": "artifacts/results.json", "path": "Q1_pooled.A.rate", "cited_in": "6_paper.md, 4_results.md"},
-    {"id": "q1_rate_B", "label": "合并按时率 B", "value": 0.52, "tol": 0.0005, "source": "artifacts/results.json", "path": "Q1_pooled.B.rate", "cited_in": "6_paper.md, 4_results.md"},
-    {"id": "q2_rate_Low_A", "label": "Low层 A 按时率", "value": 0.90, "tol": 0.0005, "source": "artifacts/results.json", "path": "Q2_stratified.strata.Low.rate_A", "cited_in": "4_results.md"},
-    {"id": "q2_rate_Low_B", "label": "Low层 B 按时率", "value": 0.94, "tol": 0.0005, "source": "artifacts/results.json", "path": "Q2_stratified.strata.Low.rate_B", "cited_in": "4_results.md"},
-    {"id": "q2_rate_High_A", "label": "High层 A 按时率", "value": 0.40, "tol": 0.0005, "source": "artifacts/results.json", "path": "Q2_stratified.strata.High.rate_A", "cited_in": "4_results.md"},
-    {"id": "q2_rate_High_B", "label": "High层 B 按时率", "value": 0.45, "tol": 0.0005, "source": "artifacts/results.json", "path": "Q2_stratified.strata.High.rate_B", "cited_in": "4_results.md"},
-    {"id": "q3a_std_rate_diff", "label": "标准化率差 A-B (主权重0.5/0.5)", "value": -0.045, "tol": 0.0005, "source": "artifacts/results.json", "path": ["Q3", "a_standardized_rate_diff", "population_0.5_0.5", "diff_A_minus_B"], "cited_in": "6_paper.md, 4_results.md"},
-    {"id": "q3b_mh_or_AB", "label": "Mantel-Haenszel 合并 OR(A/B)", "value": 0.7527, "tol": 0.0005, "source": "artifacts/results.json", "path": "Q3.b_mantel_haenszel.or_mh", "cited_in": "6_paper.md, 4_results.md, 5_audit.md"},
-    {"id": "q3c_logistic_OR_BA", "label": "logistic policy OR(B/A, 控 severity)", "value": 1.3230, "tol": 0.0005, "source": "artifacts/results.json", "path": "Q3.c_logistic.main.OR_policyB", "cited_in": "6_paper.md, 4_results.md, 5_audit.md"}
+    {
+      "id": "q1_rate_A",
+      "label": "合并按时率 A",
+      "value": 0.8286,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": "Q1_pooled.A.rate",
+      "cited_in": "6_paper.md, 4_results.md"
+    },
+    {
+      "id": "q1_rate_B",
+      "label": "合并按时率 B",
+      "value": 0.52,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": "Q1_pooled.B.rate",
+      "cited_in": "6_paper.md, 4_results.md"
+    },
+    {
+      "id": "q2_rate_Low_A",
+      "label": "Low层 A 按时率",
+      "value": 0.9,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": "Q2_stratified.strata.Low.rate_A",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "q2_rate_Low_B",
+      "label": "Low层 B 按时率",
+      "value": 0.94,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": "Q2_stratified.strata.Low.rate_B",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "q2_rate_High_A",
+      "label": "High层 A 按时率",
+      "value": 0.4,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": "Q2_stratified.strata.High.rate_A",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "q2_rate_High_B",
+      "label": "High层 B 按时率",
+      "value": 0.45,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": "Q2_stratified.strata.High.rate_B",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "q3a_std_rate_diff",
+      "label": "标准化率差 A-B (主权重0.5/0.5)",
+      "value": -0.045,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": [
+        "Q3",
+        "a_standardized_rate_diff",
+        "population_0.5_0.5",
+        "diff_A_minus_B"
+      ],
+      "cited_in": "6_paper.md, 4_results.md"
+    },
+    {
+      "id": "q3b_mh_or_AB",
+      "label": "Mantel-Haenszel 合并 OR(A/B)",
+      "value": 0.7527,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": "Q3.b_mantel_haenszel.or_mh",
+      "cited_in": "6_paper.md, 4_results.md, 5_audit.md"
+    },
+    {
+      "id": "q3c_logistic_OR_BA",
+      "label": "logistic policy OR(B/A, 控 severity)",
+      "value": 1.323,
+      "tol": 0.0005,
+      "source": "artifacts/results.json",
+      "path": "Q3.c_logistic.main.OR_policyB",
+      "cited_in": "6_paper.md, 4_results.md, 5_audit.md"
+    },
+    {
+      "id": "power_required_n_per_group",
+      "label": "达80%功效检出~4.5pp 每组所需样本量",
+      "value": 1706,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": "inconclusive_toolkit.power.required_n_per_group",
+      "cited_in": "6_paper.md, 4_results.md"
+    },
+    {
+      "id": "evalue_point",
+      "label": "logistic OR(B/A) 点估计 E-value",
+      "value": 1.566,
+      "tol": 0.005,
+      "source": "artifacts/results.json",
+      "path": "inconclusive_toolkit.e_value.e_value_point",
+      "cited_in": "6_paper.md, 4_results.md"
+    }
   ]
 }

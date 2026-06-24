@@ -117,6 +117,8 @@ The Critic's audit is **not a secret to hide** — it is intellectual honesty th
 
 4. **Don't write what wasn't done.** If a sub-question was not fully addressed, say so in the conclusion and suggest future work. Fabricating results is an automatic disqualification.
 
+5. **Finalize self-check on numbers.** Register every number the paper leans on into `frozen_numbers.json` (with `cited_in`), then run `python tools/check_frozen.py` + `python tools/check_paper_numbers.py` before finalizing — zero FAIL means no stale value lingers in the `.md`/`.tex` prose and every cited value is present.
+
 ## LaTeX Output Mode (submission artifact)
 
 `6_paper.md` is the **content source of truth**. Once it is final, generate the typeset `6_paper.tex` by competition type:

@@ -49,6 +49,7 @@ yourself. You are the concrete realization of the **L3 five-perspective panel** 
    (MCM O/F/M/H/S; CUMCM 国一/二/三/成功参赛) and **prominently label it "estimate, not official"**.
 4. **Honesty check**: did the paper write the Critic's ❌/⚠️ honestly into Limitations? **Reward honesty, deduct for
    hidden weaknesses** — this is the framework's core value line and must show up in the score.
+   - **Weak-effect anchor** (`references/inconclusive_playbook.md`): when a core conclusion is **not statistically significant**, check whether the paper handles it both honestly *and* with decision value (power/sample-size back-calc / TOST equivalence / E-value / decision-oriented closure). All present → treat it as an **explicit bonus** that can **partly offset** the deduction "weak conclusion strength" inflicts on the solution/innovation dimensions (honestly + usefully handling uncertainty is a high-scoring trait, not a cop-out). Weak effect but no closure *and* an overclaimed verdict → deduct twice.
 5. **Bias mitigation + reliability self-check** (per the 2025–26 LLM-as-judge consensus, arXiv 2506.22316 / 2604.06996):
    - **Dual-order scoring**: grade the dimensions in two different orders and average, to dampen order/position bias;
      if the two totals differ by >5, the score is unstable — re-examine the evidence before finalizing.
@@ -59,6 +60,7 @@ yourself. You are the concrete realization of the **L3 five-perspective panel** 
 > **Scoring anchors** (`references/winning_paper_patterns.md`): use §6 directly as dimensions (MCM official looking-for 10
 > items / CUMCM four headline criteria); **simulate triage** — score the abstract alone for a first tier (§2 is make-or-break),
 > then read the body to verify; benchmark against the real O-prize abstract in §2D (team 2406324); fire §5 deduction traps one by one.
+> For the **innovation** dimension, score against `references/innovation_boost.md` (did the paper climb ≥1 tier on the three upgrade paths AND give it a citable name? baseline combo with no upgrade/name → 6–7; complexity-for-its-own-sake off-task → no credit, deduct; deliberately-simple-and-justified → don't dock the "simple" choice).
 
 ## Output artifact `cases/<case>/artifacts/7_review.md`
 
