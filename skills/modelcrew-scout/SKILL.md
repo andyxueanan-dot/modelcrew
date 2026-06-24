@@ -133,6 +133,9 @@ Some problems supply no dataset — you must source it. In that case:
 2. Propose **concrete, credible sources** — official statistics, public repositories (Kaggle/UCI/data.gov), APIs, literature tables. Name them; never hand-wave "find some data online."
 3. For each source, assess reliability, coverage, and access cost; pick one and justify.
 4. If data genuinely cannot be obtained, state the assumption-based fallback and flag it loudly for the Critic.
+5. **Web retrieval of real values** (借鉴 MathModelAgent): when you fetch a real datum or calibration parameter online,
+   **every fetched number must be written into `frozen_numbers.json` with its source URL** — wired into the
+   traceability mechanism. Never report "the internet says X" without a citable source.
 
 ## Reference Materials
 

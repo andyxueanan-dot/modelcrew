@@ -128,6 +128,9 @@ The Critic's audit is **not a secret to hide** — it is intellectual honesty th
 - If a TeX distribution is installed, `latexmk -pdf 6_paper.tex` produces the PDF; otherwise deliver the `.tex` source
   and state honestly that it was "not compiled".
 
+**Optional DOCX output** (some CUMCM / on-campus venues want Word; 借鉴 math-modeling-skills): run
+`pandoc 6_paper.md -o 6_paper.docx` (formulas via LaTeX→OMML so they stay **editable**, not images) — same source, same numbers as `.md`/`.tex`.
+
 Output artifacts: `cases/<case>/artifacts/6_paper.md` (content) **and** `cases/<case>/artifacts/6_paper.tex` (submission).
 
 ## Reference Materials

@@ -44,3 +44,10 @@ Writer 把各节内容填进下列 `%%...%%` 占位符（**全部替换后** `.t
   latexmk -xelatex 6_paper.tex
   ```
 - 本机无 TeX 发行版时：交付 `.tex` 源，并在文档里**如实标注"未编译"**，不谎称已出 PDF。
+
+## 可选：DOCX 输出（国赛/校内要 Word 时）
+部分国赛赛道、校内赛或导师更习惯 Word。用 pandoc 从同源的 `.md` 直接生成可编辑 docx（公式走 LaTeX→OMML，**不是截图**）：
+```bash
+pandoc 6_paper.md -o 6_paper.docx        # 需本机装 pandoc
+```
+与 `.tex`/`.md` **同源同数字**——docx 只是另一种封装，不另造内容或数字。

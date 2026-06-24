@@ -91,6 +91,13 @@ After modeling, compile a numbered list of claims for the Critic to audit:
 
 Every conclusion must cite which assumptions it depends on (referencing Analyst's assumption IDs).
 
+### 4. PoC Smoke Gate (before committing a model) — 借鉴 math-modeling-skills G2
+
+Before you commit to a candidate model, have the Solver run a **≤30-line minimal proof-of-concept**: it must execute
+without error and return results of a sane order of magnitude. Only then is the model "selected". If it fails to run,
+fails to converge, or produces absurd magnitudes, **roll back and switch methods** (this feeds CP2). This kills the
+single biggest modeling-agent trap: picking a method on paper that can't actually be solved on this data.
+
 ## Design Principles
 
 1. **Interpretability > complexity.** A simple model that judges can understand beats a black-box that performs marginally better. Competition judges reward transparency.

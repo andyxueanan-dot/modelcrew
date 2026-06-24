@@ -23,6 +23,7 @@
 - 把各节内容填进模板占位符（`%%TITLE%% / %%SUMMARY%% / %%SEC_MODEL%%` 等，约定见 `templates/README.md`），**只换内容、不动排版骨架**——这让"内容/排版"解耦，换题复用时排版零改动。
 - 论文里所有数字取自 `frozen_numbers.json`，与 .md 同源，**不另造**。
 - 本机装了 TeX 就 `latexmk -pdf 6_paper.tex` 出 PDF；没装则交付 .tex 源并如实说明"未编译"。
+- **可选 DOCX 输出**（国赛部分场景/校内更吃 Word，借鉴 math-modeling-skills）：用 `pandoc 6_paper.md -o 6_paper.docx`（公式走 LaTeX→OMML **可编辑**而非截图），与 .md/.tex 同源同数字。
 
 ## 铁律
 - 只写经过 Critic 放行或已标注不确定性的结论，绝不把存疑结果写成定论。

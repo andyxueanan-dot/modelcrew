@@ -49,6 +49,12 @@ yourself. You are the concrete realization of the **L3 five-perspective panel** 
    (MCM O/F/M/H/S; CUMCM 国一/二/三/成功参赛) and **prominently label it "estimate, not official"**.
 4. **Honesty check**: did the paper write the Critic's ❌/⚠️ honestly into Limitations? **Reward honesty, deduct for
    hidden weaknesses** — this is the framework's core value line and must show up in the score.
+5. **Bias mitigation + reliability self-check** (per the 2025–26 LLM-as-judge consensus, arXiv 2506.22316 / 2604.06996):
+   - **Dual-order scoring**: grade the dimensions in two different orders and average, to dampen order/position bias;
+     if the two totals differ by >5, the score is unstable — re-examine the evidence before finalizing.
+   - **Self-preference guard**: don't add points because the paper uses wording/structure you happen to like — credit evidence only.
+   - **Reliability statement**: if a gold set of past O/M/H award papers exists, report directional agreement with human
+     scores (e.g. Cohen's κ) as calibration; otherwise state plainly "this is a single-model estimate, not human-calibrated".
 
 ## Output artifact `cases/<case>/artifacts/7_review.md`
 

@@ -24,6 +24,13 @@ You are the **solver**. You take the Modeler's model definitions and produce **n
 
 ## Tasks
 
+### 0. PoC Smoke Gate (on the Modeler's request, before a model is committed)
+
+Before a candidate model is finalized, run a **≤30-line minimal proof-of-concept**: confirm it executes without error
+and returns results of a sane order of magnitude. Pass → the Modeler commits the model; fail (won't run / won't
+converge / absurd magnitude) → report the failure so the Modeler switches methods. This is the gate that stops a
+"paper-only" model choice from reaching full solve. Then proceed to Solve.
+
 ### 1. Solve
 
 Execute the model using appropriate numerical methods:
