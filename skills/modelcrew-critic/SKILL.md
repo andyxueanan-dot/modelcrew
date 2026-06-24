@@ -174,6 +174,18 @@ anywhere".]
 sent back, and to whom.]
 ```
 
+## 🛑 CHECKPOINT · CP3 (after any ❌ verdict — conditional, hand the wheel to the human)
+
+**Only when at least one verdict is ❌**, after producing `5_audit.md`, **stop** and let the human decide the disposition
+(protocol: `references/human_checkpoints.md`):
+
+    🛑 CHECKPOINT · CP3 Disposition of a ❌ conclusion
+    - Falsified conclusion: __ (evidence: __)
+    - Two paths: (a) write it honestly into Limitations — honesty scores points (recommended, faster, on-brand);
+                 (b) send the stage back for rework (max 2 rounds)
+    - Risk if skipped: selling a ❌ claim as a headline = direct judge deduction; but some ❌ are worth one more attempt with a different method.
+    Reply: annotate honestly / rework (say which agent) / your call
+
 ## Iron Rules
 
 1. **Intercept the plausible-sounding-but-wrong**. Your value is catching conclusions that *sound* reasonable but *fail* under scrutiny. Better to over-flag than to let a bad conclusion through.

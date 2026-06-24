@@ -5,9 +5,10 @@
   <a href="README_EN.md"><img src="https://img.shields.io/badge/Language-English-d9241c?style=for-the-badge" alt="English"></a>
 </p>
 
-> A **reusable** multi-agent crew for math-modeling contests: `Router` reads any problem →
+> A **reusable** multi-agent crew / full modeling copilot for math-modeling contests: `Router` reads any problem →
 > **summons the right specialists** (analyst / data / modeler / solver) → a skeptic ⭐`Critic`
-> **interrogates every conclusion** adversarially → `Writer` produces the report.
+> **interrogates every conclusion** adversarially → `Writer` produces the report (**incl. a LaTeX submission**)
+> → `Judge` **scores the whole paper like a referee**; with **4 human-in-the-loop checkpoints** along the way.
 > **Swap in a new problem and reuse it as-is — not a single line of the crew changes.**
 
 Built for the **QoderWork CN Contest · Track 8 "Multi-Agent Orchestration Challenge"**.
@@ -22,11 +23,12 @@ ModelCrew's agents are defined by the **modeling *workflow***, not by **any sing
 framework stays untouched when the problem changes:
 
 ```
-                          ┌──────────────────────────────────────────┐
-  New problem + data ───▶ │  @ModelCrew suite (already installed)     │ ───▶  paper + anti-hallucination audit
-                          │  Router→Analyst→Scout→Modeler→Solver      │
-                          │         →⭐Critic→Writer (definition fixed)│
-                          └──────────────────────────────────────────┘
+                          ┌──────────────────────────────────────────────────┐
+  New problem + data ───▶ │  @ModelCrew suite (already installed)             │ ───▶  LaTeX paper + audit + referee score
+                          │  Router→Analyst→Scout→Modeler→Solver              │
+                          │     →⭐Critic→Writer(+LaTeX)→Judge (definition fixed)│
+                          │     ↑ 4 🛑 human checkpoints along the way          │
+                          └──────────────────────────────────────────────────┘
 ```
 
 **Reuse takes 3 steps — you never touch the crew definition:**
@@ -37,14 +39,14 @@ framework stays untouched when the problem changes:
 | 2️⃣ Summon | Tell `@ModelCrew` to "route this problem" | one sentence |
 | 3️⃣ Run | Router classifies, summons specialists, Critic gates, Writer drafts | **0 lines of code** |
 
-> **Why it's reusable**: the 7 roles abstract the *generic* modeling actions — read the problem,
-> profile the data, pick a model, solve, interrogate, write — decoupled from any specific contest.
+> **Why it's reusable**: the 8 roles abstract the *generic* modeling actions — read the problem,
+> profile the data, pick a model, solve, interrogate, write, score — decoupled from any specific contest.
 > Problem-agnostic ⟹ plug-and-play.
 >
-> ⚠️ **Honest note**: the diagram is the *full* 7-role roster, but the Router **tailors the actual
-> dispatch by problem type** — not every problem summons all 7. Data-type (C) runs
-> Analyst→Scout→Modeler→Solver→Critic→Writer; **optimization-type (B) auto-switches** to
-> Analyst→Modeler→Solver→Critic→Writer (no heavy Scout). This "swap the chain by problem type" is
+> ⚠️ **Honest note**: the diagram is the *full* 8-role roster, but the Router **tailors the actual
+> dispatch by problem type** — not every problem summons all of them. Data-type (C) runs
+> Analyst→Scout→Modeler→Solver→Critic→Writer→Judge; **optimization-type (B) auto-switches** to
+> Analyst→Modeler→Solver→Critic→Writer→Judge (no heavy Scout). This "swap the chain by problem type" is
 > already exercised on **both** a data-type and an optimization-type problem below (see `agents/0_router.md`).
 
 ### ✅ Reusability proven across three cases and two problem types
@@ -60,9 +62,24 @@ framework stays untouched when the problem changes:
 
 ---
 
+## 🚀 From "produce a report" to "a full modeling copilot"
+
+ModelCrew now covers the whole pipeline — **get the problem → ramp up → model & solve → LaTeX paper → referee score** — with **4 human-decision checkpoints** in between:
+
+| New capability | What it is | Landed evidence |
+|---|---|---|
+| 📝 **LaTeX submission** | Writer gains a LaTeX mode: `6_paper.md` (content truth) → fill template → `6_paper.tex`; MCM + CUMCM templates | tennis `6_paper.tex` **really compiled to a 6-page PDF via MiKTeX** (`cases/2024_mcm_c_tennis/artifacts/6_paper.pdf`) |
+| ⚖️ **Judge (8th role)** | simulates a time-pressured referee, scores the whole paper against `rubrics.md` + estimated award (unofficial) + single highest-ROI fix; realizes the previously-dormant L3 panel | tennis `7_review.md`: total ≈75/100, est. H–M, weakest dim = innovation |
+| 🛑 **4 human checkpoints** | pause after problem-reading / model-choice / a Critic ❌ / the judge score, to confirm or add judgment (can switch to `/grill-me`-style interrogation) | protocol `references/human_checkpoints.md`; sample `cases/.../checkpoints_log.md` |
+
+> **Judge ≠ Critic**: the Critic owns *is it correct* (✅/⚠️/❌ gate during the run); the Judge owns *how many points / what award* (terminal scoring).
+> The checkpoints embody the positioning — ModelCrew is a **copilot**: the reusable workflow runs itself, the **key judgments stay with the human**.
+
+---
+
 ## ✨ Highlights
 
-- **Reusable framework**: 7 AI roles packaged as an expert suite — swap the problem, reuse across contests (see 🔁 above).
+- **Reusable framework**: 8 AI roles (incl. ⚖️ Judge) packaged as an expert suite — swap the problem, reuse across contests (see 🔁 above).
 - ⭐**Anti-hallucination Critic**: adversarial per-conclusion audit + a three-way debate verdict — in the tennis demo it ruled "momentum is real" ❌ (the classic statistical *hot-hand fallacy*).
 - **Real validation + reproducible**: 348 lines of Python, genuine statistical tests (Wald-Wolfowitz runs test / conditional permutation / logistic regression), one-command repro with `seed=42`.
 - **Two rounds of cross-validation**: an independent AI + Codex review caught and fixed a statistical flaw (a no-op "server-adjusted" test); confirmed with a test that *truly* controls for serve — conclusion unchanged and stronger.
@@ -85,7 +102,7 @@ Both scripts fix `seed=42`; the printed numbers should match the JSON and the pa
 ```bash
 # Number traceability: every number cited in the papers traces back to a script output;
 # flags STALE if a source script/data is newer than the results.
-python tools/check_frozen.py        # currently 17/17 consistent
+python tools/check_frozen.py        # currently 24/24 consistent
 ```
 > Each case's `artifacts/frozen_numbers.json` is the **single source of truth** for the paper's numbers;
 > `check_frozen.py` auto-verifies "frozen == script output" and warns when `solve.py`/data changed —
@@ -97,29 +114,30 @@ python tools/check_frozen.py        # currently 17/17 consistent
 
 | Tool | Works? | How |
 |---|---|---|
-| **Qoder** (native, tested) | ✅ easiest | 7 `SKILL.md` files = 7 skills → bundled into an expert suite; call skills with `/`, summon the crew with `@` |
-| **Claude Code** (ported + verified) | ✅ verified | 7 subagents in [`.claude/agents/`](.claude/agents/), end-to-end smoke test passed ([log](.claude/agents/VERIFICATION.md)) |
+| **Qoder** (native, tested) | ✅ easiest | 8 `SKILL.md` files = 8 skills → bundled into an expert suite; call skills with `/`, summon the crew with `@` |
+| **Claude Code** (ported + verified) | ✅ verified | 8 subagents in [`.claude/agents/`](.claude/agents/), end-to-end smoke test passed ([log](.claude/agents/VERIFICATION.md)) |
 | **Codex CLI** | ⚠️ possible, more manual | no "named-subagent suite" mechanism; put the roles in `AGENTS.md` and drive Router→…→Writer step by step via prompts |
 | **Any LLM chat** | ⚠️ most bare-bones | use each `agents/*.md` as a system prompt and relay role by role manually |
 
-> In short: **the submitted version is the Qoder one**; but since the core is just "roles + workflow + Critic gate" in Markdown, **it has been replicated and verified in Claude Code** (see [`.claude/agents/`](.claude/agents/): 7 subagents + format check + an end-to-end smoke test where the Critic correctly ruled "hot-hand exists" as ❌ on a mini problem). Qoder's value is packaging "skills / suites / subagents" into a one-click-install product you summon with a single `@`.
+> In short: **the submitted version is the Qoder one**; but since the core is just "roles + workflow + Critic gate" in Markdown, **it has been replicated and verified in Claude Code** (see [`.claude/agents/`](.claude/agents/): 8 subagents + format check + an end-to-end smoke test where the Critic correctly ruled "hot-hand exists" as ❌ on a mini problem). Qoder's value is packaging "skills / suites / subagents" into a one-click-install product you summon with a single `@`.
 
 ## Directory layout
 
 ```
 qoder/
 ├── PLAN.md                  # master plan (framework / demos / timeline / checklist)
-├── agents/                  # ★ 7-role source briefs (0_router … 6_writer, problem-agnostic)
-├── skills/                  # 7 modelcrew-* skills (Qoder SKILL.md backups)
-│   └── modelcrew-{router,analyst,scout,modeler,solver,critic,writer}/SKILL.md
-├── references/              # 6 reference assets (model_catalog/anti_patterns/rubrics/
-│                            #   feedback_layers/writing_templates/related_work)
+├── agents/                  # ★ 8-role source briefs (0_router … 6_writer + 7_judge, problem-agnostic)
+├── skills/                  # 8 modelcrew-* skills (Qoder SKILL.md backups)
+│   └── modelcrew-{router,analyst,scout,modeler,solver,critic,writer,judge}/SKILL.md
+├── templates/               # ★ LaTeX paper templates (MCM mcm_ / CUMCM cumcm_ + placeholder spec)
+├── references/              # reference assets (model_catalog/anti_patterns/rubrics/feedback_layers/
+│                            #   writing_templates/related_work/human_checkpoints)
 ├── cases/
-│   ├── 2024_mcm_c_tennis/      # demo 1: tennis momentum (data-type / sports)
+│   ├── 2024_mcm_c_tennis/      # demo 1: tennis momentum (data-type / sports) ★incl. 6_paper.tex/.pdf + 7_review.md
 │   ├── credit_default_fintech/ # demo 2: credit-card default (data-type / finance)
 │   └── 2024_logistics_siting/  # demo 3: emergency depot siting (optimization-type / OR)
 ├── tools/check_frozen.py    # number-traceability check (paper numbers ↔ script output, 24/24)
-├── .claude/agents/          # 7 roles ported to Claude Code subagents (end-to-end verified)
+├── .claude/agents/          # 8 roles ported to Claude Code subagents (end-to-end verified)
 └── submission/              # 实践文档.md + forum_post.md + 演示视频脚本.md
 ```
 

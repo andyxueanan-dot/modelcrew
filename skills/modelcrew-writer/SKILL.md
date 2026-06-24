@@ -117,6 +117,19 @@ The Critic's audit is **not a secret to hide** — it is intellectual honesty th
 
 4. **Don't write what wasn't done.** If a sub-question was not fully addressed, say so in the conclusion and suggest future work. Fabricating results is an automatic disqualification.
 
+## LaTeX Output Mode (submission artifact)
+
+`6_paper.md` is the **content source of truth**. Once it is final, generate the typeset `6_paper.tex` by competition type:
+- MCM/ICM → `templates/mcm_paper_template.tex`; CUMCM → `templates/cumcm_paper_template.tex`.
+- Fill the template placeholders (`%%TITLE%% / %%SUMMARY%% / %%SEC_MODEL%%`, etc.; conventions in `templates/README.md`)
+  with section content — **swap content only, never touch the layout skeleton**. This decouples content from typesetting,
+  so reusing the framework on a new problem needs zero layout changes.
+- Every number in the paper comes from `frozen_numbers.json`, identical to the `.md` — **never invent a second value**.
+- If a TeX distribution is installed, `latexmk -pdf 6_paper.tex` produces the PDF; otherwise deliver the `.tex` source
+  and state honestly that it was "not compiled".
+
+Output artifacts: `cases/<case>/artifacts/6_paper.md` (content) **and** `cases/<case>/artifacts/6_paper.tex` (submission).
+
 ## Reference Materials
 
 Consult these project reference files when present (e.g. in `references/`):

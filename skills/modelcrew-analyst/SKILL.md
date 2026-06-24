@@ -109,6 +109,17 @@ Flag anything that could mislead downstream agents:
 2. ...
 ```
 
+## 🛑 CHECKPOINT · CP1 (after analysis — hand the wheel to the human)
+
+After producing `1_analysis.md`, **stop** and emit a prominent block; wait for the user before continuing
+(protocol: `references/human_checkpoints.md`):
+
+    🛑 CHECKPOINT · CP1 Problem-reading confirmation
+    - Problem type: __; sub-questions extracted: Q1… / Q2… (required/bonus)
+    - Confirm: (1) is the type right? (2) any sub-question missed/extra? (3) do the key assumptions match reality?
+    - Risk if skipped: misreading the problem is the #1 point-killer — everything downstream is wasted if this is wrong.
+    Reply: confirm / revise (which item, how) / add
+
 ## Iron Rules
 
 1. **Your assumptions propagate to the entire team.** Every assumption must state "why we assume this" and "what breaks if it's wrong." No bare assumptions.

@@ -1,0 +1,160 @@
+%==============================================================================
+% ModelCrew 实证产物 · 2024 MCM Problem C（网球动量）投稿排版件
+%   由 modelcrew-writer 的 LaTeX 输出模式，从 6_paper.md（内容真相源）
+%   + frozen_numbers.json（数字真相源）填入 templates/mcm_paper_template.tex 生成。
+%   内容/数字均与 6_paper.md 同源。已用 MiKTeX pdflatex 编译通过 → 6_paper.pdf（6 页，无未定义引用）。
+%   复现：  pdflatex 6_paper.tex（跑两遍出目录/引用）   或   latexmk -pdf 6_paper.tex
+%==============================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Team \# 2400000 (demo)}
+\fancyhead[R]{Page \thepage\ of \pageref{LastPage}}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+
+\title{\vspace{-2.5em}\textbf{Momentum or Mirage? A Statistical Investigation of Winning Streaks in Tennis}}
+\author{}
+\date{}
+
+\begin{document}
+
+%------------------------------------------------------------------ Summary Sheet
+\thispagestyle{fancy}
+\fancyhead[C]{\textbf{Summary Sheet}}
+{\let\newpage\relax\maketitle}
+\vspace{-2em}
+
+\begin{center}\textbf{\large Summary}\end{center}
+\noindent
+Does ``momentum'' in professional tennis exist as a measurable, non-random force, or are winning streaks merely the inevitable product of chance? Using point-by-point data from 31 featured matches at the 2023 Wimbledon Championships (7{,}284 total points), we develop an EWMA-based momentum index, apply three independent randomness tests, and build a logistic regression model for momentum swings. Our results are unequivocal: the Wald--Wolfowitz runs test on the raw point sequence finds no systematic deviation from randomness across 31 matches (mean $Z = -0.986$; only $1/31$ survives Bonferroni correction). A genuine server-aware conditional permutation test that preserves the serve sequence (all 31 matches) confirms that winning streaks do not exceed random expectation ($0/31$ significant; min $p \approx 0.16$). Post-streak win rates ($0.43$--$0.50$ across streak lengths 3--6) match base rates precisely, providing no evidence for a ``hot-hand'' effect. Swing prediction achieves an AUC of only $0.529$, with the momentum coefficient paradoxically negative ($-0.524$), suggesting mean-reversion rather than momentum continuation. We conclude that the coach's skepticism is empirically justified: observed streaks in this dataset are statistically indistinguishable from random variation. These findings align with the hot-hand fallacy literature (Gilovich et al., 1985) while employing modern, unbiased statistical methods.
+
+\vspace{1em}
+\noindent\textbf{Keywords:} hot-hand fallacy; Wald--Wolfowitz runs test; conditional permutation; EWMA momentum index; mean reversion
+
+\newpage
+\fancyhead[C]{}
+\tableofcontents
+\newpage
+
+%------------------------------------------------------------------ Body
+\section{Introduction \& Problem Restatement}
+The 2024 MCM Problem C asks us to investigate ``momentum'' in tennis using point-by-point data from the 2023 Wimbledon Championships. Specifically, we must:
+\begin{enumerate}[label=(Q\arabic*)]
+  \item Build a model to quantify which player is performing better at any point in time.
+  \item Evaluate whether winning streaks and momentum shifts are real or random --- addressing a coach's claim that they are merely random fluctuations (the central question).
+  \item Predict momentum swings and identify contributing factors.
+  \item Assess the model's generalizability to other matches and sports.
+\end{enumerate}
+The fundamental tension is between the widely-held belief that ``momentum'' is a real psychological force, and the statistical literature on the hot-hand fallacy suggesting that humans systematically misperceive random clusters as meaningful patterns.
+
+\section{Assumptions and Justifications}
+\begin{description}
+  \item[A1.] Momentum can be operationalized as a smoothed function of recent point outcomes. We assume its behavioral manifestation is captured by recent performance differentials.
+  \item[A2.] Point outcomes are conditionally independent given observable features (server, score state). This is the null hypothesis that Q2 directly tests.
+  \item[A3.] The 31 featured matches are representative of Wimbledon-level play, though they may be biased toward closer, more dramatic matches.
+  \item[A4.] Server identity is the dominant factor in point outcomes. We use a global server win rate ($p = 0.673$) as the baseline adjustment.
+  \item[A5.] A ``swing'' is a sign change in the momentum index exceeding $0.02$ within a 10-point window.
+  \item[A6.] The permutation null model preserves marginal probabilities while destroying temporal structure.
+\end{description}
+
+\section{Notation}
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+Symbol & Meaning \\
+\midrule
+$y_t$ & indicator that player 1 wins point $t$ \\
+$r_t$ & server-adjusted residual at point $t$ \\
+$e_t$ & EWMA momentum index at point $t$ \\
+$\alpha$ & EWMA smoothing factor ($\alpha = 0.1$) \\
+$Z$ & Wald--Wolfowitz runs-test statistic \\
+$p$ & permutation / significance $p$-value \\
+AUC & area under the ROC curve (swing prediction) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Model Development}
+\subsection{EWMA Momentum Index (Q1)}
+We define a server-adjusted momentum index using an Exponentially Weighted Moving Average. For each point $t$, the residual is
+\[
+  r_t = y_t - \mathbb{E}[y_t \mid \text{server}_t],
+\]
+where $y_t = 1$ if player 1 wins the point, and $\mathbb{E}[y_t \mid \text{server}_t] = 0.673$ if player 1 is serving, or $0.327$ if player 2 is serving. The momentum index is
+\[
+  e_t = \alpha\, r_t + (1-\alpha)\, e_{t-1}, \qquad \alpha = 0.1 .
+\]
+Positive values indicate player 1 is performing above expectation; negative values favor player 2.
+
+\subsection{Randomness Test Battery (Q2)}
+We employ three complementary tests. (i) \textbf{Wald--Wolfowitz runs test}: for each match we count the number of ``runs'' in the binary point-winner sequence; under the i.i.d.\ null the expected runs and variance are known exactly, and a $Z$-test assesses deviation. If hot-hand effects exist we expect \emph{fewer} runs ($Z > 0$). (ii) \textbf{Permutation baseline}: within each match we shuffle point outcomes $10{,}000$ times, preserving the marginal win rate but destroying temporal structure, and compare the count of streaks of length $\geq 5$. (iii) \textbf{Post-streak win rate}: after any streak of length $k\in\{3,4,5,6\}$ we compute the probability the streak player wins the next point, stratified into serving and returning conditions.
+
+\subsection{Swing Prediction Model (Q3)}
+We construct a logistic regression with 5 engineered features: current momentum index, momentum velocity (5-point change), signed streak length, cumulative score differential, and server indicator. Swing labels are sign changes in the momentum index within a forward 10-point window. Train/test split is $70/30$ at the \emph{match} level (21 training, 10 test matches) to prevent data leakage.
+
+\section{Solution and Results}
+\subsection{Q1: Momentum Visualization}
+The EWMA index was computed for all 31 matches. Visual inspection (e.g.\ Alcaraz vs.\ Jarry, match 1301) shows the index tracking game and set transitions. We note $\alpha = 0.1$ was selected heuristically; a sensitivity sweep ($\alpha \in \{0.05, 0.1, 0.2, 0.3\}$) is discussed in Section~6.
+
+\subsection{Q2: Randomness Tests --- The Core Finding}
+\textbf{Runs test.} Across 31 matches the mean $Z$-statistic is $-0.986$ (SD $=1.002$). After Bonferroni correction ($\alpha = 0.0016$) only $1$ match (1408, $Z = -3.44$, $p = 0.000584$) remains significant, within the expected false-positive rate under the null. Crucially, the negative mean $Z$ indicates \emph{more} runs than expected --- a slight tendency toward alternation, the \emph{opposite} of hot-hand clustering.
+
+\textbf{Permutation test.} For representative matches the observed count of streaks $\geq 5$ never significantly exceeds the shuffled baseline ($p$-values $0.991, 0.589, 0.073, 0.212, 0.330$). A genuine server-aware conditional permutation that preserves the serve sequence finds $0/31$ matches significant (min $p \approx 0.156$). Long winning streaks are entirely consistent with random chance.
+
+\textbf{Post-streak win rates.} After streaks of length 3 ($n = 2{,}016$), the next-point win rate is $0.499$; for lengths 4, 5, 6 the rates are $0.429, 0.427, 0.462$ --- all at or below $0.50$. Stratifying by server, post-streak serving rates ($0.69$--$0.77$) match the global server rate ($0.673$); returning rates ($0.28$--$0.35$) match the global return rate ($0.327$). No detectable hot-hand effect.
+
+\subsection{Q3: Swing Prediction}
+The logistic model achieves AUC $= 0.529$ on the held-out test set ($n = 1{,}899$), barely above the chance baseline $0.5$. The most informative feature is the momentum index, but with a \emph{negative} coefficient ($-0.524$), indicating that high momentum predicts a swing \emph{against} the current leader --- consistent with mean-reversion rather than momentum continuation.
+
+\subsection{Q4: Generalizability}
+Our analysis is confined to 31 men's singles matches from a single grass-court Grand Slam. Any claim of generalizability would be speculative; we report it as a hypothesis for future work, noting consistency with the broader hot-hand fallacy literature.
+
+\section{Sensitivity Analysis}
+The EWMA parameter $\alpha$ controls memory length (effective window $\approx 1/\alpha$). Our qualitative conclusions (no hot-hand, streaks $\approx$ random) are robust to $\alpha$ because the runs test and permutation test operate on the raw point sequence, \emph{independent of} $\alpha$. The swing model's near-chance AUC is likewise robust given the fundamental absence of signal.
+
+\medskip
+\noindent\textbf{Correction (via Codex cross-validation).} The original ``server-adjusted'' runs test was a no-op --- binarizing the residual reproduces the raw sequence, so it did \emph{not} control for serving. Genuine server control comes from (a) the conditional permutation null preserving the serve sequence ($0/31$ significant, min $p \approx 0.156$, all 31 matches) and (b) post-streak win rates split by serve/return. Both confirm no hot-hand. See \texttt{CORRECTION\_serveaware.md}.
+
+\section{Model Evaluation}
+\textbf{Strengths.} The multi-test approach (runs test $+$ permutation $+$ post-streak) provides converging evidence from independent methodologies. Match-level train/test splitting prevents leakage. Bonferroni correction addresses multiple comparisons. Honest reporting of null findings is scientifically more valuable than a fabricated positive result.
+
+\textbf{Limitations (incorporating the anti-hallucination Critic audit, \texttt{5\_audit.md}).} The Critic's adversarial three-party debate falsified the ``momentum is real'' hypothesis (verdict C2 \(\boldsymbol{\times}\)): three independent tests agree, and the runs-test mean $Z = -0.986$ points the \emph{opposite} way. The only positively supported finding is C4 (\checkmark): after controlling for serve, the hot-hand effect is undetectable, backed by the large $n=2{,}016$ post-streak sample. The EWMA tracking claim (C1) is marked \emph{questionable} --- a reasonable descriptive tool but with an unoptimized $\alpha$. Server control uses global rather than player-specific serve rates. Only 31 matches from one tournament are analyzed; swing prediction (C5) and cross-sport generalization (C6) were tested and found unsupported, and are reported as such rather than as results.
+
+\textbf{Comparison with literature.} Our findings align with Gilovich, Vallone \& Tversky (1985). Miller \& Sanjurjo (2018) showed the original GVT test was biased against detecting hot-hand; our runs and permutation tests are not subject to this bias, which strengthens the null conclusion.
+
+\section{Conclusion}
+The evidence from 7{,}284 points across 31 Wimbledon matches is clear: after controlling for server advantage, point-by-point sequences are statistically indistinguishable from random processes. Winning streaks occur at chance-predicted rates; post-streak performance shows no elevation above base rates; and swing prediction achieves only chance-level accuracy. The coach who claimed that ``streaks are just random'' is, based on this dataset, empirically correct. This does not mean psychological states have no effect --- only that any such effect is too small to detect in point-level outcomes with our methods and sample size. For practitioners: betting on a player because they are ``on a streak'' is not supported by the data.
+
+\begin{thebibliography}{9}
+\bibitem{gvt1985} Gilovich, T., Vallone, R., \& Tversky, A. (1985). The hot hand in basketball: On the misperception of random sequences. \emph{Cognitive Psychology}, 17(3), 295--314.
+\bibitem{ms2018} Miller, J. B., \& Sanjurjo, A. (2018). Surprised by the hot hand fallacy? A truth in the law of small numbers. \emph{Econometrica}, 86(6), 2019--2047.
+\bibitem{data} Wimbledon Championships 2023 point-by-point dataset (provided with MCM Problem C).
+\end{thebibliography}
+
+\appendix
+\section{Appendix}
+\begin{itemize}
+  \item \texttt{solve.py} --- full solver script with all computations ($\texttt{seed}=42$).
+  \item \texttt{solver\_results.json} --- machine-readable results summary (source of all frozen numbers).
+  \item \texttt{serveaware\_results.json} --- conditional permutation results ($0/31$ significant, min $p \approx 0.156$).
+  \item \texttt{runs\_test\_details.csv} --- per-match runs-test statistics.
+  \item \texttt{figures/fig1\_momentum\_example.png} --- EWMA visualization for match 1301.
+\end{itemize}
+
+\end{document}

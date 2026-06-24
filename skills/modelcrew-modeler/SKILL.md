@@ -119,6 +119,18 @@ Every conclusion must cite which assumptions it depends on (referencing Analyst'
 [Table from Task 3]
 ```
 
+## 🛑 CHECKPOINT · CP2 (after model selection — hand the wheel to the human)
+
+After producing `3_model.md`, **stop** and present **2–3 candidate models** with trade-offs for the human to decide
+(protocol: `references/human_checkpoints.md`). This is the human-facing counterpart of the Actor-Critic method selection above:
+
+    🛑 CHECKPOINT · CP2 Model choice
+    - Candidates: A=__ (pros/cons); B=__ (pros/cons); (C=__)
+    - My lean: __, because __
+    - You decide: which one? add any domain intuition / innovation (named variant, cross-disciplinary combo)?
+    - Risk if skipped: model choice is decisive and most reliant on domain experience; the wrong pick sends the Solver in the wrong direction.
+    Reply: pick A/B/C / change approach / add innovation
+
 ## Iron Rules
 
 1. **Never claim proof without audit.** Your conclusions are hypotheses until the Critic validates them. This is not modesty — it is methodological rigor.

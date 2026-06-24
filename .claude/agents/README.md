@@ -1,6 +1,6 @@
 # ModelCrew · Claude Code subagents 移植版
 
-把 ModelCrew 的 7 个角色（原为 Qoder 技能 / 专家套件）移植成 **Claude Code 原生子代理(subagents)**，证明本框架"内核与工具解耦、可移植"。
+把 ModelCrew 的 8 个角色（原为 Qoder 技能 / 专家套件）移植成 **Claude Code 原生子代理(subagents)**，证明本框架"内核与工具解耦、可移植"。
 
 ## 文件
 | 子代理 | name | 对应 Qoder 角色 |
@@ -11,13 +11,14 @@
 | `modelcrew-modeler.md` | `modelcrew-modeler` | Modeler 建模 |
 | `modelcrew-solver.md` | `modelcrew-solver` | Solver 求解 |
 | `modelcrew-critic.md` | `modelcrew-critic` | ⭐Critic 反幻觉评审（硬闸门） |
-| `modelcrew-writer.md` | `modelcrew-writer` | Writer 写作 |
+| `modelcrew-writer.md` | `modelcrew-writer` | Writer 写作（含 LaTeX 模式） |
+| `modelcrew-judge.md` | `modelcrew-judge` | ⚖️Judge 评委终局评分（落地 L3 Panel） |
 
 ## 怎么用（在 Claude Code 里）
 1. 这些文件位于项目级 `.claude/agents/`，**Claude Code 启动时自动注册**为可用子代理类型。
 2. 新建 `cases/<新题>/` 放题面 + 数据。
 3. 让 Claude Code：「用 `modelcrew-router` 给 `cases/<新题>/` 路由」→ 它判型并给出召唤顺序；
-   再按顺序调用 `modelcrew-analyst` → `modelcrew-scout` → `modelcrew-modeler` → `modelcrew-solver` → `modelcrew-critic` → `modelcrew-writer`。
+   再按顺序调用 `modelcrew-analyst` → `modelcrew-scout` → `modelcrew-modeler` → `modelcrew-solver` → `modelcrew-critic` → `modelcrew-writer` → `modelcrew-judge`（并在 CP1–CP4 卡点处停下请人拍板，见 `references/human_checkpoints.md`）。
 4. 每个子代理把工件写进 `cases/<新题>/artifacts/`，与 Qoder 版完全一致。
 
 > 与 Qoder 版的对应：Qoder「技能 SKILL.md」↔ Claude Code「subagent（带 frontmatter 的 .md）」；

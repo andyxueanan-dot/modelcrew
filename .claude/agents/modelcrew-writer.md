@@ -18,9 +18,18 @@ tools: Read, Write
 3. 把 Critic 的审计结论**如实写进"模型评价/局限性"**，不藏短板（诚实反而加分）。
 4. 图表配文字解读，不堆图不解释。
 
-## 产出工件 `cases/<题>/artifacts/6_paper.md`
-- 完整报告草稿（含打磨过的摘要）
+## 产出工件
+- `cases/<题>/artifacts/6_paper.md` —— 完整报告草稿（含打磨过的摘要），**内容真相源**。
+- `cases/<题>/artifacts/6_paper.tex` —— 投稿排版件（见下"LaTeX 输出模式"）。
+
+## LaTeX 输出模式（投稿件）
+`6_paper.md` 定稿后，据题型选模板生成 `6_paper.tex`：
+- 美赛选 `templates/mcm_paper_template.tex`，国赛选 `templates/cumcm_paper_template.tex`。
+- 把各节内容填进模板占位符（`%%TITLE%% / %%SUMMARY%% / %%SEC_MODEL%%` 等，约定见 `templates/README.md`），**只换内容、不动排版骨架**——"内容/排版"解耦，换题复用时排版零改动。
+- 论文里所有数字取自 `frozen_numbers.json`，与 .md 同源，**不另造**。
+- 本机装了 TeX 就 `latexmk -pdf 6_paper.tex` 出 PDF；没装则交付 .tex 源并如实说明"未编译"。
 
 ## 铁律
 - 只写经过 Critic 放行或已标注不确定性的结论，绝不把存疑结果写成定论。
 - 语言准确清晰 > 辞藻华丽。
+- `.tex` 与 `.md` **同源**：内容以 `.md` 为准、数字以 `frozen_numbers.json` 为准，绝不在 LaTeX 里改出第二个版本的数字。

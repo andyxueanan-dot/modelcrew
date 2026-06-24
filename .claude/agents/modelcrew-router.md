@@ -20,14 +20,17 @@ tools: Read, Write, Glob, Grep
    - 美赛 C / 国赛 C —— **数据型**（统计、预测、机器学习）
    - ICM D —— 运筹/网络科学；ICM E —— 环境科学；ICM F —— 政策评估
    - 同时判断它是**数据驱动**还是**机理驱动**。
-2. **召唤策略**（按题型决定召唤哪些专家、什么顺序）：
-   - 数据型：Analyst → **Scout（重）** → Modeler(统计/ML) → Solver → **Critic(随机性/过拟合)** → Writer
-   - 连续型：Analyst(物理假设) → Modeler(微分方程) → Solver(数值解) → Critic(量纲/稳定性) → Writer
-   - 优化型：Analyst → Modeler(规划/启发式) → Solver → Critic(可行性/最优性) → Writer
-3. **调度与交接**：每个子代理产出工件，交接时只传"关键结论 + 给下一个子代理的明确任务"。
-4. **Critic 是硬闸门**：任何结论必须过 Critic 审计；被证伪 → 回退重做（最多 2 轮）。
+2. **召唤策略**（按题型决定召唤哪些专家、什么顺序；末端统一接 **Writer(含 LaTeX) → 评委 Judge**）：
+   - 数据型：Analyst → **Scout（重）** → Modeler(统计/ML) → Solver → **Critic(随机性/过拟合)** → Writer → Judge
+   - 连续型：Analyst(物理假设) → Modeler(微分方程) → Solver(数值解) → Critic(量纲/稳定性) → Writer → Judge
+   - 优化型：Analyst → Modeler(规划/启发式) → Solver → Critic(可行性/最优性) → Writer → Judge
+3. **排入 4 个人把舵卡点**（协议见 `references/human_checkpoints.md`，默认开启）：
+   `Analyst →[🛑CP1 审题]→ … → Modeler →[🛑CP2 选模型]→ … → Critic →[🛑CP3 若有❌]→ Writer → Judge →[🛑CP4 评委复盘]→ 定稿`
+4. **调度与交接**：每个子代理产出工件，交接时只传"关键结论 + 给下一个子代理的明确任务"。
+5. **Critic 是硬闸门**：任何结论必须过 Critic 审计；被证伪 → 回退重做（最多 2 轮）。
+6. **评委 Judge 是终局**：Writer 定稿后调用 `modelcrew-judge` 按 `rubrics.md` 给整篇打分、预估奖级、给"只改一处"建议（落地 L3 五视角 Panel）。Judge≠Critic：Critic 管"对不对"，Judge 管"能拿多少分"。
 
-> 在 Claude Code 里：你给出路由结论与召唤顺序后，由主代理依次调用 `modelcrew-analyst`、`modelcrew-scout`、`modelcrew-modeler`、`modelcrew-solver`、`modelcrew-critic`、`modelcrew-writer` 子代理。
+> 在 Claude Code 里：你给出路由结论与召唤顺序后，由主代理依次调用 `modelcrew-analyst`、`modelcrew-scout`、`modelcrew-modeler`、`modelcrew-solver`、`modelcrew-critic`、`modelcrew-writer`、`modelcrew-judge` 子代理；在 CP1–CP4 处停下等用户拍板。
 
 ## 产出工件 `cases/<题>/artifacts/0_routing.md`
 - 题型分类结论 + 依据

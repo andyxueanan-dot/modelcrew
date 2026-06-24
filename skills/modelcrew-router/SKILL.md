@@ -53,20 +53,28 @@ State your classification explicitly with **evidence** (quote from the problem).
 
 Based on classification, decide which agents to invoke and in what order. Standard templates:
 
+All paths end uniformly with **Writer (incl. LaTeX) → Judge (final scoring)**.
+
 **Data-driven path**:
 ```
-Analyst → Scout (heavy) → Modeler (stats/ML) → Critic (randomness/overfitting) → Writer
+Analyst → Scout (heavy) → Modeler (stats/ML) → Solver → Critic (randomness/overfitting) → Writer → Judge
 ```
 
 **Continuous / mechanism path**:
 ```
-Analyst (physics assumptions) → Modeler (ODEs/PDEs) → Solver (numerical) → Critic (dimensions/stability) → Writer
+Analyst (physics assumptions) → Modeler (ODEs/PDEs) → Solver (numerical) → Critic (dimensions/stability) → Writer → Judge
 ```
 
 **Optimization path**:
 ```
-Analyst → Modeler (LP/IP/heuristics) → Solver → Critic (feasibility/optimality) → Writer
+Analyst → Modeler (LP/IP/heuristics) → Solver → Critic (feasibility/optimality) → Writer → Judge
 ```
+
+**Human checkpoints (4, on by default)** — protocol in `references/human_checkpoints.md`:
+```
+Analyst →[🛑CP1 problem-reading]→ … → Modeler →[🛑CP2 model choice]→ … → Critic →[🛑CP3 if any ❌]→ Writer → Judge →[🛑CP4 judge debrief]→ finalize
+```
+Checkpoints are soft pauses: the user "confirms" to proceed or "revises" (diff-only).
 
 **Hybrid / multi-part problems**: combine paths. A single problem may need Scout for part (a) and ODE Modeler for part (b).
 
@@ -90,6 +98,13 @@ The Critic agent (`modelcrew-critic`) is a **hard gate** — every conclusion mu
 - **Any ❌ Falsified** → Route back to Modeler (or Solver) for remediation
 
 **Maximum 2 rework rounds**. After 2 rounds, if a conclusion still cannot stand, mark it as unresolved and instruct the Writer to disclose it transparently. Do not loop indefinitely.
+
+### Step 5: Judge (Final Scoring)
+
+After the Writer finalizes the paper, invoke `modelcrew-judge` to score the **whole paper** against `references/rubrics.md`
+(per-dimension scores + weighted total + estimated award tier + single highest-leverage fix). This realizes the L3
+five-perspective panel. **Judge ≠ Critic**: the Critic owns *is it correct* (✅/⚠️/❌ gate during the pipeline);
+the Judge owns *how many points / what award* (terminal grading). The Judge does not re-audit. End at checkpoint CP4.
 
 ## Output Artifacts
 

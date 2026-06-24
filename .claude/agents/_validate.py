@@ -34,7 +34,7 @@ def parse_frontmatter(text):
 EXPECTED = [
     'modelcrew-router', 'modelcrew-analyst', 'modelcrew-scout',
     'modelcrew-modeler', 'modelcrew-solver', 'modelcrew-critic',
-    'modelcrew-writer',
+    'modelcrew-writer', 'modelcrew-judge',
 ]
 
 def main():
@@ -71,7 +71,7 @@ def main():
     missing = [n for n in EXPECTED if n not in found_names]
     if missing:
         print('缺少预期子代理:', missing)
-    print(f'结果: {len(oks)}/{len(files)} 通过；预期 7 个角色，'
+    print(f'结果: {len(oks)}/{len(files)} 通过；预期 8 个角色，'
           f'实到 {len(found_names & set(EXPECTED))} 个')
     sys.exit(1 if (errors or missing) else 0)
 

@@ -1,0 +1,79 @@
+%==============================================================================
+% ModelCrew · CUMCM 国赛论文模板（中文，ctex，自包含）
+%   编译：  latexmk -xelatex 6_paper.tex   （含中文，建议 XeLaTeX）
+%   若本机装有官方 cumcmthesis.cls，可把 \documentclass 换成：
+%       \documentclass{cumcmthesis}
+%   占位符约定见 templates/README.md —— Writer 只替换 %%...%% 内容，不动排版骨架。
+%   注意：国赛真实提交需"承诺书 + 编号页"，下方 %%COMMITMENT%% 为占位，按当年官方模板替换。
+%==============================================================================
+\documentclass[12pt,a4paper]{ctexart}
+
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{titlesec}
+\usepackage{abstract}
+\usepackage[hidelinks]{hyperref}
+
+\title{\textbf{%%TITLE%%}}
+\author{}
+\date{}
+
+\begin{document}
+
+%------------------------------------------------------------------ 承诺页（占位）
+% 国赛要求的"诚信承诺书"，按当年官方模板替换本段
+\thispagestyle{empty}
+\noindent %%COMMITMENT%%
+\newpage
+
+%------------------------------------------------------------------ 摘要页
+\maketitle
+\vspace{-2em}
+\begin{center}\textbf{\large 摘\quad 要}\end{center}
+\noindent
+%%SUMMARY%%
+
+\vspace{1em}
+\noindent\textbf{关键词：} %%KEYWORDS%%
+
+\newpage
+\tableofcontents
+\newpage
+
+%------------------------------------------------------------------ 正文
+\section{问题重述}
+%%SEC_RESTATE%%
+
+\section{问题分析与基本假设}
+%%SEC_ASSUMPTIONS%%
+
+\section{符号说明}
+%%SEC_NOTATION%%
+
+\section{模型的建立}
+%%SEC_MODEL%%
+
+\section{模型的求解与结果}
+%%SEC_SOLUTION%%
+
+\section{灵敏度分析}
+%%SEC_SENSITIVITY%%
+
+\section{模型的评价}
+% 优点 / 局限（如实写入 Critic 审计的 ⚠️/❌）/ 改进方向
+%%SEC_EVALUATION%%
+
+\section{结论}
+%%SEC_CONCLUSION%%
+
+\begin{thebibliography}{9}
+%%REFERENCES%%
+\end{thebibliography}
+
+\appendix
+\section{附录}
+%%APPENDIX%%
+
+\end{document}

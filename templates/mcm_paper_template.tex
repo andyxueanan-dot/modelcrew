@@ -1,0 +1,92 @@
+%==============================================================================
+% ModelCrew · MCM/ICM 论文模板（自包含，标准宏包，无需 mcmthesis.cls 即可编译）
+%   编译：  latexmk -pdf 6_paper.tex      或      pdflatex 6_paper.tex
+%   若本机装有官方 mcmthesis.cls，可把下面的 \documentclass 换成：
+%       \documentclass{mcmthesis}\mcmsetup{CTeX=false, tcn=2400000, problem=C}
+%   占位符约定见 templates/README.md —— Writer 只替换 %%...%% 内容，不动排版骨架。
+%==============================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{abstract}
+
+% 页眉：队号 + 题号（MCM 风格）
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{Team \# %%TEAM%%}
+\fancyhead[R]{Page \thepage\ of \pageref{LastPage}}
+\usepackage{lastpage}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.6em}{}
+
+\title{\vspace{-2.5em}\textbf{%%TITLE%%}}
+\author{}
+\date{}
+
+\begin{document}
+
+%------------------------------------------------------------------ Summary Sheet
+% MCM 摘要单独成页，是评审第一眼、最影响档次的部分
+\thispagestyle{fancy}
+\fancyhead[C]{\textbf{Summary Sheet}}
+{\let\newpage\relax\maketitle}
+\vspace{-2em}
+
+\begin{center}\textbf{\large Summary}\end{center}
+\noindent
+%%SUMMARY%%
+
+\vspace{1em}
+\noindent\textbf{Keywords:} %%KEYWORDS%%
+
+\newpage
+\fancyhead[C]{}
+\tableofcontents
+\newpage
+
+%------------------------------------------------------------------ Body
+\section{Introduction \& Problem Restatement}
+%%SEC_RESTATE%%
+
+\section{Assumptions and Justifications}
+%%SEC_ASSUMPTIONS%%
+
+\section{Notation}
+%%SEC_NOTATION%%
+
+\section{Model Development}
+%%SEC_MODEL%%
+
+\section{Solution and Results}
+%%SEC_SOLUTION%%
+
+\section{Sensitivity Analysis}
+%%SEC_SENSITIVITY%%
+
+\section{Model Evaluation}
+% 优点 / 局限（如实写入 Critic 审计的 ⚠️/❌）/ 改进方向
+%%SEC_EVALUATION%%
+
+\section{Conclusion}
+%%SEC_CONCLUSION%%
+
+\begin{thebibliography}{9}
+%%REFERENCES%%
+\end{thebibliography}
+
+\appendix
+\section{Appendix}
+%%APPENDIX%%
+
+\end{document}
