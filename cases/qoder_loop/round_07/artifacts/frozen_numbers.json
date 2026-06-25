@@ -1,0 +1,140 @@
+{
+  "numbers": [
+    {
+      "id": "n_facilities",
+      "label": "Number of candidate facilities",
+      "value": 8,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "n_markets",
+      "label": "Number of markets",
+      "value": 12,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "total_demand",
+      "label": "Total demand",
+      "value": 1770,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "budget",
+      "label": "Budget",
+      "value": 3000,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "opt_k",
+      "label": "Optimal number of facilities",
+      "value": 4,
+      "tol": 0,
+      "source": "enumeration",
+      "path": "q1"
+    },
+    {
+      "id": "opt_build_cost",
+      "label": "Optimal build cost",
+      "value": 2700.0,
+      "tol": 1,
+      "source": "enumeration",
+      "path": "q1"
+    },
+    {
+      "id": "opt_transport",
+      "label": "Optimal transport cost",
+      "value": 218.81,
+      "tol": 0.1,
+      "source": "enumeration",
+      "path": "q1"
+    },
+    {
+      "id": "opt_total_cost",
+      "label": "Optimal total cost",
+      "value": 2918.81,
+      "tol": 0.1,
+      "source": "enumeration",
+      "path": "q1"
+    },
+    {
+      "id": "n_feasible",
+      "label": "Number of feasible solutions",
+      "value": 31,
+      "tol": 0,
+      "source": "enumeration",
+      "path": "q1"
+    },
+    {
+      "id": "budget2",
+      "label": "Budget (Q2)",
+      "value": 2500,
+      "tol": 0,
+      "source": "input",
+      "path": "q2"
+    },
+    {
+      "id": "opt_no_f1_total",
+      "label": "Optimal cost (no F1)",
+      "value": 2918.81,
+      "tol": 0.1,
+      "source": "enumeration",
+      "path": "q3"
+    },
+    {
+      "id": "cost_increase_no_f1",
+      "label": "Cost increase (no F1)",
+      "value": 0.0,
+      "tol": 0.1,
+      "source": "calculated",
+      "path": "q3"
+    },
+    {
+      "id": "rank1_total_cost",
+      "label": "Rank 1 total cost",
+      "value": 2918.81,
+      "tol": 0.1,
+      "source": "enumeration",
+      "path": "ranking"
+    },
+    {
+      "id": "rank2_total_cost",
+      "label": "Rank 2 total cost",
+      "value": 2950.95,
+      "tol": 0.1,
+      "source": "enumeration",
+      "path": "ranking"
+    },
+    {
+      "id": "rank3_total_cost",
+      "label": "Rank 3 total cost",
+      "value": 2975.95,
+      "tol": 0.1,
+      "source": "enumeration",
+      "path": "ranking"
+    },
+    {
+      "id": "rank4_total_cost",
+      "label": "Rank 4 total cost",
+      "value": 2976.78,
+      "tol": 0.1,
+      "source": "enumeration",
+      "path": "ranking"
+    },
+    {
+      "id": "rank5_total_cost",
+      "label": "Rank 5 total cost",
+      "value": 3000.97,
+      "tol": 0.1,
+      "source": "enumeration",
+      "path": "ranking"
+    }
+  ]
+}
