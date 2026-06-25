@@ -1,0 +1,172 @@
+{
+  "numbers": [
+    {
+      "id": "shortest_S1_T1",
+      "label": "Shortest path time S1->T1",
+      "value": 15,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "shortest_S1_T2",
+      "label": "Shortest path time S1->T2",
+      "value": 17,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "shortest_S1_T3",
+      "label": "Shortest path time S1->T3",
+      "value": 17,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "shortest_S2_T1",
+      "label": "Shortest path time S2->T1",
+      "value": 16,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "shortest_S2_T2",
+      "label": "Shortest path time S2->T2",
+      "value": 12,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "shortest_S2_T3",
+      "label": "Shortest path time S2->T3",
+      "value": 9,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "shortest_S3_T1",
+      "label": "Shortest path time S3->T1",
+      "value": 21,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "shortest_S3_T2",
+      "label": "Shortest path time S3->T2",
+      "value": 11,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "shortest_S3_T3",
+      "label": "Shortest path time S3->T3",
+      "value": 9,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "solve.py"
+    },
+    {
+      "id": "k_path_1_time",
+      "label": "K-shortest path 1 time S1->T1",
+      "value": 15,
+      "tol": 0,
+      "source": "yen_k_shortest",
+      "path": "solve.py"
+    },
+    {
+      "id": "k_path_2_time",
+      "label": "K-shortest path 2 time S1->T1",
+      "value": 15,
+      "tol": 0,
+      "source": "yen_k_shortest",
+      "path": "solve.py"
+    },
+    {
+      "id": "k_path_3_time",
+      "label": "K-shortest path 3 time S1->T1",
+      "value": 15,
+      "tol": 0,
+      "source": "yen_k_shortest",
+      "path": "solve.py"
+    },
+    {
+      "id": "max_flow_S1_T1",
+      "label": "Max flow S1->T1",
+      "value": 380,
+      "tol": 0,
+      "source": "edmonds_karp",
+      "path": "solve.py"
+    },
+    {
+      "id": "max_flow_all",
+      "label": "Max flow all sources to all sinks",
+      "value": 1800,
+      "tol": 0,
+      "source": "edmonds_karp",
+      "path": "solve.py"
+    },
+    {
+      "id": "vertex_connectivity_kappa",
+      "label": "Vertex connectivity kappa",
+      "value": 2,
+      "tol": 0,
+      "source": "vertex_connectivity",
+      "path": "solve.py"
+    },
+    {
+      "id": "edge_connectivity_lambda",
+      "label": "Minimum edge connectivity lambda",
+      "value": 1,
+      "tol": 0,
+      "source": "edge_connectivity",
+      "path": "solve.py"
+    },
+    {
+      "id": "failure_M1_disconnected",
+      "label": "Disconnected pairs when M1 fails",
+      "value": 0,
+      "tol": 0,
+      "source": "node_failure",
+      "path": "solve.py"
+    },
+    {
+      "id": "failure_M2_disconnected",
+      "label": "Disconnected pairs when M2 fails",
+      "value": 1,
+      "tol": 0,
+      "source": "node_failure",
+      "path": "solve.py"
+    },
+    {
+      "id": "failure_M3_disconnected",
+      "label": "Disconnected pairs when M3 fails",
+      "value": 1,
+      "tol": 0,
+      "source": "node_failure",
+      "path": "solve.py"
+    },
+    {
+      "id": "failure_M4_disconnected",
+      "label": "Disconnected pairs when M4 fails",
+      "value": 0,
+      "tol": 0,
+      "source": "node_failure",
+      "path": "solve.py"
+    },
+    {
+      "id": "failure_M1M3_disconnected",
+      "label": "Disconnected pairs when M1+M3 fail",
+      "value": 1,
+      "tol": 0,
+      "source": "node_failure",
+      "path": "solve.py"
+    }
+  ]
+}
