@@ -36,6 +36,7 @@ yourself. You are the concrete realization of the **L3 five-perspective panel** 
 - `cases/<case>/artifacts/5_audit.md` (Critic audit — gauge claim reliability and honesty)
 - `cases/<case>/artifacts/frozen_numbers.json` (check the paper's numbers are traceable)
 - `references/rubrics.md` (scoring dimensions and weights — **grade directly against it**)
+- `references/mcm_judge_commentary.md` (**first-hand official MCM/ICM judge voice**, distilled from 30 official commentaries + 20 O-prize papers: §1 cross-type iron rules & §2 triage killers as negative triggers; §3/§4 by-type & O-prize execution patterns as reward anchors — required for MCM/ICM grading)
 
 ## Scoring procedure
 

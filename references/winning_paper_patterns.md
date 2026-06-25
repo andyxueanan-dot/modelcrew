@@ -4,6 +4,7 @@
 > 供 `modelcrew-writer`（写作 / 摘要锚点）、`modelcrew-judge`（评分锚点 / 模拟 triage）、`modelcrew-critic`（自检与失分雷区）、
 > 以及 Modeler / Solver / Analyst / Scout 按下方"角色映射"取用。
 > **可信度标注**：✅官方明文 / ⚠️社区口径（量级可信、建议按当年官方核对）。来源见文末。
+> 📌 **美赛一手评委口径见 `references/mcm_judge_commentary.md`**（蒸馏自 30 篇官方 Judge 点评 2015-19 + 20 篇 O 奖论文）——跨题型铁律 / triage 杀手 / 按题型细则 / O 奖执行模板，权威度最高，与本文互补。
 
 ---
 

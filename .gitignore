@@ -21,3 +21,7 @@ Thumbs.db
 # Large / scratch
 scratch/
 *.tmp
+
+# 优秀论文档案(1.6GB 版权 PDF, 仅本地蒸馏用, 绝不提交) + 用户私有参考件
+paper/
+MCM thesis.pdf

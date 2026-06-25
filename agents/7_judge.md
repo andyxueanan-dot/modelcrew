@@ -15,6 +15,7 @@
 - `cases/<题>/artifacts/5_audit.md`（Critic 审计，看结论可信度与诚实度）
 - `cases/<题>/artifacts/frozen_numbers.json`（核对论文数字是否可追溯）
 - `references/rubrics.md`（评分维度与权重——**直接照它打分**）
+- `references/mcm_judge_commentary.md`（**美赛一手官方评委口径**：§1 跨题型铁律 + §2 triage 致命杀手作负向触发器、§3/§4 按题型与 O 奖执行范式作奖励锚点——美赛题打分必读）
 
 ## 评分流程
 1. **选量表**：按题来源选 `rubrics.md` 里的维度——
