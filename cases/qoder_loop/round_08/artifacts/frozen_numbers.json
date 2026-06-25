@@ -1,0 +1,252 @@
+{
+  "numbers": [
+    {
+      "id": "n_samples",
+      "label": "Number of samples",
+      "value": 50,
+      "tol": 0,
+      "source": "input",
+      "path": "data"
+    },
+    {
+      "id": "n_features",
+      "label": "Number of features",
+      "value": 8,
+      "tol": 0,
+      "source": "input",
+      "path": "data"
+    },
+    {
+      "id": "R2_ols",
+      "label": "OLS R-squared",
+      "value": 0.9433,
+      "tol": 0.001,
+      "source": "ols",
+      "path": "q1"
+    },
+    {
+      "id": "adj_R2_ols",
+      "label": "OLS adjusted R-squared",
+      "value": 0.9322,
+      "tol": 0.001,
+      "source": "ols",
+      "path": "q1"
+    },
+    {
+      "id": "n_significant",
+      "label": "Number of significant features",
+      "value": 5,
+      "tol": 0,
+      "source": "ols",
+      "path": "q1"
+    },
+    {
+      "id": "max_vif",
+      "label": "Maximum VIF",
+      "value": 14.48,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1"
+    },
+    {
+      "id": "n_vif_gt10",
+      "label": "Features with VIF > 10",
+      "value": 2,
+      "tol": 0,
+      "source": "vif",
+      "path": "q1"
+    },
+    {
+      "id": "K_90",
+      "label": "Components for 90% variance",
+      "value": 5,
+      "tol": 0,
+      "source": "pca",
+      "path": "q2"
+    },
+    {
+      "id": "CVE_K",
+      "label": "Cumulative variance at K",
+      "value": 0.9486,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2"
+    },
+    {
+      "id": "R2_pcr",
+      "label": "PCR R-squared",
+      "value": 0.9222,
+      "tol": 0.001,
+      "source": "pcr",
+      "path": "q2"
+    },
+    {
+      "id": "n_selected",
+      "label": "Features selected by forward",
+      "value": 6,
+      "tol": 0,
+      "source": "forward",
+      "path": "q3"
+    },
+    {
+      "id": "R2_fwd",
+      "label": "Forward selection R-squared",
+      "value": 0.943,
+      "tol": 0.001,
+      "source": "forward",
+      "path": "q3"
+    },
+    {
+      "id": "RMSE_ols",
+      "label": "OLS CV-RMSE",
+      "value": 0.6784,
+      "tol": 0.01,
+      "source": "cv",
+      "path": "cv"
+    },
+    {
+      "id": "RMSE_pcr",
+      "label": "PCR CV-RMSE",
+      "value": 0.7581,
+      "tol": 0.01,
+      "source": "cv",
+      "path": "cv"
+    },
+    {
+      "id": "RMSE_fwd",
+      "label": "Forward CV-RMSE",
+      "value": 0.6729,
+      "tol": 0.01,
+      "source": "cv",
+      "path": "cv"
+    },
+    {
+      "id": "VIF_Area",
+      "label": "VIF of Area",
+      "value": 13.8,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1.vif"
+    },
+    {
+      "id": "VIF_Rooms",
+      "label": "VIF of Rooms",
+      "value": 14.48,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1.vif"
+    },
+    {
+      "id": "VIF_Floor",
+      "label": "VIF of Floor",
+      "value": 2.86,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1.vif"
+    },
+    {
+      "id": "VIF_TotalFloor",
+      "label": "VIF of TotalFloor",
+      "value": 2.83,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1.vif"
+    },
+    {
+      "id": "VIF_Year",
+      "label": "VIF of Year",
+      "value": 1.23,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1.vif"
+    },
+    {
+      "id": "VIF_MetroDist",
+      "label": "VIF of MetroDist",
+      "value": 1.11,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1.vif"
+    },
+    {
+      "id": "VIF_School",
+      "label": "VIF of School",
+      "value": 3.61,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1.vif"
+    },
+    {
+      "id": "VIF_Commerce",
+      "label": "VIF of Commerce",
+      "value": 3.98,
+      "tol": 0.1,
+      "source": "vif",
+      "path": "q1.vif"
+    },
+    {
+      "id": "PVE_PC1",
+      "label": "PVE of PC1",
+      "value": 0.2814,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2.pve"
+    },
+    {
+      "id": "PVE_PC2",
+      "label": "PVE of PC2",
+      "value": 0.2329,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2.pve"
+    },
+    {
+      "id": "PVE_PC3",
+      "label": "PVE of PC3",
+      "value": 0.2057,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2.pve"
+    },
+    {
+      "id": "PVE_PC4",
+      "label": "PVE of PC4",
+      "value": 0.1232,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2.pve"
+    },
+    {
+      "id": "PVE_PC5",
+      "label": "PVE of PC5",
+      "value": 0.1053,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2.pve"
+    },
+    {
+      "id": "PVE_PC6",
+      "label": "PVE of PC6",
+      "value": 0.0294,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2.pve"
+    },
+    {
+      "id": "PVE_PC7",
+      "label": "PVE of PC7",
+      "value": 0.0177,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2.pve"
+    },
+    {
+      "id": "PVE_PC8",
+      "label": "PVE of PC8",
+      "value": 0.0043,
+      "tol": 0.001,
+      "source": "pca",
+      "path": "q2.pve"
+    }
+  ]
+}
