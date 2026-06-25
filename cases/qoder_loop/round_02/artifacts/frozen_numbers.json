@@ -1,0 +1,212 @@
+{
+  "numbers": [
+    {
+      "id": "r2",
+      "label": "OLS R-squared",
+      "value": 0.9964,
+      "tol": 0.0001,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "r2_adj",
+      "label": "Adjusted R-squared",
+      "value": 0.9948,
+      "tol": 0.0001,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "rmse_train",
+      "label": "Training RMSE",
+      "value": 9.5,
+      "tol": 0.1,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "rmse_cv",
+      "label": "5-fold CV RMSE",
+      "value": 12.91,
+      "tol": 0.1,
+      "source": "solve.py:5-fold CV",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "overfit_gap",
+      "label": "CV-Training RMSE gap",
+      "value": 3.41,
+      "tol": 0.1,
+      "source": "solve.py:CV comparison",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "n_anomalies",
+      "label": "Number of anomaly stations",
+      "value": 3,
+      "tol": 0,
+      "source": "solve.py:residual analysis",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "beta_PopDensity",
+      "label": "Standardized coefficient: PopDensity",
+      "value": 43.6612,
+      "tol": 0.001,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "vif_PopDensity",
+      "label": "VIF: PopDensity",
+      "value": 340.58,
+      "tol": 0.01,
+      "source": "solve.py:VIF",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "spc2_PopDensity",
+      "label": "Semi-partial R2: PopDensity",
+      "value": 0.0003,
+      "tol": 0.001,
+      "source": "solve.py:semipartial",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "beta_MetroDist",
+      "label": "Standardized coefficient: MetroDist",
+      "value": -13.0258,
+      "tol": 0.001,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "vif_MetroDist",
+      "label": "VIF: MetroDist",
+      "value": 13.45,
+      "tol": 0.01,
+      "source": "solve.py:VIF",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "spc2_MetroDist",
+      "label": "Semi-partial R2: MetroDist",
+      "value": 0.0008,
+      "tol": 0.001,
+      "source": "solve.py:semipartial",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "beta_BikeLane",
+      "label": "Standardized coefficient: BikeLane",
+      "value": 7.0638,
+      "tol": 0.001,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "vif_BikeLane",
+      "label": "VIF: BikeLane",
+      "value": 90.19,
+      "tol": 0.01,
+      "source": "solve.py:VIF",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "spc2_BikeLane",
+      "label": "Semi-partial R2: BikeLane",
+      "value": 0.0,
+      "tol": 0.001,
+      "source": "solve.py:semipartial",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "beta_POI",
+      "label": "Standardized coefficient: POI",
+      "value": 35.9911,
+      "tol": 0.001,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "vif_POI",
+      "label": "VIF: POI",
+      "value": 244.62,
+      "tol": 0.01,
+      "source": "solve.py:VIF",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "spc2_POI",
+      "label": "Semi-partial R2: POI",
+      "value": 0.0003,
+      "tol": 0.001,
+      "source": "solve.py:semipartial",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "beta_OfficeRes",
+      "label": "Standardized coefficient: OfficeRes",
+      "value": 30.9072,
+      "tol": 0.001,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "vif_OfficeRes",
+      "label": "VIF: OfficeRes",
+      "value": 50.8,
+      "tol": 0.01,
+      "source": "solve.py:VIF",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "spc2_OfficeRes",
+      "label": "Semi-partial R2: OfficeRes",
+      "value": 0.0011,
+      "tol": 0.001,
+      "source": "solve.py:semipartial",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "beta_Temp",
+      "label": "Standardized coefficient: Temp",
+      "value": 2.7393,
+      "tol": 0.001,
+      "source": "solve.py:OLS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "vif_Temp",
+      "label": "VIF: Temp",
+      "value": 2.84,
+      "tol": 0.01,
+      "source": "solve.py:VIF",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "spc2_Temp",
+      "label": "Semi-partial R2: Temp",
+      "value": 0.0002,
+      "tol": 0.001,
+      "source": "solve.py:semipartial",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "top_feature",
+      "label": "Most important feature (by spR2)",
+      "value": 4,
+      "tol": 0,
+      "source": "solve.py:feature ranking",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "stepwise_first",
+      "label": "First feature in forward stepwise",
+      "value": 0,
+      "tol": 0,
+      "source": "solve.py:forward stepwise",
+      "path": "artifacts/solve.py"
+    }
+  ]
+}
