@@ -1,0 +1,116 @@
+{
+  "numbers": [
+    {
+      "id": "q1_profit",
+      "label": "Q1 optimal net profit (yuan)",
+      "value": 522000.0,
+      "tol": 0.1,
+      "source": "solve.py:Q1 enumeration",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_water",
+      "label": "Q1 total water used (m3)",
+      "value": 93750.0,
+      "tol": 0.1,
+      "source": "solve.py:Q1 enumeration",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_fert",
+      "label": "Q1 total fertilizer (kg)",
+      "value": 11250,
+      "tol": 1,
+      "source": "solve.py:Q1 enumeration",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_grain",
+      "label": "Q1 total grain output (kg)",
+      "value": 210000,
+      "tol": 1,
+      "source": "solve.py:Q1 enumeration",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_n_feasible",
+      "label": "Number of fully feasible plans",
+      "value": 10,
+      "tol": 0,
+      "source": "solve.py:enumeration",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q2_min_extra_water",
+      "label": "Q2 min extra water for +10% profit (m3)",
+      "value": 12000,
+      "tol": 1000,
+      "source": "solve.py:Q2 water sweep",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q3_profit",
+      "label": "Q3 optimal profit with cotton=10 (yuan)",
+      "value": 522000.0,
+      "tol": 0.1,
+      "source": "solve.py:Q3 cotton price sensitivity",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q3_changed",
+      "label": "Q3 optimal plan changed vs Q1 (1=yes, 0=no)",
+      "value": 0,
+      "tol": 0,
+      "source": "solve.py:Q3 comparison",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_plot1_crop",
+      "label": "Q1 Plot 1 crop",
+      "value": 1,
+      "tol": 0,
+      "source": "solve.py:Q1",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_plot1_profit",
+      "label": "Q1 Plot 1 profit (yuan)",
+      "value": 246000.0,
+      "tol": 0.1,
+      "source": "solve.py:Q1",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_plot2_crop",
+      "label": "Q1 Plot 2 crop",
+      "value": 2,
+      "tol": 0,
+      "source": "solve.py:Q1",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_plot2_profit",
+      "label": "Q1 Plot 2 profit (yuan)",
+      "value": 153000.0,
+      "tol": 0.1,
+      "source": "solve.py:Q1",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_plot3_crop",
+      "label": "Q1 Plot 3 crop",
+      "value": 1,
+      "tol": 0,
+      "source": "solve.py:Q1",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "q1_plot3_profit",
+      "label": "Q1 Plot 3 profit (yuan)",
+      "value": 123000.0,
+      "tol": 0.1,
+      "source": "solve.py:Q1",
+      "path": "artifacts/solve.py"
+    }
+  ]
+}
