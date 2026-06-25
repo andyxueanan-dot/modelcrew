@@ -1,0 +1,404 @@
+{
+  "numbers": [
+    {
+      "id": "n_nodes",
+      "label": "Number of nodes",
+      "value": 12,
+      "tol": 0,
+      "source": "input",
+      "path": "network"
+    },
+    {
+      "id": "n_edges",
+      "label": "Number of edges",
+      "value": 17,
+      "tol": 0,
+      "source": "input",
+      "path": "network"
+    },
+    {
+      "id": "orig_path_cost",
+      "label": "Original S1->R1 cost",
+      "value": 19,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "q1"
+    },
+    {
+      "id": "orig_path_rel",
+      "label": "Original S1->R1 reliability",
+      "value": 0.8846,
+      "tol": 0.0001,
+      "source": "dijkstra",
+      "path": "q1"
+    },
+    {
+      "id": "orig_path_len",
+      "label": "Original path length (nodes)",
+      "value": 4,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "q1"
+    },
+    {
+      "id": "orig_path_node_0",
+      "label": "Original path node 0",
+      "value": 0,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "q1.path"
+    },
+    {
+      "id": "orig_path_node_1",
+      "label": "Original path node 1",
+      "value": 3,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "q1.path"
+    },
+    {
+      "id": "orig_path_node_2",
+      "label": "Original path node 2",
+      "value": 7,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "q1.path"
+    },
+    {
+      "id": "orig_path_node_3",
+      "label": "Original path node 3",
+      "value": 10,
+      "tol": 0,
+      "source": "dijkstra",
+      "path": "q1.path"
+    },
+    {
+      "id": "degree_S1",
+      "label": "Degree of S1",
+      "value": 2,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_S1",
+      "label": "Betweenness of S1",
+      "value": 0.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_S1",
+      "label": "Closeness of S1",
+      "value": 0.5,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_S2",
+      "label": "Degree of S2",
+      "value": 2,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_S2",
+      "label": "Betweenness of S2",
+      "value": 0.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_S2",
+      "label": "Closeness of S2",
+      "value": 0.5,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_S3",
+      "label": "Degree of S3",
+      "value": 2,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_S3",
+      "label": "Betweenness of S3",
+      "value": 0.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_S3",
+      "label": "Closeness of S3",
+      "value": 0.5,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_M1",
+      "label": "Degree of M1",
+      "value": 4,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_M1",
+      "label": "Betweenness of M1",
+      "value": 0.0409,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_M1",
+      "label": "Closeness of M1",
+      "value": 0.6667,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_M2",
+      "label": "Degree of M2",
+      "value": 4,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_M2",
+      "label": "Betweenness of M2",
+      "value": 0.05,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_M2",
+      "label": "Closeness of M2",
+      "value": 0.6667,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_M3",
+      "label": "Degree of M3",
+      "value": 3,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_M3",
+      "label": "Betweenness of M3",
+      "value": 0.0227,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_M3",
+      "label": "Closeness of M3",
+      "value": 0.6667,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_M4",
+      "label": "Degree of M4",
+      "value": 2,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_M4",
+      "label": "Betweenness of M4",
+      "value": 0.0136,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_M4",
+      "label": "Closeness of M4",
+      "value": 0.6667,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_D1",
+      "label": "Degree of D1",
+      "value": 3,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_D1",
+      "label": "Betweenness of D1",
+      "value": 0.0212,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_D1",
+      "label": "Closeness of D1",
+      "value": 1.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_D2",
+      "label": "Degree of D2",
+      "value": 5,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_D2",
+      "label": "Betweenness of D2",
+      "value": 0.0758,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_D2",
+      "label": "Closeness of D2",
+      "value": 1.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_D3",
+      "label": "Degree of D3",
+      "value": 3,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_D3",
+      "label": "Betweenness of D3",
+      "value": 0.0212,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_D3",
+      "label": "Closeness of D3",
+      "value": 1.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_R1",
+      "label": "Degree of R1",
+      "value": 2,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_R1",
+      "label": "Betweenness of R1",
+      "value": 0.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_R1",
+      "label": "Closeness of R1",
+      "value": 0.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "degree_R2",
+      "label": "Degree of R2",
+      "value": 2,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2.degree"
+    },
+    {
+      "id": "betweenness_R2",
+      "label": "Betweenness of R2",
+      "value": 0.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.betweenness"
+    },
+    {
+      "id": "closeness_R2",
+      "label": "Closeness of R2",
+      "value": 0.0,
+      "tol": 0.0001,
+      "source": "centrality",
+      "path": "q2.closeness"
+    },
+    {
+      "id": "most_critical_node",
+      "label": "Most critical node (index)",
+      "value": 8,
+      "tol": 0,
+      "source": "centrality",
+      "path": "q2"
+    },
+    {
+      "id": "fail_path_cost",
+      "label": "S1->R1 cost without D2",
+      "value": 19,
+      "tol": 0,
+      "source": "failure_sim",
+      "path": "q3"
+    },
+    {
+      "id": "fail_path_rel",
+      "label": "S1->R1 reliability without D2",
+      "value": 0.8846,
+      "tol": 0.0001,
+      "source": "failure_sim",
+      "path": "q3"
+    },
+    {
+      "id": "cost_increase_pct",
+      "label": "Cost increase after failure (%)",
+      "value": 0.0,
+      "tol": 0.1,
+      "source": "failure_sim",
+      "path": "q3"
+    },
+    {
+      "id": "reachable_after_fail",
+      "label": "Nodes reachable from S1 after failure",
+      "value": 5,
+      "tol": 0,
+      "source": "failure_sim",
+      "path": "q3"
+    }
+  ]
+}
