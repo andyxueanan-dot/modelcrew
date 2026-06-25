@@ -1,0 +1,540 @@
+{
+  "numbers": [
+    {
+      "id": "N",
+      "label": "Total population",
+      "value": 1000000,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "beta",
+      "label": "Transmission rate",
+      "value": 0.3,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "gamma",
+      "label": "Recovery rate",
+      "value": 0.1,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "R0",
+      "label": "Basic reproduction number",
+      "value": 2.9999999999999996,
+      "tol": 0,
+      "source": "calculated",
+      "path": "params"
+    },
+    {
+      "id": "e",
+      "label": "Vaccine efficacy",
+      "value": 0.85,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "I_max_base",
+      "label": "Peak infected (baseline)",
+      "value": 300462,
+      "tol": 100,
+      "source": "odeint",
+      "path": "q1"
+    },
+    {
+      "id": "t_peak_base",
+      "label": "Peak time (baseline, days)",
+      "value": 50.1,
+      "tol": 0.5,
+      "source": "odeint",
+      "path": "q1"
+    },
+    {
+      "id": "attack_rate_base",
+      "label": "Attack rate (baseline)",
+      "value": 0.9405,
+      "tol": 0.001,
+      "source": "odeint",
+      "path": "q1"
+    },
+    {
+      "id": "duration_base",
+      "label": "Duration (baseline, days)",
+      "value": 212,
+      "tol": 5,
+      "source": "odeint",
+      "path": "q1"
+    },
+    {
+      "id": "v",
+      "label": "Vaccination rate",
+      "value": 5000,
+      "tol": 0,
+      "source": "input",
+      "path": "q2"
+    },
+    {
+      "id": "I_max_vac",
+      "label": "Peak infected (vaccination)",
+      "value": 193285,
+      "tol": 100,
+      "source": "odeint",
+      "path": "q2"
+    },
+    {
+      "id": "t_peak_vac",
+      "label": "Peak time (vaccination, days)",
+      "value": 54.8,
+      "tol": 0.5,
+      "source": "odeint",
+      "path": "q2"
+    },
+    {
+      "id": "attack_rate_vac",
+      "label": "Attack rate (vaccination)",
+      "value": 0.9748,
+      "tol": 0.001,
+      "source": "odeint",
+      "path": "q2"
+    },
+    {
+      "id": "duration_vac",
+      "label": "Duration (vaccination, days)",
+      "value": 217,
+      "tol": 5,
+      "source": "odeint",
+      "path": "q2"
+    },
+    {
+      "id": "peak_reduction_pct",
+      "label": "Peak reduction (%)",
+      "value": 35.7,
+      "tol": 0.5,
+      "source": "calculated",
+      "path": "q2"
+    },
+    {
+      "id": "duration_reduction",
+      "label": "Duration reduction (days)",
+      "value": -5,
+      "tol": 2,
+      "source": "calculated",
+      "path": "q2"
+    },
+    {
+      "id": "S_critical",
+      "label": "Critical susceptible",
+      "value": 333333,
+      "tol": 100,
+      "source": "calculated",
+      "path": "q3"
+    },
+    {
+      "id": "herd_immunity_pct",
+      "label": "Herd immunity threshold (%)",
+      "value": 66.7,
+      "tol": 0.1,
+      "source": "calculated",
+      "path": "q3"
+    },
+    {
+      "id": "v_min",
+      "label": "Min vaccination rate for herd immunity in 60 days",
+      "value": 18609,
+      "tol": 100,
+      "source": "binary_search",
+      "path": "q3"
+    },
+    {
+      "id": "I_max_R01.5_v0",
+      "label": "Peak infected % (R0=1.5, v=0)",
+      "value": 6.31,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R01.5_v2000",
+      "label": "Peak infected % (R0=1.5, v=2000)",
+      "value": 1.04,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R01.5_v5000",
+      "label": "Peak infected % (R0=1.5, v=5000)",
+      "value": 0.09,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R01.5_v10000",
+      "label": "Peak infected % (R0=1.5, v=10000)",
+      "value": 0.03,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R01.5_v15000",
+      "label": "Peak infected % (R0=1.5, v=15000)",
+      "value": 0.02,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R01.5_v20000",
+      "label": "Peak infected % (R0=1.5, v=20000)",
+      "value": 0.02,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.0_v0",
+      "label": "Peak infected % (R0=2.0, v=0)",
+      "value": 15.35,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.0_v2000",
+      "label": "Peak infected % (R0=2.0, v=2000)",
+      "value": 9.52,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.0_v5000",
+      "label": "Peak infected % (R0=2.0, v=5000)",
+      "value": 3.13,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.0_v10000",
+      "label": "Peak infected % (R0=2.0, v=10000)",
+      "value": 0.34,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.0_v15000",
+      "label": "Peak infected % (R0=2.0, v=15000)",
+      "value": 0.11,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.0_v20000",
+      "label": "Peak infected % (R0=2.0, v=20000)",
+      "value": 0.06,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.5_v0",
+      "label": "Peak infected % (R0=2.5, v=0)",
+      "value": 23.35,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.5_v2000",
+      "label": "Peak infected % (R0=2.5, v=2000)",
+      "value": 18.25,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.5_v5000",
+      "label": "Peak infected % (R0=2.5, v=5000)",
+      "value": 11.39,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.5_v10000",
+      "label": "Peak infected % (R0=2.5, v=10000)",
+      "value": 3.47,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.5_v15000",
+      "label": "Peak infected % (R0=2.5, v=15000)",
+      "value": 0.83,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R02.5_v20000",
+      "label": "Peak infected % (R0=2.5, v=20000)",
+      "value": 0.3,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.0_v0",
+      "label": "Peak infected % (R0=3.0, v=0)",
+      "value": 30.05,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.0_v2000",
+      "label": "Peak infected % (R0=3.0, v=2000)",
+      "value": 25.6,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.0_v5000",
+      "label": "Peak infected % (R0=3.0, v=5000)",
+      "value": 19.33,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.0_v10000",
+      "label": "Peak infected % (R0=3.0, v=10000)",
+      "value": 10.37,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.0_v15000",
+      "label": "Peak infected % (R0=3.0, v=15000)",
+      "value": 4.29,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.0_v20000",
+      "label": "Peak infected % (R0=3.0, v=20000)",
+      "value": 1.53,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.5_v0",
+      "label": "Peak infected % (R0=3.5, v=0)",
+      "value": 35.64,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.5_v2000",
+      "label": "Peak infected % (R0=3.5, v=2000)",
+      "value": 31.72,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.5_v5000",
+      "label": "Peak infected % (R0=3.5, v=5000)",
+      "value": 26.09,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.5_v10000",
+      "label": "Peak infected % (R0=3.5, v=10000)",
+      "value": 17.5,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.5_v15000",
+      "label": "Peak infected % (R0=3.5, v=15000)",
+      "value": 10.35,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R03.5_v20000",
+      "label": "Peak infected % (R0=3.5, v=20000)",
+      "value": 5.23,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.0_v0",
+      "label": "Peak infected % (R0=4.0, v=0)",
+      "value": 40.34,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.0_v2000",
+      "label": "Peak infected % (R0=4.0, v=2000)",
+      "value": 36.85,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.0_v5000",
+      "label": "Peak infected % (R0=4.0, v=5000)",
+      "value": 31.77,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.0_v10000",
+      "label": "Peak infected % (R0=4.0, v=10000)",
+      "value": 23.82,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.0_v15000",
+      "label": "Peak infected % (R0=4.0, v=15000)",
+      "value": 16.69,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.0_v20000",
+      "label": "Peak infected % (R0=4.0, v=20000)",
+      "value": 10.7,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.5_v0",
+      "label": "Peak infected % (R0=4.5, v=0)",
+      "value": 44.36,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.5_v2000",
+      "label": "Peak infected % (R0=4.5, v=2000)",
+      "value": 41.21,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.5_v5000",
+      "label": "Peak infected % (R0=4.5, v=5000)",
+      "value": 36.6,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.5_v10000",
+      "label": "Peak infected % (R0=4.5, v=10000)",
+      "value": 29.27,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.5_v15000",
+      "label": "Peak infected % (R0=4.5, v=15000)",
+      "value": 22.49,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R04.5_v20000",
+      "label": "Peak infected % (R0=4.5, v=20000)",
+      "value": 16.39,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R05.0_v0",
+      "label": "Peak infected % (R0=5.0, v=0)",
+      "value": 47.81,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R05.0_v2000",
+      "label": "Peak infected % (R0=5.0, v=2000)",
+      "value": 44.95,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R05.0_v5000",
+      "label": "Peak infected % (R0=5.0, v=5000)",
+      "value": 40.75,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R05.0_v10000",
+      "label": "Peak infected % (R0=5.0, v=10000)",
+      "value": 33.99,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R05.0_v15000",
+      "label": "Peak infected % (R0=5.0, v=15000)",
+      "value": 27.61,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    },
+    {
+      "id": "I_max_R05.0_v20000",
+      "label": "Peak infected % (R0=5.0, v=20000)",
+      "value": 21.69,
+      "tol": 0.1,
+      "source": "sensitivity",
+      "path": "q4.grid"
+    }
+  ]
+}
