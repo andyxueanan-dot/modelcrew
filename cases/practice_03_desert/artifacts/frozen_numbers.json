@@ -1,0 +1,137 @@
+{
+  "case": "practice_03_desert",
+  "note": "论文数字唯一真值源；由 solve.py 生成 results.json 后冻结。确定性、纯Python、字节级可复现（无随机）。Q1=分层前向(t,p,w,f)精确DP+挖矿可行性证书取max；B为缩规模独立后向DP对拍。",
+  "inputs": [
+    "artifacts/solve.py",
+    "data/map_level1.txt",
+    "data/weather_level1.txt"
+  ],
+  "numbers": [
+    {
+      "id": "Q1_optimal_wealth",
+      "label": "Q1 最优最终财富 (元)",
+      "value": 9410.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q1.optimal_wealth",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_dp_wealth",
+      "label": "Q1 cap内前向DP最优 (元)",
+      "value": 9410.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q1.dp_capbounded_wealth",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_mining_cert",
+      "label": "Q1 挖矿路线证书最优 (元，<直达→挖矿不划算)",
+      "value": 8435.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q1.mining_certificate_wealth",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_crosscheck_A",
+      "label": "Q1 缩规模(T=6) RangeA 值 (元)",
+      "value": 9410.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q1.cross_check_reduced_scale.A_value",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_crosscheck_B",
+      "label": "Q1 缩规模(T=6) RangeB 独立DP值 (元，与A互证)",
+      "value": 9410.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q1.cross_check_reduced_scale.B_value",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_start_buy_water",
+      "label": "Q1 起点购水 (箱)",
+      "value": 42,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": "Q1.start_buy_water",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_start_buy_food",
+      "label": "Q1 起点购食 (箱)",
+      "value": 38,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": "Q1.start_buy_food",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_arrive_day",
+      "label": "Q1 到达终点日 (天)",
+      "value": 3,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": "Q1.arrive_day",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q2_best_online",
+      "label": "Q2 最佳在线策略财富 (元)",
+      "value": 9255.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q2.best.final_wealth",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q2_loss",
+      "label": "Q2 相对Q1损失 = 信息价值 (元)",
+      "value": 155.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q2.best.loss_vs_Q1",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q2_value_of_information",
+      "label": "Q2 信息价值 (元)",
+      "value": 155.0,
+      "tol": 1e-06,
+      "source": "artifacts/results.json",
+      "path": "Q2.value_of_information",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_mine_threshold",
+      "label": "Q3 挖矿划算临界矿山收益 M* (元/天)",
+      "value": 1300,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": "Q3.critical_points.mine_revenue_threshold_for_mining",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_load_threshold",
+      "label": "Q3 挖矿可行临界负重上限 W* (kg)",
+      "value": 1400,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": "Q3.critical_points.load_threshold_for_mining",
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_min_deadline",
+      "label": "Q3 最小可行截止天数 T (天)",
+      "value": 25,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": "Q3.critical_points.min_feasible_deadline_T",
+      "cited_in": "4_results.md"
+    }
+  ]
+}

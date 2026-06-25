@@ -1,0 +1,807 @@
+{
+  "meta": {
+    "case": "practice_03_desert",
+    "python": "3.14.3",
+    "deterministic": true,
+    "note": "Range A(前向(t,p,w,f)精确DP，负重进状态) 为精确全局最优主解；Range B(全状态后向DP，独立编码) 在缩规模 horizon 上独立对拍 A。",
+    "total_runtime_seconds": 60.81
+  },
+  "Q1": {
+    "optimal_wealth": 9410.0,
+    "optimal_wealth_A_fullscale": 9410.0,
+    "dp_capbounded_wealth": 9410.0,
+    "mining_certificate_wealth": 8435,
+    "mining_is_optimal": false,
+    "mining_certificate_days": 4,
+    "A_solve_seconds": 0.425,
+    "exactness_certificate": {
+      "method": "前向(t,p,w,f)精确DP（负重进状态、现金维dominance吸收、自小而大升cap至非绑定） + 独立精确'挖矿路线证书'（BFS最省消耗进出矿×逐日真实天气×精确补给LP）取max",
+      "carry_cap_certified": 55,
+      "cap_non_binding": true,
+      "dp_capbounded_wealth": 9410.0,
+      "mining_certificate_wealth": 8435,
+      "global_optimal_is_max_of_both": 9410.0,
+      "note": "cap内DP精确覆盖'低携带（直达/近端）最优'；远端高携带挖矿态由独立精确证书覆盖；全局最优=两者取max。本基线挖矿证书8435<直达9410 → 挖矿不划算，最优=直达9410。"
+    },
+    "cross_check_reduced_scale": {
+      "T_small": 6,
+      "A_value": 9410.0,
+      "B_value": 9410.0,
+      "consistent": true,
+      "abs_diff": 0.0,
+      "B_solve_seconds": 3.121,
+      "T_small2": 8,
+      "A_value2": 9410.0,
+      "B_value2": 9410.0,
+      "consistent2": true,
+      "note": "全规模B(T=30)状态≈上亿纯Python必爆，按modeler原意B只作缩规模独立交叉验证；B独立编码(后向+显式购买枚举)且不引用A的解/界。"
+    },
+    "start_buy_water": 42,
+    "start_buy_food": 38,
+    "route": [
+      1,
+      25,
+      26,
+      27
+    ],
+    "arrive_day": 3,
+    "mine_days": 0,
+    "village_visits": 0,
+    "remain_water": 0,
+    "remain_food": 0,
+    "remain_cash": 9410,
+    "refund": 0.0,
+    "daily_table": [
+      {
+        "day": 0,
+        "weather": "-",
+        "action": "start_buy",
+        "pos": 1,
+        "buy_w": 42,
+        "buy_f": 38,
+        "water": 42,
+        "food": 38,
+        "cash": 9410,
+        "load": 202
+      },
+      {
+        "day": 1,
+        "weather": "gaowen",
+        "action": "move",
+        "pos": 25,
+        "buy_w": 0,
+        "buy_f": 0,
+        "water": 26,
+        "food": 26,
+        "cash": 9410,
+        "load": 130
+      },
+      {
+        "day": 2,
+        "weather": "gaowen",
+        "action": "move",
+        "pos": 26,
+        "buy_w": 0,
+        "buy_f": 0,
+        "water": 10,
+        "food": 14,
+        "cash": 9410,
+        "load": 58
+      },
+      {
+        "day": 3,
+        "weather": "qinglang",
+        "action": "move",
+        "pos": 27,
+        "buy_w": 0,
+        "buy_f": 0,
+        "water": 0,
+        "food": 0,
+        "cash": 9410,
+        "load": 0
+      }
+    ]
+  },
+  "Q2": {
+    "buffer_0": {
+      "success": true,
+      "final_wealth": 9255.0,
+      "reason": null
+    },
+    "buffer_1": {
+      "success": true,
+      "final_wealth": 9180.0,
+      "reason": null
+    },
+    "buffer_2": {
+      "success": true,
+      "final_wealth": 9105.0,
+      "reason": null
+    },
+    "buffer_3": {
+      "success": true,
+      "final_wealth": 9030.0,
+      "reason": null
+    },
+    "buffer_4": {
+      "success": true,
+      "final_wealth": 8955.0,
+      "reason": null
+    },
+    "buffer_5": {
+      "success": true,
+      "final_wealth": 8880.0,
+      "reason": null
+    },
+    "buffer_6": {
+      "success": true,
+      "final_wealth": 8805.0,
+      "reason": null
+    },
+    "best": {
+      "buffer": 0,
+      "final_wealth": 9255.0,
+      "loss_vs_Q1": 155.0,
+      "loss_pct": 1.65,
+      "remain_water": 18,
+      "remain_food": 22,
+      "remain_cash": 9100,
+      "village_visits": 0,
+      "daily_table": [
+        {
+          "day": 0,
+          "weather": "-",
+          "action": "start_buy",
+          "pos": 1,
+          "buy_w": 60,
+          "buy_f": 60,
+          "water": 60,
+          "food": 60,
+          "cash": 9100,
+          "load": 300
+        },
+        {
+          "day": 1,
+          "weather": "gaowen",
+          "action": "move",
+          "pos": 25,
+          "buy_w": 0,
+          "buy_f": 0,
+          "water": 44,
+          "food": 48,
+          "cash": 9100,
+          "load": 228
+        },
+        {
+          "day": 2,
+          "weather": "gaowen",
+          "action": "move",
+          "pos": 26,
+          "buy_w": 0,
+          "buy_f": 0,
+          "water": 28,
+          "food": 36,
+          "cash": 9100,
+          "load": 156
+        },
+        {
+          "day": 3,
+          "weather": "qinglang",
+          "action": "move",
+          "pos": 27,
+          "buy_w": 0,
+          "buy_f": 0,
+          "water": 18,
+          "food": 22,
+          "cash": 9100,
+          "load": 98
+        }
+      ]
+    },
+    "value_of_information": 155.0,
+    "adversarial": {
+      "more_early_storms": {
+        "default_buffer": 0,
+        "online_success_at_default_buffer": false,
+        "online_wealth_at_default_buffer": null,
+        "online_fail_reason": "starved",
+        "offline_optimal": 8510.0,
+        "loss_at_default": null,
+        "min_survivable_buffer": 5,
+        "wealth_at_min_survivable_buffer": 8430.0,
+        "loss_at_min_survivable_buffer": 80.0
+      },
+      "heat_wave_early": {
+        "default_buffer": 0,
+        "online_success_at_default_buffer": true,
+        "online_wealth_at_default_buffer": 9250.0,
+        "online_fail_reason": null,
+        "offline_optimal": 9400.0,
+        "loss_at_default": 150.0,
+        "min_survivable_buffer": 0,
+        "wealth_at_min_survivable_buffer": 9250.0,
+        "loss_at_min_survivable_buffer": 150.0
+      },
+      "storms_at_start": {
+        "default_buffer": 0,
+        "online_success_at_default_buffer": false,
+        "online_wealth_at_default_buffer": null,
+        "online_fail_reason": "starved",
+        "offline_optimal": 8670.0,
+        "loss_at_default": null,
+        "min_survivable_buffer": 3,
+        "wealth_at_min_survivable_buffer": 8660.0,
+        "loss_at_min_survivable_buffer": 10.0
+      },
+      "all_storm_first5": {
+        "default_buffer": 0,
+        "online_success_at_default_buffer": false,
+        "online_wealth_at_default_buffer": null,
+        "online_fail_reason": "starved",
+        "offline_optimal": 8510.0,
+        "loss_at_default": null,
+        "min_survivable_buffer": 5,
+        "wealth_at_min_survivable_buffer": 8430.0,
+        "loss_at_min_survivable_buffer": 80.0
+      }
+    },
+    "adversarial_note": "低安全垫(buffer)在常规序列下财富最高，但在'早期密集沙暴'对抗序列下会断粮/超时失败；需更大 buffer 才能保证到达终点 → 稳健性-财富权衡。"
+  },
+  "Q3": {
+    "deadline_T": [
+      {
+        "value": 25,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 26,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 27,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 28,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 29,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 30,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 31,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 32,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 33,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 34,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 35,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      }
+    ],
+    "load_max": [
+      {
+        "value": 600,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": null,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 800,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": null,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1000,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 6995,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1200,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1400,
+        "optimal_wealth": 9655,
+        "feasible": true,
+        "mine_days": 6,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 9655,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1600,
+        "optimal_wealth": 10785,
+        "feasible": true,
+        "mine_days": 8,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 10785,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 2000,
+        "optimal_wealth": 13330,
+        "feasible": true,
+        "mine_days": 11,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 13330,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 3000,
+        "optimal_wealth": 14310,
+        "feasible": true,
+        "mine_days": 11,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 14310,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 5000,
+        "optimal_wealth": 14310,
+        "feasible": true,
+        "mine_days": 11,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 14310,
+        "arrive_day": 3,
+        "village_visits": 0
+      }
+    ],
+    "mine_revenue_M": [
+      {
+        "value": 0,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 6190,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 500,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 6695,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 750,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 7435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1000,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1100,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8835,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1200,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 9235,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1300,
+        "optimal_wealth": 9635,
+        "feasible": true,
+        "mine_days": 4,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 9635,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1400,
+        "optimal_wealth": 10035,
+        "feasible": true,
+        "mine_days": 4,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 10035,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1500,
+        "optimal_wealth": 10435,
+        "feasible": true,
+        "mine_days": 4,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 10435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1750,
+        "optimal_wealth": 11435,
+        "feasible": true,
+        "mine_days": 4,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 11435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 2000,
+        "optimal_wealth": 12435,
+        "feasible": true,
+        "mine_days": 4,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 12435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 3000,
+        "optimal_wealth": 16435,
+        "feasible": true,
+        "mine_days": 4,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 16435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 5000,
+        "optimal_wealth": 24435,
+        "feasible": true,
+        "mine_days": 4,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 24435,
+        "arrive_day": 3,
+        "village_visits": 0
+      }
+    ],
+    "consume_scale": [
+      {
+        "value": 0.8,
+        "optimal_wealth": 11600,
+        "feasible": true,
+        "mine_days": 7,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9520.0,
+        "mining_cert_wealth": 11600,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 0.9,
+        "optimal_wealth": 10585,
+        "feasible": true,
+        "mine_days": 6,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9500.0,
+        "mining_cert_wealth": 10585,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1.0,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1.1,
+        "optimal_wealth": 9320.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9320.0,
+        "mining_cert_wealth": 6735,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1.2,
+        "optimal_wealth": 9300.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9300.0,
+        "mining_cert_wealth": 6030,
+        "arrive_day": 3,
+        "village_visits": 0
+      }
+    ],
+    "refund_ratio": [
+      {
+        "value": 0.0,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 0.25,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 0.5,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 0.75,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1.0,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435,
+        "arrive_day": 3,
+        "village_visits": 0
+      }
+    ],
+    "village_price_mult": [
+      {
+        "value": 1.0,
+        "optimal_wealth": 9515.0,
+        "feasible": true,
+        "mine_days": 4,
+        "mining_is_optimal": true,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 9515.0,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 1.5,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8975.0,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 2.0,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 8435.0,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 3.0,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 7355.0,
+        "arrive_day": 3,
+        "village_visits": 0
+      },
+      {
+        "value": 5.0,
+        "optimal_wealth": 9410.0,
+        "feasible": true,
+        "mine_days": 0,
+        "mining_is_optimal": false,
+        "dp_direct_wealth": 9410.0,
+        "mining_cert_wealth": 6590.0,
+        "arrive_day": 3,
+        "village_visits": 0
+      }
+    ],
+    "critical_points": {
+      "mine_revenue_threshold_for_mining": 1300,
+      "load_threshold_for_mining": 1400,
+      "min_feasible_deadline_T": 25,
+      "baseline_wealth": 9410.0,
+      "baseline_mining_is_optimal": false,
+      "note": "mining_is_optimal=False→True 的首个参数值即'挖矿划算'临界点；本题基线(M=1000)挖矿不划算。"
+    }
+  },
+  "poc4_monotonicity": {
+    "M_1000_to_0_nonincrease": true,
+    "wealth_M0": 9410.0,
+    "wealth_M1000": 9410.0,
+    "T_30_to_31_nondecrease": true,
+    "wealth_T31": 9410.0
+  }
+}

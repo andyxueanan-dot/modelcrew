@@ -1,0 +1,32 @@
+# 第一关逐日天气（2020 国赛 B「穿越沙漠」第一关官方给定，共 30 天）
+# 每行: 第几天  天气(qinglang=晴朗 / gaowen=高温 / shabao=沙暴)
+1   gaowen
+2   gaowen
+3   qinglang
+4   shabao
+5   qinglang
+6   gaowen
+7   shabao
+8   qinglang
+9   gaowen
+10  gaowen
+11  shabao
+12  gaowen
+13  qinglang
+14  gaowen
+15  gaowen
+16  gaowen
+17  shabao
+18  shabao
+19  gaowen
+20  gaowen
+21  qinglang
+22  qinglang
+23  gaowen
+24  qinglang
+25  shabao
+26  gaowen
+27  qinglang
+28  qinglang
+29  gaowen
+30  gaowen

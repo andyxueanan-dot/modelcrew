@@ -31,6 +31,15 @@ and returns results of a sane order of magnitude. Pass → the Modeler commits t
 converge / absurd magnitude) → report the failure so the Modeler switches methods. This is the gate that stops a
 "paper-only" model choice from reaching full solve. Then proceed to Solve.
 
+### 0b. Performance-Feasibility Gate (mandatory for heavy enumeration / DP — distilled from practice_03 hang)
+
+Before implementing any **brute-force enumeration or full-state DP**, **estimate the state count / complexity first**. If it
+exceeds ~1e7 states, you **must** coarsen the grid / shorten the horizon / decouple a dimension (e.g. solve a linear-in-objective
+dimension as an inner LP) / prune — and **smoke-test on a small instance (seconds) before scaling up**. A "cross-check /
+cross-validation" paradigm only needs to agree with the main solver on a **tractable reduced scale** — do **not** run it at full
+scale. Prefer a structured exact method as the main solver and keep exponential brute force as a small-scale corroboration only.
+Never let an unrunnable paradigm stall the entire solve. This extends the PoC gate from "logically feasible" to "computationally feasible".
+
 ### 1. Solve
 
 Execute the model using appropriate numerical methods:

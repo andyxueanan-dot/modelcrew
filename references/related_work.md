@@ -12,6 +12,7 @@
 | **Sci-Mind** | [arXiv 2603.27584](https://arxiv.org/abs/2603.27584) | **对抗认知辩证法**：理论家 vs 实用主义者辩论，剪掉"优雅但不可行"的模型；经验记忆回收 + 自验证执行(形式化断言) | ① Critic 升级为**对抗辩论模式** ② Solver 加**自验证断言** ③ `references/` 即我们的"经验记忆" |
 | **MathModelAgent** ⭐产品化最强对标 | [repo](https://github.com/jihe520/MathModelAgent)（~2.4k★）| 建模手/代码手/论文手三智能体 + Vue/FastAPI **Web UI** + 云代码沙箱(E2B) + ChromaDB **RAG 方法库** + Tavily **联网取真数据** + Typst 17 模板 + HITL | ① 联网搜真实数据/参数(Scout 升级) ② Word/DOCX 等多格式输出 ③（重型）Web UI / RAG 方法库 / 云沙箱 |
 | **math-modeling-skills** ⭐机制最像我们 | [repo](https://github.com/xuec699-sudo/math-modeling-skills) | 三角色 + **G1–G6 六道硬闸门**：候选模型先跑 ≤30 行 **PoC 才准用** / frozen numbers + **staleness 失效检测** / 5 人评审团 / 学术诚信 7 类阻断；模型依赖 DAG；DOCX 输出 | ① **选模型前 PoC 冒烟闸**（已采纳，见 Modeler/Solver）② 学术诚信阻断闸 ③ Word/DOCX 输出 |
+| **mathmodel-skill** ⭐经验蒸馏最扎实 | [repo](https://github.com/handsomeZR-netizen/mathmodel-skill) | 从 **91 篇真获奖论文(2023-25, A-F全)** 蒸馏 `empirical.json`**实测分位**(篇幅/图/表/公式/摘要/引用) + 命名变体库 + 段落句式库 + anti_patterns 30+ + `score_artifact.py` 按分位注入 evidence | ① **§2E 论文体量实测分位**(图p50=8/公式p50=24/摘要p50=992，含 A-F 分题型) ② 命名变体库→`innovation_boost` ③ 段落句式库→`writing_templates`（iter3 吸收，均注明来源）|
 | business-science/ai-data-science-team | [repo](https://github.com/business-science/ai-data-science-team) | 数据科学 agent 团队 + 可视化可复现流水线 | 强调可复现流水线 |
 | rjmurillo/ai-agents | [repo](https://github.com/rjmurillo/ai-agents) | 7-agent 软件流水线 + **每阶段质量闸门** | 验证我们的 L1 逐阶段 Critic 闸门 |
 
