@@ -1,0 +1,300 @@
+{
+  "numbers": [
+    {
+      "id": "E_total",
+      "label": "Total emission",
+      "value": 5.0,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "GDP_total",
+      "label": "Total GDP",
+      "value": 8.0,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "Job_total",
+      "label": "Total employment",
+      "value": 4000,
+      "tol": 0,
+      "source": "input",
+      "path": "params"
+    },
+    {
+      "id": "tau_q1",
+      "label": "Carbon tax (Q1)",
+      "value": 200,
+      "tol": 0,
+      "source": "input",
+      "path": "q1"
+    },
+    {
+      "id": "red_pct_q1",
+      "label": "Emission reduction % (tau=200)",
+      "value": 40.04,
+      "tol": 0.1,
+      "source": "model",
+      "path": "q1"
+    },
+    {
+      "id": "gdp_loss_pct_q1",
+      "label": "GDP loss % (tau=200)",
+      "value": 3.037,
+      "tol": 0.01,
+      "source": "model",
+      "path": "q1"
+    },
+    {
+      "id": "job_loss_pct_q1",
+      "label": "Job loss % (tau=200)",
+      "value": 3.208,
+      "tol": 0.01,
+      "source": "model",
+      "path": "q1"
+    },
+    {
+      "id": "net_job_pct_q1",
+      "label": "Net employment % (tau=200)",
+      "value": 6.917,
+      "tol": 0.01,
+      "source": "model",
+      "path": "q1"
+    },
+    {
+      "id": "tau_half",
+      "label": "Min tax for emission halving",
+      "value": 690.8,
+      "tol": 1,
+      "source": "binary_search",
+      "path": "q2"
+    },
+    {
+      "id": "gdp_loss_pct_half",
+      "label": "GDP loss % at emission halving",
+      "value": 6.476,
+      "tol": 0.01,
+      "source": "model",
+      "path": "q2"
+    },
+    {
+      "id": "job_loss_pct_half",
+      "label": "Job loss % at emission halving",
+      "value": 8.233,
+      "tol": 0.01,
+      "source": "model",
+      "path": "q2"
+    },
+    {
+      "id": "tau_jobs",
+      "label": "Job-neutral carbon tax",
+      "value": 0.0,
+      "tol": 1,
+      "source": "binary_search",
+      "path": "q3"
+    },
+    {
+      "id": "red_pct_jobs",
+      "label": "Emission reduction % at job-neutral tax",
+      "value": 0.0,
+      "tol": 0.1,
+      "source": "model",
+      "path": "q3"
+    },
+    {
+      "id": "scenario_tau0_red_pct",
+      "label": "red_pct at tau=0",
+      "value": 0.0,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau0_gdp_loss_pct",
+      "label": "gdp_loss_pct at tau=0",
+      "value": 0.0,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau0_job_loss_pct",
+      "label": "job_loss_pct at tau=0",
+      "value": 0.0,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau0_net_job_pct",
+      "label": "net_job_pct at tau=0",
+      "value": 0.0,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau100_red_pct",
+      "label": "red_pct at tau=100",
+      "value": 10.0928,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau100_gdp_loss_pct",
+      "label": "gdp_loss_pct at tau=100",
+      "value": 1.6858,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau100_job_loss_pct",
+      "label": "job_loss_pct at tau=100",
+      "value": 1.7115,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau100_net_job_pct",
+      "label": "net_job_pct at tau=100",
+      "value": 3.9077,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau200_red_pct",
+      "label": "red_pct at tau=200",
+      "value": 19.0026,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau200_gdp_loss_pct",
+      "label": "gdp_loss_pct at tau=200",
+      "value": 3.0374,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau200_job_loss_pct",
+      "label": "job_loss_pct at tau=200",
+      "value": 3.2076,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau200_net_job_pct",
+      "label": "net_job_pct at tau=200",
+      "value": 6.9171,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau300_red_pct",
+      "label": "red_pct at tau=300",
+      "value": 26.8798,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau300_gdp_loss_pct",
+      "label": "gdp_loss_pct at tau=300",
+      "value": 4.113,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau300_job_loss_pct",
+      "label": "job_loss_pct at tau=300",
+      "value": 4.5159,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau300_net_job_pct",
+      "label": "net_job_pct at tau=300",
+      "value": 9.1942,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau400_red_pct",
+      "label": "red_pct at tau=400",
+      "value": 33.8548,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau400_gdp_loss_pct",
+      "label": "gdp_loss_pct at tau=400",
+      "value": 4.9609,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau400_job_loss_pct",
+      "label": "job_loss_pct at tau=400",
+      "value": 5.6601,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau400_net_job_pct",
+      "label": "net_job_pct at tau=400",
+      "value": 10.8762,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau500_red_pct",
+      "label": "red_pct at tau=500",
+      "value": 40.0408,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau500_gdp_loss_pct",
+      "label": "gdp_loss_pct at tau=500",
+      "value": 5.6212,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau500_job_loss_pct",
+      "label": "job_loss_pct at tau=500",
+      "value": 6.6608,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    },
+    {
+      "id": "scenario_tau500_net_job_pct",
+      "label": "net_job_pct at tau=500",
+      "value": 12.0765,
+      "tol": 0.01,
+      "source": "scenario",
+      "path": "scenarios"
+    }
+  ]
+}
