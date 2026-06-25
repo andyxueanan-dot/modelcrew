@@ -1,0 +1,356 @@
+{
+  "numbers": [
+    {
+      "id": "entropy_w_I1_GDP",
+      "label": "Entropy weight for I1_GDP",
+      "value": 0.17934188456653816,
+      "tol": 0.001,
+      "source": "entropy_method",
+      "path": "solve.py"
+    },
+    {
+      "id": "entropy_w_I2_Gini",
+      "label": "Entropy weight for I2_Gini",
+      "value": 0.17364303976311504,
+      "tol": 0.001,
+      "source": "entropy_method",
+      "path": "solve.py"
+    },
+    {
+      "id": "entropy_w_I3_Carbon",
+      "label": "Entropy weight for I3_Carbon",
+      "value": 0.17973717452288113,
+      "tol": 0.001,
+      "source": "entropy_method",
+      "path": "solve.py"
+    },
+    {
+      "id": "entropy_w_I4_RD",
+      "label": "Entropy weight for I4_RD",
+      "value": 0.17080983109576509,
+      "tol": 0.001,
+      "source": "entropy_method",
+      "path": "solve.py"
+    },
+    {
+      "id": "entropy_w_I5_Urban",
+      "label": "Entropy weight for I5_Urban",
+      "value": 0.16730587749710532,
+      "tol": 0.001,
+      "source": "entropy_method",
+      "path": "solve.py"
+    },
+    {
+      "id": "entropy_w_I6_HDI",
+      "label": "Entropy weight for I6_HDI",
+      "value": 0.1291621925545953,
+      "tol": 0.001,
+      "source": "entropy_method",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_A",
+      "label": "TOPSIS score (entropy) for province A",
+      "value": 0.5619163508809517,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_B",
+      "label": "TOPSIS score (entropy) for province B",
+      "value": 0.6661461862546925,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_C",
+      "label": "TOPSIS score (entropy) for province C",
+      "value": 0.5663108702306151,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_D",
+      "label": "TOPSIS score (entropy) for province D",
+      "value": 0.5616025318025749,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_E",
+      "label": "TOPSIS score (entropy) for province E",
+      "value": 0.5442007733705034,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_F",
+      "label": "TOPSIS score (entropy) for province F",
+      "value": 0.5101847749020645,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_G",
+      "label": "TOPSIS score (entropy) for province G",
+      "value": 0.6186177320919695,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_H",
+      "label": "TOPSIS score (entropy) for province H",
+      "value": 0.4252284227988504,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_I",
+      "label": "TOPSIS score (entropy) for province I",
+      "value": 0.5381425110795458,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_J",
+      "label": "TOPSIS score (entropy) for province J",
+      "value": 0.4342475488220404,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_K",
+      "label": "TOPSIS score (entropy) for province K",
+      "value": 0.5257463473721762,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_L",
+      "label": "TOPSIS score (entropy) for province L",
+      "value": 0.5303801230736089,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_M",
+      "label": "TOPSIS score (entropy) for province M",
+      "value": 0.526205423272677,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_N",
+      "label": "TOPSIS score (entropy) for province N",
+      "value": 0.5960393009941707,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "topsis_entropy_O",
+      "label": "TOPSIS score (entropy) for province O",
+      "value": 0.4630644503549224,
+      "tol": 0.001,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_A",
+      "label": "Entropy-TOPSIS rank for province A",
+      "value": 5,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_B",
+      "label": "Entropy-TOPSIS rank for province B",
+      "value": 1,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_C",
+      "label": "Entropy-TOPSIS rank for province C",
+      "value": 4,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_D",
+      "label": "Entropy-TOPSIS rank for province D",
+      "value": 6,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_E",
+      "label": "Entropy-TOPSIS rank for province E",
+      "value": 7,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_F",
+      "label": "Entropy-TOPSIS rank for province F",
+      "value": 12,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_G",
+      "label": "Entropy-TOPSIS rank for province G",
+      "value": 2,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_H",
+      "label": "Entropy-TOPSIS rank for province H",
+      "value": 15,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_I",
+      "label": "Entropy-TOPSIS rank for province I",
+      "value": 8,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_J",
+      "label": "Entropy-TOPSIS rank for province J",
+      "value": 14,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_K",
+      "label": "Entropy-TOPSIS rank for province K",
+      "value": 11,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_L",
+      "label": "Entropy-TOPSIS rank for province L",
+      "value": 9,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_M",
+      "label": "Entropy-TOPSIS rank for province M",
+      "value": 10,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_N",
+      "label": "Entropy-TOPSIS rank for province N",
+      "value": 3,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "rank_entropy_O",
+      "label": "Entropy-TOPSIS rank for province O",
+      "value": 13,
+      "tol": 0,
+      "source": "topsis_entropy",
+      "path": "solve.py"
+    },
+    {
+      "id": "ahp_lambda_max",
+      "label": "AHP max eigenvalue",
+      "value": 4.014520958632259,
+      "tol": 0.01,
+      "source": "ahp",
+      "path": "solve.py"
+    },
+    {
+      "id": "ahp_CR",
+      "label": "AHP consistency ratio",
+      "value": 0.0054385612854902605,
+      "tol": 0.001,
+      "source": "ahp",
+      "path": "solve.py"
+    },
+    {
+      "id": "spearman_rho",
+      "label": "Spearman correlation between entropy and AHP rankings",
+      "value": 0.7,
+      "tol": 0.01,
+      "source": "spearman_test",
+      "path": "solve.py"
+    },
+    {
+      "id": "bootstrap_ci_width_B",
+      "label": "Bootstrap 95% CI width for province B",
+      "value": 0.0,
+      "tol": 1.0,
+      "source": "bootstrap",
+      "path": "solve.py"
+    },
+    {
+      "id": "bootstrap_ci_width_G",
+      "label": "Bootstrap 95% CI width for province G",
+      "value": 0.0,
+      "tol": 1.0,
+      "source": "bootstrap",
+      "path": "solve.py"
+    },
+    {
+      "id": "bootstrap_ci_width_N",
+      "label": "Bootstrap 95% CI width for province N",
+      "value": 0.0,
+      "tol": 1.0,
+      "source": "bootstrap",
+      "path": "solve.py"
+    },
+    {
+      "id": "bootstrap_ci_width_C",
+      "label": "Bootstrap 95% CI width for province C",
+      "value": 2.0,
+      "tol": 1.0,
+      "source": "bootstrap",
+      "path": "solve.py"
+    },
+    {
+      "id": "bootstrap_ci_width_A",
+      "label": "Bootstrap 95% CI width for province A",
+      "value": 2.0,
+      "tol": 1.0,
+      "source": "bootstrap",
+      "path": "solve.py"
+    }
+  ]
+}
