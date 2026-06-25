@@ -1,0 +1,99 @@
+{
+  "seed": 42,
+  "raw_data": {
+    "A": {
+      "total": 350,
+      "ontime": 290,
+      "rate": 0.8286,
+      "easy": {
+        "n": 50,
+        "ontime": 45,
+        "rate": 0.9
+      },
+      "hard": {
+        "n": 300,
+        "ontime": 245,
+        "rate": 0.8167
+      }
+    },
+    "B": {
+      "total": 350,
+      "ontime": 182,
+      "rate": 0.52,
+      "easy": {
+        "n": 300,
+        "ontime": 282,
+        "rate": 0.94
+      },
+      "hard": {
+        "n": 50,
+        "ontime": 20,
+        "rate": 0.4
+      }
+    }
+  },
+  "aggregate_z_test": {
+    "p1": 0.828571,
+    "p2": 0.52,
+    "diff": 0.308571,
+    "z": 8.710325,
+    "p_value": 0.0,
+    "ci_low": 0.243007,
+    "ci_high": 0.374136,
+    "n1": 350,
+    "n2": 350
+  },
+  "easy_z_test": {
+    "p1": 0.9,
+    "p2": 0.94,
+    "diff": -0.04,
+    "z": -1.056822,
+    "p_value": 0.290593,
+    "ci_low": -0.127391,
+    "ci_high": 0.047391,
+    "n1": 50,
+    "n2": 300
+  },
+  "hard_z_test": {
+    "p1": 0.816667,
+    "p2": 0.4,
+    "diff": 0.416667,
+    "z": 6.361155,
+    "p_value": 0.0,
+    "ci_low": 0.273989,
+    "ci_high": 0.559344,
+    "n1": 300,
+    "n2": 50
+  },
+  "mantel_haenszel": {
+    "OR_MH": 3.251,
+    "ln_OR_MH": 1.179,
+    "chi2_MH": 23.2122,
+    "p_MH": 1e-06,
+    "breslow_day_Q": 15.594,
+    "breslow_day_p": 0.0001
+  },
+  "standardized_rates": {
+    "equal_split": {
+      "A": 0.8583,
+      "B": 0.67,
+      "diff_B_minus_A": -0.1883
+    },
+    "actual_split": {
+      "A": 0.8583,
+      "B": 0.67
+    }
+  },
+  "simpson_paradox": {
+    "aggregate_A_wins_by_pp": 30.9,
+    "easy_B_wins_by_pp": 4.0,
+    "hard_B_wins_by_pp": -41.7,
+    "A_hard_pct": 85.7,
+    "B_easy_pct": 85.7
+  },
+  "reproducibility": {
+    "random_seed": 42,
+    "python_packages": "numpy, scipy, matplotlib",
+    "methods": "M1: two-proportion z-test, M2: Mantel-Haenszel"
+  }
+}
