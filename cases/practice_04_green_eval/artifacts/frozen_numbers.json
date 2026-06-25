@@ -1,0 +1,244 @@
+{
+  "case": "practice_04_green_eval",
+  "note": "论文引用数字唯一真值源。由 solve.py 确定性生成 results.json 后冻结（数据扰动用固定随机种子 20240625 的加性高斯噪声蒙特卡洛，n=1000，字节级可复现；其余无随机）。主方案 M1 = min-max + CRITIC 赋权 + 加权 TOPSIS；M0/M2/M3/M5 对照；Q3 含赋权(含C2受控隔离)/口径/数据扰动(加性高斯噪声MC)三类稳健性。圆整口径=4 位小数。",
+  "inputs": [
+    "artifacts/solve.py",
+    "data/indicators.csv"
+  ],
+  "numbers": [
+    {
+      "id": "Q1_rank1_region_H_C",
+      "label": "M1 第1名 H 贴近度",
+      "value": 0.7149,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "M1_main_ranking", "0", "closeness"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_rank2_region_J_C",
+      "label": "M1 第2名 J 贴近度",
+      "value": 0.665,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "M1_main_ranking", "1", "closeness"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_rank3_region_D_C",
+      "label": "M1 第3名 D 贴近度",
+      "value": 0.6039,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "M1_main_ranking", "2", "closeness"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_rank9_region_F_C",
+      "label": "M1 第9名 F 贴近度",
+      "value": 0.3166,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "M1_main_ranking", "8", "closeness"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_rank10_region_I_C",
+      "label": "M1 垫底 I 贴近度",
+      "value": 0.1128,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "M1_main_ranking", "9", "closeness"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_H_rank",
+      "label": "H 在 M1 下名次",
+      "value": 1,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "G_vs_H", "H_rank"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_G_rank",
+      "label": "G 在 M1 下名次",
+      "value": 4,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "G_vs_H", "G_rank"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_w_forest_cover",
+      "label": "CRITIC 权重 forest_cover (最高)",
+      "value": 0.2649,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "weights", "M1_critic", "forest_cover"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_w_carbon_intensity",
+      "label": "CRITIC 权重 carbon_intensity (被簇降权,最低)",
+      "value": 0.111,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "weights", "M1_critic", "carbon_intensity"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_d1_energy_carbon_critic",
+      "label": "energy+carbon CRITIC 权重和 (降权后)",
+      "value": 0.2261,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "d1_downweight_check", "energy_carbon_critic_sum"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_d1_energy_carbon_stdonly",
+      "label": "energy+carbon 单独标准差权重和 (未降权)",
+      "value": 0.2922,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "d1_downweight_check", "energy_carbon_std_only_sum"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_spearman_M0_vs_M1",
+      "label": "Spearman(M0 等权 vs M1)",
+      "value": 0.6848,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "rank_correlation_vs_M1", "M0_equal_saw", "spearman_vs_M1"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_spearman_M2_vs_M1",
+      "label": "Spearman(M2 熵权 vs M1)",
+      "value": 0.6606,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "rank_correlation_vs_M1", "M2_entropy_saw", "spearman_vs_M1"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_spearman_M3_vs_M1",
+      "label": "Spearman(M3 PCA vs M1, 最低=PCA最分歧)",
+      "value": 0.3576,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "rank_correlation_vs_M1", "M3_pca_score", "spearman_vs_M1"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_spearman_M5_vs_M1",
+      "label": "Spearman(M5 CRITIC×政策 vs M1)",
+      "value": 0.7091,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "rank_correlation_vs_M1", "M5_policy_topsis", "spearman_vs_M1"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_spearman_N2_vs_N1",
+      "label": "Spearman(z-score 口径 vs min-max)",
+      "value": 0.9879,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "norm_caliber_corr_vs_N1", "N2_zscore", "spearman_vs_N1"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_spearman_N3_vs_N1",
+      "label": "Spearman(向量归一口径 vs min-max)",
+      "value": 0.9879,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "norm_caliber_corr_vs_N1", "N3_vector", "spearman_vs_N1"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_most_unstable_C_span",
+      "label": "最不稳地区 C 跨方法名次跨度",
+      "value": 6,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "most_unstable_region_cross_method", "span"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_c4_forest_cover_delta_vs_equal",
+      "label": "C4: CRITIC forest_cover 权重相对等权增量 (唯一被抬)",
+      "value": 0.122,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "c4_attribution_critic_vs_equal", "forest_cover_delta"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q1_c4_pm25_delta_vs_equal",
+      "label": "C4: CRITIC pm25 权重相对等权增量 (不升反微降, 证伪原归因)",
+      "value": -0.0029,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "c4_attribution_critic_vs_equal", "pm25_delta"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_c2_dedup_spearman_entropy_fixed_topsis",
+      "label": "C2 受控隔离: 固定TOPSIS只换赋权 CRITIC vs 熵权 Spearman (去冗余单独效应)",
+      "value": 0.6848,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "c2_dedup_isolation_fixed_topsis", "entropy", "spearman_vs_critic"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_mc_frac_changed_k05",
+      "label": "加性高斯噪声 5%·std 下名次改变比例 (1000次,seed=20240625)",
+      "value": 0.77,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "data_perturbation_additive_gaussian_mc", "frac_ranking_changed_by_k", "k05pct"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_mc_frac_changed_k10",
+      "label": "加性高斯噪声 10%·std 下名次改变比例",
+      "value": 0.831,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "data_perturbation_additive_gaussian_mc", "frac_ranking_changed_by_k", "k10pct"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_mc_frac_changed_k20",
+      "label": "加性高斯噪声 20%·std 下名次改变比例",
+      "value": 0.931,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "data_perturbation_additive_gaussian_mc", "frac_ranking_changed_by_k", "k20pct"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_mc_most_unstable_B_pct_changed_k05",
+      "label": "加性5%噪声下最不稳地区 B 名次改变比例",
+      "value": 0.72,
+      "tol": 0,
+      "source": "artifacts/results.json",
+      "path": ["Q3", "most_unstable_region_under_perturb", "pct_rank_changed"],
+      "cited_in": "4_results.md"
+    },
+    {
+      "id": "Q3_pca_var_pc1",
+      "label": "M3 PCA PC1 解释方差比",
+      "value": 0.6029,
+      "tol": 0.0002,
+      "source": "artifacts/results.json",
+      "path": ["Q1", "pca_var_explained_pc1"],
+      "cited_in": "4_results.md"
+    }
+  ]
+}

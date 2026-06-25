@@ -26,6 +26,8 @@ You are the **paper writer**. You turn the team's collective output into a **com
 
 ## Paper Structure
 
+> **HARD RULE — always produce a "framework figure Fig.1"**: in the Introduction "Our Work" or Problem-Analysis section, include one **overall methodology-roadmap figure** that links input data → each sub-problem's model → solving → conclusions, numbered Fig.1. Nearly every O-prize paper has it (see `mcm_judge_commentary §4`); missing it costs both writing and innovation dimensions (iter4 evidence: a missing Fig.1 was the Judge's single highest-ROI fix). This is mandatory, not optional.
+
 Follow this standard competition paper structure:
 
 ```markdown

@@ -32,6 +32,7 @@
 - **美赛题另必读 `references/mcm_judge_commentary.md`**：按 §4 O 奖执行模板写（摘要逐任务+粗体模型名+硬数字；Our Work 配总框架图 Fig.1；Letter/Memo 独立成章；隐喻命名做创新落点），并逐条避开 §2 triage 杀手（漏子问题/建议脱节/图与模型脱节/结果丢附录/盗图不引）。
 
 ## 定稿自检
+- **【硬规则】必产"总框架流程图 Fig.1"**：在引言"本文工作(Our Work)"或问题分析处，放一张串起"输入数据→各子问题模型→求解→结论"的**方法路线总览框架图**，编号 Fig.1。O 奖论文几乎篇篇有（见 `mcm_judge_commentary §4`），缺它直接压"写作+创新"两维（iter4 实证：漏 Fig.1 是 Judge 的"只改一处"）。**这是必产项，不是可选**。
 - 论文依赖的关键数字都登记进 `frozen_numbers.json`（含 `cited_in` 标明出现在哪些文件），定稿前跑 `python tools/check_frozen.py` + `python tools/check_paper_numbers.py`，确保 `.md`/`.tex` 散文里没有残留旧值、正确值都在场（零 FAIL 才算定稿）。
 
 ## 铁律

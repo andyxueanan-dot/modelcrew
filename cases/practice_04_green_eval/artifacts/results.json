@@ -1,0 +1,1139 @@
+{
+  "meta": {
+    "case": "practice_04_green_eval",
+    "main_method": "M1 = min-max + CRITIC weighting + weighted TOPSIS",
+    "deterministic": true,
+    "random_seed": null,
+    "round_digits": 4,
+    "n_regions": 10,
+    "n_indicators": 7,
+    "reverse_indicators": [
+      "energy_intensity",
+      "carbon_intensity",
+      "pm25"
+    ],
+    "columns_order": [
+      "energy_intensity",
+      "renewable_share",
+      "forest_cover",
+      "carbon_intensity",
+      "solid_waste_util",
+      "park_green_percap",
+      "pm25"
+    ]
+  },
+  "Q1": {
+    "weights": {
+      "M0_equal": {
+        "energy_intensity": 0.1429,
+        "renewable_share": 0.1429,
+        "forest_cover": 0.1429,
+        "carbon_intensity": 0.1429,
+        "solid_waste_util": 0.1429,
+        "park_green_percap": 0.1429,
+        "pm25": 0.1429
+      },
+      "M1_critic": {
+        "energy_intensity": 0.1151,
+        "renewable_share": 0.1281,
+        "forest_cover": 0.2649,
+        "carbon_intensity": 0.111,
+        "solid_waste_util": 0.1253,
+        "park_green_percap": 0.1157,
+        "pm25": 0.14
+      },
+      "M2_entropy": {
+        "energy_intensity": 0.1302,
+        "renewable_share": 0.1867,
+        "forest_cover": 0.1625,
+        "carbon_intensity": 0.1367,
+        "solid_waste_util": 0.1309,
+        "park_green_percap": 0.1494,
+        "pm25": 0.1036
+      },
+      "M3_pca_loadings": {
+        "energy_intensity": 0.1932,
+        "renewable_share": 0.1889,
+        "forest_cover": 0.0622,
+        "carbon_intensity": 0.1939,
+        "solid_waste_util": 0.1882,
+        "park_green_percap": 0.1088,
+        "pm25": 0.0649
+      },
+      "M5_critic_policy": {
+        "energy_intensity": 0.1593,
+        "renewable_share": 0.1455,
+        "forest_cover": 0.1709,
+        "carbon_intensity": 0.1749,
+        "solid_waste_util": 0.1175,
+        "park_green_percap": 0.0798,
+        "pm25": 0.1521
+      }
+    },
+    "M1_main_ranking": [
+      {
+        "region": "H",
+        "rank": 1,
+        "closeness": 0.7149,
+        "D_plus": 0.1352,
+        "D_minus": 0.3392
+      },
+      {
+        "region": "J",
+        "rank": 2,
+        "closeness": 0.665,
+        "D_plus": 0.1361,
+        "D_minus": 0.2702
+      },
+      {
+        "region": "D",
+        "rank": 3,
+        "closeness": 0.6039,
+        "D_plus": 0.1866,
+        "D_minus": 0.2845
+      },
+      {
+        "region": "G",
+        "rank": 4,
+        "closeness": 0.5349,
+        "D_plus": 0.2327,
+        "D_minus": 0.2676
+      },
+      {
+        "region": "B",
+        "rank": 5,
+        "closeness": 0.5294,
+        "D_plus": 0.2164,
+        "D_minus": 0.2434
+      },
+      {
+        "region": "E",
+        "rank": 6,
+        "closeness": 0.5282,
+        "D_plus": 0.1994,
+        "D_minus": 0.2232
+      },
+      {
+        "region": "A",
+        "rank": 7,
+        "closeness": 0.4609,
+        "D_plus": 0.2309,
+        "D_minus": 0.1974
+      },
+      {
+        "region": "C",
+        "rank": 8,
+        "closeness": 0.4239,
+        "D_plus": 0.2908,
+        "D_minus": 0.214
+      },
+      {
+        "region": "F",
+        "rank": 9,
+        "closeness": 0.3166,
+        "D_plus": 0.3145,
+        "D_minus": 0.1457
+      },
+      {
+        "region": "I",
+        "rank": 10,
+        "closeness": 0.1128,
+        "D_plus": 0.3632,
+        "D_minus": 0.0462
+      }
+    ],
+    "M1_top3": [
+      "H",
+      "J",
+      "D"
+    ],
+    "M1_bottom3": [
+      "C",
+      "F",
+      "I"
+    ],
+    "G_vs_H": {
+      "G_rank": 4,
+      "H_rank": 1,
+      "first_place": "H"
+    },
+    "all_method_scores": {
+      "M0_equal_saw": {
+        "A": 0.5592,
+        "B": 0.4128,
+        "C": 0.5921,
+        "D": 0.5032,
+        "E": 0.594,
+        "F": 0.1034,
+        "G": 0.7701,
+        "H": 0.688,
+        "I": 0.1057,
+        "J": 0.678
+      },
+      "M1_critic_topsis": {
+        "A": 0.4609,
+        "B": 0.5294,
+        "C": 0.4239,
+        "D": 0.6039,
+        "E": 0.5282,
+        "F": 0.3166,
+        "G": 0.5349,
+        "H": 0.7149,
+        "I": 0.1128,
+        "J": 0.665
+      },
+      "M2_entropy_saw": {
+        "A": 0.5407,
+        "B": 0.3889,
+        "C": 0.586,
+        "D": 0.4888,
+        "E": 0.5782,
+        "F": 0.1068,
+        "G": 0.7695,
+        "H": 0.6731,
+        "I": 0.1083,
+        "J": 0.6706
+      },
+      "M3_pca_score": {
+        "A": 0.8919,
+        "B": -1.4677,
+        "C": 1.9927,
+        "D": -1.1583,
+        "E": 0.9841,
+        "F": -3.4033,
+        "G": 3.1177,
+        "H": 0.1987,
+        "I": -2.414,
+        "J": 1.2582
+      },
+      "M5_policy_topsis": {
+        "A": 0.5559,
+        "B": 0.4773,
+        "C": 0.5658,
+        "D": 0.4933,
+        "E": 0.5839,
+        "F": 0.2188,
+        "G": 0.6653,
+        "H": 0.6327,
+        "I": 0.1146,
+        "J": 0.6994
+      }
+    },
+    "all_method_ranks": {
+      "M0_equal_saw": {
+        "A": 6,
+        "B": 8,
+        "C": 5,
+        "D": 7,
+        "E": 4,
+        "F": 10,
+        "G": 1,
+        "H": 2,
+        "I": 9,
+        "J": 3
+      },
+      "M1_critic_topsis": {
+        "A": 7,
+        "B": 5,
+        "C": 8,
+        "D": 3,
+        "E": 6,
+        "F": 9,
+        "G": 4,
+        "H": 1,
+        "I": 10,
+        "J": 2
+      },
+      "M2_entropy_saw": {
+        "A": 6,
+        "B": 8,
+        "C": 4,
+        "D": 7,
+        "E": 5,
+        "F": 10,
+        "G": 1,
+        "H": 2,
+        "I": 9,
+        "J": 3
+      },
+      "M3_pca_score": {
+        "A": 5,
+        "B": 8,
+        "C": 2,
+        "D": 7,
+        "E": 4,
+        "F": 10,
+        "G": 1,
+        "H": 6,
+        "I": 9,
+        "J": 3
+      },
+      "M5_policy_topsis": {
+        "A": 6,
+        "B": 8,
+        "C": 5,
+        "D": 7,
+        "E": 4,
+        "F": 9,
+        "G": 2,
+        "H": 3,
+        "I": 10,
+        "J": 1
+      }
+    },
+    "d1_downweight_check": {
+      "critic_weights": {
+        "energy_intensity": 0.1151,
+        "renewable_share": 0.1281,
+        "forest_cover": 0.2649,
+        "carbon_intensity": 0.111,
+        "solid_waste_util": 0.1253,
+        "park_green_percap": 0.1157,
+        "pm25": 0.14
+      },
+      "std_only_weights": {
+        "energy_intensity": 0.1462,
+        "renewable_share": 0.1425,
+        "forest_cover": 0.1485,
+        "carbon_intensity": 0.146,
+        "solid_waste_util": 0.1445,
+        "park_green_percap": 0.1335,
+        "pm25": 0.1388
+      },
+      "energy_carbon_critic_sum": 0.2261,
+      "energy_carbon_std_only_sum": 0.2922,
+      "d1_downweighted": true
+    },
+    "c4_attribution_critic_vs_equal": {
+      "critic_minus_equal": {
+        "energy_intensity": -0.0278,
+        "renewable_share": -0.0148,
+        "forest_cover": 0.122,
+        "carbon_intensity": -0.0319,
+        "solid_waste_util": -0.0176,
+        "park_green_percap": -0.0272,
+        "pm25": -0.0029
+      },
+      "raised_vs_equal": [
+        "forest_cover"
+      ],
+      "lowered_vs_equal": [
+        "energy_intensity",
+        "renewable_share",
+        "carbon_intensity",
+        "solid_waste_util",
+        "park_green_percap",
+        "pm25"
+      ],
+      "forest_cover_delta": 0.122,
+      "pm25_delta": -0.0029,
+      "note": "相对等权仅 forest_cover 被抬(+0.1220)，pm25 不升反微降(-0.0029)；H 反超 G 由 forest_cover 抬权驱动"
+    },
+    "pca_var_explained_pc1": 0.6029,
+    "pca_pc1_loadings": {
+      "energy_intensity": 0.4742,
+      "renewable_share": 0.4637,
+      "forest_cover": -0.1527,
+      "carbon_intensity": 0.476,
+      "solid_waste_util": 0.4621,
+      "park_green_percap": 0.2671,
+      "pm25": 0.1593
+    }
+  },
+  "Q2": {
+    "laggard_threshold": "M1 rank >= 8 (bottom 3)",
+    "laggards": [
+      "C",
+      "F",
+      "I"
+    ],
+    "shortboard_diagnosis": {
+      "C": {
+        "rank_M1": 8,
+        "closeness_M1": 0.4239,
+        "saw_gap_contribution": {
+          "energy_intensity": 0.0099,
+          "renewable_share": 0.0296,
+          "forest_cover": 0.2649,
+          "carbon_intensity": 0.0107,
+          "solid_waste_util": 0.0242,
+          "park_green_percap": 0.0744,
+          "pm25": 0.0848
+        },
+        "top3_shortboard_by_gap": [
+          "forest_cover",
+          "pm25",
+          "park_green_percap"
+        ],
+        "topsis_dist_to_ideal_sq": {
+          "energy_intensity": 9.7e-05,
+          "renewable_share": 0.000874,
+          "forest_cover": 0.07016,
+          "carbon_intensity": 0.000114,
+          "solid_waste_util": 0.000588,
+          "park_green_percap": 0.005532,
+          "pm25": 0.007199
+        },
+        "top3_shortboard_by_topsis": [
+          "forest_cover",
+          "pm25",
+          "park_green_percap"
+        ],
+        "raw_values": {
+          "energy_intensity": 0.38,
+          "renewable_share": 42.0,
+          "forest_cover": 22.0,
+          "carbon_intensity": 0.8,
+          "solid_waste_util": 85.0,
+          "park_green_percap": 12.8,
+          "pm25": 45.0
+        }
+      },
+      "F": {
+        "rank_M1": 9,
+        "closeness_M1": 0.3166,
+        "saw_gap_contribution": {
+          "energy_intensity": 0.1151,
+          "renewable_share": 0.1281,
+          "forest_cover": 0.1214,
+          "carbon_intensity": 0.111,
+          "solid_waste_util": 0.1253,
+          "park_green_percap": 0.1157,
+          "pm25": 0.1145
+        },
+        "top3_shortboard_by_gap": [
+          "renewable_share",
+          "solid_waste_util",
+          "forest_cover"
+        ],
+        "topsis_dist_to_ideal_sq": {
+          "energy_intensity": 0.013248,
+          "renewable_share": 0.016408,
+          "forest_cover": 0.014738,
+          "carbon_intensity": 0.012315,
+          "solid_waste_util": 0.01569,
+          "park_green_percap": 0.013386,
+          "pm25": 0.01312
+        },
+        "top3_shortboard_by_topsis": [
+          "renewable_share",
+          "solid_waste_util",
+          "forest_cover"
+        ],
+        "raw_values": {
+          "energy_intensity": 0.7,
+          "renewable_share": 12.0,
+          "forest_cover": 48.0,
+          "carbon_intensity": 1.55,
+          "solid_waste_util": 60.0,
+          "park_green_percap": 9.8,
+          "pm25": 52.0
+        }
+      },
+      "I": {
+        "rank_M1": 10,
+        "closeness_M1": 0.1128,
+        "saw_gap_contribution": {
+          "energy_intensity": 0.1019,
+          "renewable_share": 0.1117,
+          "forest_cover": 0.2428,
+          "carbon_intensity": 0.1016,
+          "solid_waste_util": 0.0929,
+          "park_green_percap": 0.1074,
+          "pm25": 0.14
+        },
+        "top3_shortboard_by_gap": [
+          "forest_cover",
+          "pm25",
+          "renewable_share"
+        ],
+        "topsis_dist_to_ideal_sq": {
+          "energy_intensity": 0.010393,
+          "renewable_share": 0.012471,
+          "forest_cover": 0.058954,
+          "carbon_intensity": 0.010325,
+          "solid_waste_util": 0.008637,
+          "park_green_percap": 0.011542,
+          "pm25": 0.019599
+        },
+        "top3_shortboard_by_topsis": [
+          "forest_cover",
+          "pm25",
+          "renewable_share"
+        ],
+        "raw_values": {
+          "energy_intensity": 0.66,
+          "renewable_share": 17.0,
+          "forest_cover": 26.0,
+          "carbon_intensity": 1.48,
+          "solid_waste_util": 68.0,
+          "park_green_percap": 10.4,
+          "pm25": 58.0
+        }
+      }
+    }
+  },
+  "Q3": {
+    "rank_correlation_vs_M1": {
+      "M0_equal_saw": {
+        "spearman_vs_M1": 0.6848,
+        "kendall_vs_M1": 0.5111
+      },
+      "M1_critic_topsis": {
+        "spearman_vs_M1": 1.0,
+        "kendall_vs_M1": 1.0
+      },
+      "M2_entropy_saw": {
+        "spearman_vs_M1": 0.6606,
+        "kendall_vs_M1": 0.4667
+      },
+      "M3_pca_score": {
+        "spearman_vs_M1": 0.3576,
+        "kendall_vs_M1": 0.2444
+      },
+      "M5_policy_topsis": {
+        "spearman_vs_M1": 0.7091,
+        "kendall_vs_M1": 0.5556
+      }
+    },
+    "c2_dedup_isolation_fixed_topsis": {
+      "entropy": {
+        "spearman_vs_critic": 0.6848,
+        "kendall_vs_critic": 0.5111,
+        "ranks": {
+          "A": 6,
+          "B": 8,
+          "C": 5,
+          "D": 7,
+          "E": 4,
+          "F": 9,
+          "G": 1,
+          "H": 3,
+          "I": 10,
+          "J": 2
+        }
+      },
+      "equal": {
+        "spearman_vs_critic": 0.6848,
+        "kendall_vs_critic": 0.5111,
+        "ranks": {
+          "A": 6,
+          "B": 8,
+          "C": 5,
+          "D": 7,
+          "E": 4,
+          "F": 9,
+          "G": 1,
+          "H": 3,
+          "I": 10,
+          "J": 2
+        }
+      },
+      "std_only": {
+        "spearman_vs_critic": 0.6848,
+        "kendall_vs_critic": 0.5111,
+        "ranks": {
+          "A": 6,
+          "B": 8,
+          "C": 5,
+          "D": 7,
+          "E": 4,
+          "F": 9,
+          "G": 1,
+          "H": 3,
+          "I": 10,
+          "J": 2
+        }
+      }
+    },
+    "norm_caliber_scores": {
+      "N1_minmax": {
+        "A": 0.4609,
+        "B": 0.5294,
+        "C": 0.4239,
+        "D": 0.6039,
+        "E": 0.5282,
+        "F": 0.3166,
+        "G": 0.5349,
+        "H": 0.7149,
+        "I": 0.1128,
+        "J": 0.665
+      },
+      "N2_zscore": {
+        "A": 0.4706,
+        "B": 0.5176,
+        "C": 0.4319,
+        "D": 0.6028,
+        "E": 0.5325,
+        "F": 0.3,
+        "G": 0.549,
+        "H": 0.7146,
+        "I": 0.1117,
+        "J": 0.6602
+      },
+      "N3_vector": {
+        "A": 0.4373,
+        "B": 0.4971,
+        "C": 0.4163,
+        "D": 0.5927,
+        "E": 0.5058,
+        "F": 0.3174,
+        "G": 0.5354,
+        "H": 0.6997,
+        "I": 0.112,
+        "J": 0.649
+      }
+    },
+    "norm_caliber_ranks": {
+      "N1_minmax": {
+        "A": 7,
+        "B": 5,
+        "C": 8,
+        "D": 3,
+        "E": 6,
+        "F": 9,
+        "G": 4,
+        "H": 1,
+        "I": 10,
+        "J": 2
+      },
+      "N2_zscore": {
+        "A": 7,
+        "B": 6,
+        "C": 8,
+        "D": 3,
+        "E": 5,
+        "F": 9,
+        "G": 4,
+        "H": 1,
+        "I": 10,
+        "J": 2
+      },
+      "N3_vector": {
+        "A": 7,
+        "B": 6,
+        "C": 8,
+        "D": 3,
+        "E": 5,
+        "F": 9,
+        "G": 4,
+        "H": 1,
+        "I": 10,
+        "J": 2
+      }
+    },
+    "norm_caliber_corr_vs_N1": {
+      "N1_minmax": {
+        "spearman_vs_N1": 1.0,
+        "kendall_vs_N1": 1.0
+      },
+      "N2_zscore": {
+        "spearman_vs_N1": 0.9879,
+        "kendall_vs_N1": 0.9556
+      },
+      "N3_vector": {
+        "spearman_vs_N1": 0.9879,
+        "kendall_vs_N1": 0.9556
+      }
+    },
+    "data_perturbation_additive_gaussian_mc": {
+      "noise_model": "x' = x + N(0, k*std_j) per column; min-max+CRITIC+TOPSIS recomputed each run",
+      "note_multiplicative_invalid": "原乘性 ±δ 扰动在 min-max 下恒等(min-max(a·x)=min-max(x))，名次恒不变，已弃用",
+      "seed": 20240625,
+      "n_runs_each": 1000,
+      "k05pct": {
+        "noise_k": 0.05,
+        "n_runs": 1000,
+        "seed": 20240625,
+        "n_ranking_changed": 770,
+        "frac_ranking_changed": 0.77,
+        "per_region": {
+          "A": {
+            "base_rank": 7,
+            "mean_rank": 7.0,
+            "p05_rank": 7,
+            "p95_rank": 7,
+            "min_rank": 7,
+            "max_rank": 7,
+            "span": 0,
+            "pct_rank_changed": 0.0
+          },
+          "B": {
+            "base_rank": 5,
+            "mean_rank": 5.104,
+            "p05_rank": 4,
+            "p95_rank": 6,
+            "min_rank": 4,
+            "max_rank": 6,
+            "span": 2,
+            "pct_rank_changed": 0.72
+          },
+          "C": {
+            "base_rank": 8,
+            "mean_rank": 8.0,
+            "p05_rank": 8,
+            "p95_rank": 8,
+            "min_rank": 8,
+            "max_rank": 8,
+            "span": 0,
+            "pct_rank_changed": 0.0
+          },
+          "D": {
+            "base_rank": 3,
+            "mean_rank": 3.0,
+            "p05_rank": 3,
+            "p95_rank": 3,
+            "min_rank": 3,
+            "max_rank": 3,
+            "span": 0,
+            "pct_rank_changed": 0.0
+          },
+          "E": {
+            "base_rank": 6,
+            "mean_rank": 5.285,
+            "p05_rank": 4,
+            "p95_rank": 6,
+            "min_rank": 4,
+            "max_rank": 6,
+            "span": 2,
+            "pct_rank_changed": 0.574
+          },
+          "F": {
+            "base_rank": 9,
+            "mean_rank": 9.0,
+            "p05_rank": 9,
+            "p95_rank": 9,
+            "min_rank": 9,
+            "max_rank": 9,
+            "span": 0,
+            "pct_rank_changed": 0.0
+          },
+          "G": {
+            "base_rank": 4,
+            "mean_rank": 4.611,
+            "p05_rank": 4,
+            "p95_rank": 6,
+            "min_rank": 4,
+            "max_rank": 6,
+            "span": 2,
+            "pct_rank_changed": 0.449
+          },
+          "H": {
+            "base_rank": 1,
+            "mean_rank": 1.0,
+            "p05_rank": 1,
+            "p95_rank": 1,
+            "min_rank": 1,
+            "max_rank": 1,
+            "span": 0,
+            "pct_rank_changed": 0.0
+          },
+          "I": {
+            "base_rank": 10,
+            "mean_rank": 10.0,
+            "p05_rank": 10,
+            "p95_rank": 10,
+            "min_rank": 10,
+            "max_rank": 10,
+            "span": 0,
+            "pct_rank_changed": 0.0
+          },
+          "J": {
+            "base_rank": 2,
+            "mean_rank": 2.0,
+            "p05_rank": 2,
+            "p95_rank": 2,
+            "min_rank": 2,
+            "max_rank": 2,
+            "span": 0,
+            "pct_rank_changed": 0.0
+          }
+        }
+      },
+      "k10pct": {
+        "noise_k": 0.1,
+        "n_runs": 1000,
+        "seed": 20240625,
+        "n_ranking_changed": 831,
+        "frac_ranking_changed": 0.831,
+        "per_region": {
+          "A": {
+            "base_rank": 7,
+            "mean_rank": 7.016,
+            "p05_rank": 7,
+            "p95_rank": 7,
+            "min_rank": 5,
+            "max_rank": 8,
+            "span": 3,
+            "pct_rank_changed": 0.029
+          },
+          "B": {
+            "base_rank": 5,
+            "mean_rank": 5.121,
+            "p05_rank": 4,
+            "p95_rank": 6,
+            "min_rank": 4,
+            "max_rank": 7,
+            "span": 3,
+            "pct_rank_changed": 0.752
+          },
+          "C": {
+            "base_rank": 8,
+            "mean_rank": 7.978,
+            "p05_rank": 8,
+            "p95_rank": 8,
+            "min_rank": 7,
+            "max_rank": 9,
+            "span": 2,
+            "pct_rank_changed": 0.024
+          },
+          "D": {
+            "base_rank": 3,
+            "mean_rank": 3.023,
+            "p05_rank": 3,
+            "p95_rank": 3,
+            "min_rank": 2,
+            "max_rank": 5,
+            "span": 3,
+            "pct_rank_changed": 0.026
+          },
+          "E": {
+            "base_rank": 6,
+            "mean_rank": 5.16,
+            "p05_rank": 4,
+            "p95_rank": 6,
+            "min_rank": 3,
+            "max_rank": 7,
+            "span": 4,
+            "pct_rank_changed": 0.637
+          },
+          "F": {
+            "base_rank": 9,
+            "mean_rank": 8.999,
+            "p05_rank": 9,
+            "p95_rank": 9,
+            "min_rank": 8,
+            "max_rank": 9,
+            "span": 1,
+            "pct_rank_changed": 0.001
+          },
+          "G": {
+            "base_rank": 4,
+            "mean_rank": 4.7,
+            "p05_rank": 4,
+            "p95_rank": 6,
+            "min_rank": 3,
+            "max_rank": 6,
+            "span": 3,
+            "pct_rank_changed": 0.541
+          },
+          "H": {
+            "base_rank": 1,
+            "mean_rank": 1.016,
+            "p05_rank": 1,
+            "p95_rank": 1,
+            "min_rank": 1,
+            "max_rank": 2,
+            "span": 1,
+            "pct_rank_changed": 0.016
+          },
+          "I": {
+            "base_rank": 10,
+            "mean_rank": 10.0,
+            "p05_rank": 10,
+            "p95_rank": 10,
+            "min_rank": 10,
+            "max_rank": 10,
+            "span": 0,
+            "pct_rank_changed": 0.0
+          },
+          "J": {
+            "base_rank": 2,
+            "mean_rank": 1.987,
+            "p05_rank": 2,
+            "p95_rank": 2,
+            "min_rank": 1,
+            "max_rank": 3,
+            "span": 2,
+            "pct_rank_changed": 0.019
+          }
+        }
+      },
+      "k20pct": {
+        "noise_k": 0.2,
+        "n_runs": 1000,
+        "seed": 20240625,
+        "n_ranking_changed": 931,
+        "frac_ranking_changed": 0.931,
+        "per_region": {
+          "A": {
+            "base_rank": 7,
+            "mean_rank": 6.941,
+            "p05_rank": 6,
+            "p95_rank": 8,
+            "min_rank": 4,
+            "max_rank": 8,
+            "span": 4,
+            "pct_rank_changed": 0.363
+          },
+          "B": {
+            "base_rank": 5,
+            "mean_rank": 5.425,
+            "p05_rank": 4,
+            "p95_rank": 7,
+            "min_rank": 3,
+            "max_rank": 8,
+            "span": 5,
+            "pct_rank_changed": 0.764
+          },
+          "C": {
+            "base_rank": 8,
+            "mean_rank": 7.804,
+            "p05_rank": 7,
+            "p95_rank": 8,
+            "min_rank": 5,
+            "max_rank": 9,
+            "span": 4,
+            "pct_rank_changed": 0.229
+          },
+          "D": {
+            "base_rank": 3,
+            "mean_rank": 3.285,
+            "p05_rank": 2,
+            "p95_rank": 5,
+            "min_rank": 2,
+            "max_rank": 7,
+            "span": 5,
+            "pct_rank_changed": 0.312
+          },
+          "E": {
+            "base_rank": 6,
+            "mean_rank": 4.964,
+            "p05_rank": 3,
+            "p95_rank": 6,
+            "min_rank": 2,
+            "max_rank": 8,
+            "span": 6,
+            "pct_rank_changed": 0.736
+          },
+          "F": {
+            "base_rank": 9,
+            "mean_rank": 8.969,
+            "p05_rank": 9,
+            "p95_rank": 9,
+            "min_rank": 7,
+            "max_rank": 10,
+            "span": 3,
+            "pct_rank_changed": 0.027
+          },
+          "G": {
+            "base_rank": 4,
+            "mean_rank": 4.538,
+            "p05_rank": 3,
+            "p95_rank": 6,
+            "min_rank": 2,
+            "max_rank": 7,
+            "span": 5,
+            "pct_rank_changed": 0.678
+          },
+          "H": {
+            "base_rank": 1,
+            "mean_rank": 1.156,
+            "p05_rank": 1,
+            "p95_rank": 2,
+            "min_rank": 1,
+            "max_rank": 3,
+            "span": 2,
+            "pct_rank_changed": 0.155
+          },
+          "I": {
+            "base_rank": 10,
+            "mean_rank": 9.999,
+            "p05_rank": 10,
+            "p95_rank": 10,
+            "min_rank": 9,
+            "max_rank": 10,
+            "span": 1,
+            "pct_rank_changed": 0.001
+          },
+          "J": {
+            "base_rank": 2,
+            "mean_rank": 1.919,
+            "p05_rank": 1,
+            "p95_rank": 3,
+            "min_rank": 1,
+            "max_rank": 4,
+            "span": 3,
+            "pct_rank_changed": 0.226
+          }
+        }
+      },
+      "frac_ranking_changed_by_k": {
+        "k05pct": 0.77,
+        "k10pct": 0.831,
+        "k20pct": 0.931
+      }
+    },
+    "most_unstable_region_under_perturb": {
+      "region": "B",
+      "base_rank": 5,
+      "mean_rank": 5.104,
+      "p05_rank": 4,
+      "p95_rank": 6,
+      "min_rank": 4,
+      "max_rank": 6,
+      "span": 2,
+      "pct_rank_changed": 0.72
+    },
+    "cross_method_rank_table": {
+      "A": {
+        "M0_equal_saw": 6,
+        "M1_critic_topsis": 7,
+        "M2_entropy_saw": 6,
+        "M3_pca_score": 5,
+        "M5_policy_topsis": 6,
+        "N2_zscore_critic_topsis": 7,
+        "N3_vector_critic_topsis": 7
+      },
+      "B": {
+        "M0_equal_saw": 8,
+        "M1_critic_topsis": 5,
+        "M2_entropy_saw": 8,
+        "M3_pca_score": 8,
+        "M5_policy_topsis": 8,
+        "N2_zscore_critic_topsis": 6,
+        "N3_vector_critic_topsis": 6
+      },
+      "C": {
+        "M0_equal_saw": 5,
+        "M1_critic_topsis": 8,
+        "M2_entropy_saw": 4,
+        "M3_pca_score": 2,
+        "M5_policy_topsis": 5,
+        "N2_zscore_critic_topsis": 8,
+        "N3_vector_critic_topsis": 8
+      },
+      "D": {
+        "M0_equal_saw": 7,
+        "M1_critic_topsis": 3,
+        "M2_entropy_saw": 7,
+        "M3_pca_score": 7,
+        "M5_policy_topsis": 7,
+        "N2_zscore_critic_topsis": 3,
+        "N3_vector_critic_topsis": 3
+      },
+      "E": {
+        "M0_equal_saw": 4,
+        "M1_critic_topsis": 6,
+        "M2_entropy_saw": 5,
+        "M3_pca_score": 4,
+        "M5_policy_topsis": 4,
+        "N2_zscore_critic_topsis": 5,
+        "N3_vector_critic_topsis": 5
+      },
+      "F": {
+        "M0_equal_saw": 10,
+        "M1_critic_topsis": 9,
+        "M2_entropy_saw": 10,
+        "M3_pca_score": 10,
+        "M5_policy_topsis": 9,
+        "N2_zscore_critic_topsis": 9,
+        "N3_vector_critic_topsis": 9
+      },
+      "G": {
+        "M0_equal_saw": 1,
+        "M1_critic_topsis": 4,
+        "M2_entropy_saw": 1,
+        "M3_pca_score": 1,
+        "M5_policy_topsis": 2,
+        "N2_zscore_critic_topsis": 4,
+        "N3_vector_critic_topsis": 4
+      },
+      "H": {
+        "M0_equal_saw": 2,
+        "M1_critic_topsis": 1,
+        "M2_entropy_saw": 2,
+        "M3_pca_score": 6,
+        "M5_policy_topsis": 3,
+        "N2_zscore_critic_topsis": 1,
+        "N3_vector_critic_topsis": 1
+      },
+      "I": {
+        "M0_equal_saw": 9,
+        "M1_critic_topsis": 10,
+        "M2_entropy_saw": 9,
+        "M3_pca_score": 9,
+        "M5_policy_topsis": 10,
+        "N2_zscore_critic_topsis": 10,
+        "N3_vector_critic_topsis": 10
+      },
+      "J": {
+        "M0_equal_saw": 3,
+        "M1_critic_topsis": 2,
+        "M2_entropy_saw": 3,
+        "M3_pca_score": 3,
+        "M5_policy_topsis": 1,
+        "N2_zscore_critic_topsis": 2,
+        "N3_vector_critic_topsis": 2
+      }
+    },
+    "cross_method_rank_spread": {
+      "A": {
+        "min": 5,
+        "max": 7,
+        "span": 2
+      },
+      "B": {
+        "min": 5,
+        "max": 8,
+        "span": 3
+      },
+      "C": {
+        "min": 2,
+        "max": 8,
+        "span": 6
+      },
+      "D": {
+        "min": 3,
+        "max": 7,
+        "span": 4
+      },
+      "E": {
+        "min": 4,
+        "max": 6,
+        "span": 2
+      },
+      "F": {
+        "min": 9,
+        "max": 10,
+        "span": 1
+      },
+      "G": {
+        "min": 1,
+        "max": 4,
+        "span": 3
+      },
+      "H": {
+        "min": 1,
+        "max": 6,
+        "span": 5
+      },
+      "I": {
+        "min": 9,
+        "max": 10,
+        "span": 1
+      },
+      "J": {
+        "min": 1,
+        "max": 3,
+        "span": 2
+      }
+    },
+    "most_unstable_region_cross_method": {
+      "region": "C",
+      "min": 2,
+      "max": 8,
+      "span": 6
+    }
+  }
+}
