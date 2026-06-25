@@ -158,7 +158,32 @@
 
 ---
 
+## 7. 排版微观范式 + 美赛 Outstanding 差距（蒸馏自 `handsomeZR-netizen/mathmodel-skill`，来源注明）
+
+### 7A. 国赛排版微观范式（59 篇可蒸馏样本的痕迹，直接拉"写作呈现"维）
+- **公式编号**：主公式用**章节级二级编号** `(4.1)/(5.1)`；三级 `(5.1.1)` 只留给真正需细分的推导；全文统一。叙述用"由式(5.1)可知…代入式(5.2)得式(5.3)"把推导**串起来**，别让公式裸列。
+- **图表标题**：图题 = `图N: <动作/结果> + <对象> + (条件/参数)`（偏趋势/分布/收敛，如"图3: x* 在 ±10% 扰动下的分布"）；表题 = `表N: <内容> + <对比对象/维度>`（偏参数/对比/清单）。**忌**"示意图""结果图"这种空泛题。
+- **加粗**：只加粗**创新点 / 关键结论 / 关键数值 / 模型名变体 / 临界阈值 / 最优方案编号**（如"最优利润 **87234 元**，较基线提升 **12.3%**"）；**别**加粗"因此/综上/本文/问题一"这类连接词，更别整句加粗。
+- **引用**：正文用**数字编号** `[1]`/`[1-3]`；近 3 年文献宜占参考文献表 30%–50%；**GB/T 7714 格式统一 > 文献数量多**；题目背景文献与方法原典分清。
+- **中英混排**：中文与英文术语间留**半角空格**（`LSTM 模型`/`Python 调用`/`AHP-熵权模型`）；逻辑段之间、公式块前后留空行。
+
+### 7B. 美赛 Outstanding(~1%) 与 Honorable 的 10 个差距（SEED；正式引用前核对当年 COMAP 文件）
+1. **1-page Summary 抓人**：一句点题 + 2–3 句方法 + **≥3 个带单位定量结果** + 一句 bold takeaway；忌"we built a model and got results"。
+2. **Novel 显式标注**："Our novel contribution is…"——组合 ≥2 学科方法或对经典算法做命名扩展（Adaptive-Threshold k-means）。
+3. **Sensitivity 是独立大节**（1–2 页 + **tornado plot** + 多变量扰动 + 稳健区间），不是结论里一句话；OAT 单因子不够。
+4. **Letter/Memo(D/E/F) 单独打磨**：非技术语言、3 条 actionable 建议、1 页内、含 stakeholder 视角，不照抄摘要。
+5. **跨学科 framing**：把建模放进更大的社会/经济/政策语境。
+6. **Reproducibility 完整**：附录含 全代码 + 数据源 URL/DOI + 参数表 + 软件环境，任意第三方可复现。
+7. **Strengths/Weaknesses 真实**：≥3 条具体局限 + ≥1 条改进路线（**含替代方法名 + 改进幅度估计 + 计算成本估计**），忌"could be improved with more data"。
+8. **每个 model/子问题有自己的图**（Outstanding 均 14+ 图：模型示意 / 数据探索 / 主结果 / 敏感性 tornado / 对基线的对比）。
+9. **量化对比 baseline**："reduces cost by **23.4%** vs greedy (Table 5), **1.7×** faster than LP relaxation"——不只说"更好"。
+
+> ⚠️ 注：mathmodel-skill 自己的 `winning_patterns.md`（纸面估计）写"摘要600-900字 / 公式60-100"，但其 `empirical.json`（91篇实测）是**摘要p50=992 / 公式p50=24**——**以实测 §2E 为准**，纸面估计偏高勿用。页面预算可参考其结构：建模求解占正文 **60–70%**、灵敏度 2–3 页、模型评价推广 1–2 页。
+
+---
+
 ## 来源（节选，详见各调研留档）
+- **同类项目蒸馏**：`handsomeZR-netizen/mathmodel-skill`（91 篇真获奖论文 2023–2025，A–F 全；empirical.json 实测分位 / distilled_naming·phrases·structures·formats / mcm Outstanding seed）——本文 §2E/§3E/§7 及 `innovation_boost`命名库/`writing_templates`句式库均部分蒸馏自此，已注明。
 - 美赛：COMAP ICM Director deck（评审两阶段 / looking-for / 奖级）、COMAP《MCM-ICM Procedures and Tips》（25页/匿名/AI 规则）、真实 2024 MCM-C O 奖摘要(队号2406324)、Getreuer/Cline 建模指南。
 - 国赛：CUMCM 官网 mcm.edu.cn、赛区评阅工作规范(2025修订)、论文格式规范(2023/2025修订, cmathc.org.cn / moe.gov.cn)、查重规则解读、国一经验帖、论文集 personqianduixue/Math_Model · zhanwen/MathModel。
 - ⚠️标注项为社区口径，正式引用前按当年官方文件核对。
