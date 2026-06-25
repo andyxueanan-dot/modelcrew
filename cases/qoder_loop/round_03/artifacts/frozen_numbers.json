@@ -1,0 +1,348 @@
+{
+  "numbers": [
+    {
+      "id": "spearman_rho",
+      "label": "Spearman rank correlation (TOPSIS vs AHP)",
+      "value": 0.8571,
+      "tol": 0.001,
+      "source": "solve.py:Spearman",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "spearman_p",
+      "label": "Spearman p-value",
+      "value": 0.0065,
+      "tol": 0.001,
+      "source": "solve.py:Spearman",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_lambda_max",
+      "label": "AHP lambda_max",
+      "value": 6.0,
+      "tol": 0.001,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_CR",
+      "label": "AHP consistency ratio",
+      "value": 0.0,
+      "tol": 0.001,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_consistent",
+      "label": "AHP consistency passed (1=yes)",
+      "value": 1,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "most_stable_city",
+      "label": "Most rank-stable city index",
+      "value": 5,
+      "tol": 0,
+      "source": "solve.py:comparison",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "most_sensitive_city",
+      "label": "Most rank-sensitive city index",
+      "value": 1,
+      "tol": 0,
+      "source": "solve.py:comparison",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "entropy_w_GDP",
+      "label": "Entropy weight: GDP",
+      "value": 0.1851,
+      "tol": 0.001,
+      "source": "solve.py:entropy",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_w_GDP",
+      "label": "AHP weight: GDP",
+      "value": 0.25,
+      "tol": 0.001,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "entropy_w_Green",
+      "label": "Entropy weight: Green",
+      "value": 0.1701,
+      "tol": 0.001,
+      "source": "solve.py:entropy",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_w_Green",
+      "label": "AHP weight: Green",
+      "value": 0.1667,
+      "tol": 0.001,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "entropy_w_Uni",
+      "label": "Entropy weight: Uni",
+      "value": 0.1745,
+      "tol": 0.001,
+      "source": "solve.py:entropy",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_w_Uni",
+      "label": "AHP weight: Uni",
+      "value": 0.1667,
+      "tol": 0.001,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "entropy_w_Medical",
+      "label": "Entropy weight: Medical",
+      "value": 0.1414,
+      "tol": 0.001,
+      "source": "solve.py:entropy",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_w_Medical",
+      "label": "AHP weight: Medical",
+      "value": 0.1667,
+      "tol": 0.001,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "entropy_w_Metro",
+      "label": "Entropy weight: Metro",
+      "value": 0.2111,
+      "tol": 0.001,
+      "source": "solve.py:entropy",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_w_Metro",
+      "label": "AHP weight: Metro",
+      "value": 0.1667,
+      "tol": 0.001,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "entropy_w_Safety",
+      "label": "Entropy weight: Safety",
+      "value": 0.1178,
+      "tol": 0.001,
+      "source": "solve.py:entropy",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_w_Safety",
+      "label": "AHP weight: Safety",
+      "value": 0.0833,
+      "tol": 0.001,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_rank_A",
+      "label": "TOPSIS rank: A",
+      "value": 8,
+      "tol": 0,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_rank_A",
+      "label": "AHP rank: A",
+      "value": 7,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_C_A",
+      "label": "TOPSIS closeness: A",
+      "value": 0.3841,
+      "tol": 0.001,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_rank_B",
+      "label": "TOPSIS rank: B",
+      "value": 6,
+      "tol": 0,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_rank_B",
+      "label": "AHP rank: B",
+      "value": 8,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_C_B",
+      "label": "TOPSIS closeness: B",
+      "value": 0.4265,
+      "tol": 0.001,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_rank_C",
+      "label": "TOPSIS rank: C",
+      "value": 4,
+      "tol": 0,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_rank_C",
+      "label": "AHP rank: C",
+      "value": 3,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_C_C",
+      "label": "TOPSIS closeness: C",
+      "value": 0.455,
+      "tol": 0.001,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_rank_D",
+      "label": "TOPSIS rank: D",
+      "value": 3,
+      "tol": 0,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_rank_D",
+      "label": "AHP rank: D",
+      "value": 5,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_C_D",
+      "label": "TOPSIS closeness: D",
+      "value": 0.479,
+      "tol": 0.001,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_rank_E",
+      "label": "TOPSIS rank: E",
+      "value": 5,
+      "tol": 0,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_rank_E",
+      "label": "AHP rank: E",
+      "value": 4,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_C_E",
+      "label": "TOPSIS closeness: E",
+      "value": 0.4297,
+      "tol": 0.001,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_rank_F",
+      "label": "TOPSIS rank: F",
+      "value": 2,
+      "tol": 0,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_rank_F",
+      "label": "AHP rank: F",
+      "value": 2,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_C_F",
+      "label": "TOPSIS closeness: F",
+      "value": 0.4894,
+      "tol": 0.001,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_rank_G",
+      "label": "TOPSIS rank: G",
+      "value": 7,
+      "tol": 0,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_rank_G",
+      "label": "AHP rank: G",
+      "value": 6,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_C_G",
+      "label": "TOPSIS closeness: G",
+      "value": 0.425,
+      "tol": 0.001,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_rank_H",
+      "label": "TOPSIS rank: H",
+      "value": 1,
+      "tol": 0,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "ahp_rank_H",
+      "label": "AHP rank: H",
+      "value": 1,
+      "tol": 0,
+      "source": "solve.py:AHP",
+      "path": "artifacts/solve.py"
+    },
+    {
+      "id": "topsis_C_H",
+      "label": "TOPSIS closeness: H",
+      "value": 0.521,
+      "tol": 0.001,
+      "source": "solve.py:TOPSIS",
+      "path": "artifacts/solve.py"
+    }
+  ]
+}
