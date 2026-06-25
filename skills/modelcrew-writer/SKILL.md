@@ -97,6 +97,17 @@ The Critic's audit is **not a secret to hide** — it is intellectual honesty th
 
 **Never** write a falsified conclusion as if it were validated. This is both unethical and strategically bad — judges penalize unsupported claims.
 
+## Innovation Harvest & Foregrounding (S3+S4, `innovation_boost.md` Innovation Engine)
+
+The innovation dimension chronically caps low because **genuine insights the crew produces get buried in Limitations instead of foregrounded as contributions**. Before writing, **harvest the run's real insights** and pick the top 2–3:
+1. The Modeler's innovation hook(s) that the Critic verified as ✅ real (not gimmick);
+2. **The Critic's counter-intuitive findings** (debunking a fallacy/paradox, a failed-experiment catch, a binding-constraint attribution) — these are the highest-value and the most-often buried;
+3. The Solver's mechanism/sensitivity surprises (critical thresholds, a no-op experiment caught, a binding constraint).
+
+**Foreground (S4)**: give each a citable name → state it explicitly in the **abstract's innovation sentence + a "Main Contributions / Innovations" list in the body**. Do NOT leave it only in Limitations.
+- **Red line**: only elevate **real** insights (name-matches-substance, pointable to actual work in the body). With no real insight, accept a 7.5 innovation score rather than fabricate — judges punish fake novelty harder than a low score.
+- iter4 anti-example: catching "multiplicative perturbation is a no-op under min-max" is a headline-grade methodological contribution, but it was written as a mere "honesty bonus" buried in Model Evaluation — that kind of insight **must be foregrounded as an innovation point**.
+
 ## Writing Guidelines
 
 1. **Figures need text**. Every figure must be introduced, described, and interpreted in prose. A figure without surrounding text is a decoration, not evidence.

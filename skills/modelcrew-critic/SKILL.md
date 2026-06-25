@@ -214,6 +214,10 @@ a lone punctuation mark, a blank line, or a truncated output can all trick a rev
 
 5. **No rubber stamps**. If every conclusion gets ✅ with no substantive checking, the audit is worthless. Dig deeper.
 
+## Innovation Verification (anti-gimmick, S2, `innovation_boost.md` Innovation Engine)
+
+For each innovation hook the Modeler tagged `[待验真]`, rule whether it is a **real contribution** (cross-disciplinary non-obvious combo / problem-specific new mechanism / self-made index / substantive improvement to a classic method) or a **renamed standard method / gimmick**: give ✅real / ⚠️borderline / ❌gimmick. **Judge fake novelty as ❌** — judges penalize exposed fake innovation harder than a low score. Also: register **your own counter-intuitive audit findings** (debunked fallacy/paradox, a caught failed experiment, a binding-constraint attribution) as "insights that can be elevated to headline innovation," and hand them to the Writer to harvest (S3) — do not let them sit silently in the audit.
+
 ## Adversarial Debate Mode (借鉴 Sci-Mind)
 
 For high-stakes conclusions (especially "is this effect real or just random/an artifact?"), do **not** issue a solo verdict. Stage a structured 3-role debate, then judge:
